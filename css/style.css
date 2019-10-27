@@ -1,3 +1,15 @@
+/*### Article ###*/
+pre{
+  width: 70%;
+}
+
+article{
+  margin-left: 100px;
+  margin-right: 100px;
+  padding: 0;
+}
+/*######*/
+
 html, body {
   margin: 0;
   padding: 0;
