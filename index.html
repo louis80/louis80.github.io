@@ -1,1 +1,171 @@
-test
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CSS Grid Modern Responsive Dashboard</title>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="shortcut icon" type="image/png" href="#"><link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div class="grid">
+  <!--<header class="header">
+    <i class="fas fa-bars header__menu"></i>
+    <div class="header__search">
+      <input class="header__input" placeholder="Search..." />
+    </div>
+
+  </header>-->
+
+  <aside class="sidenav">
+    <!--<div class="sidenav__brand">
+      <i class="fas fa-feather-alt sidenav__brand-icon"></i>
+      <a class="sidenav__brand-link" href="#">Ux<span class="text-light">Pro</span></a>
+      <i class="fas fa-times sidenav__brand-close"></i>
+    </div>-->
+    <div class="sidenav__profile">
+      <div class="sidenav__profile-avatar"></div>
+      <div class="sidenav__profile-title text-light">Louis J</div>
+    </div>
+
+
+    <div class="row row--align-v-center row--align-h-center">
+      <ul class="navList">
+        <li class="navList__heading">Python<i class="far fa-file-alt"></i></li>
+          <li>
+          <div class="navList__subheading row row--align-v-center">
+            <span class="navList__subheading-icon"><i class="fas fa-briefcase-medical"></i></span>
+            <span class="navList__subheading-title">Machine Learning</span>
+          </div>
+          <ul class="subList subList--hidden">
+            <li class="subList__item">medical</li>
+            <li class="subList__item">vision</li>
+            <li class="subList__item">dental</li>
+          </ul>
+        </li>
+        <li>
+          <div class="navList__subheading row row--align-v-center">
+            <span class="navList__subheading-icon"><i class="fas fa-plane-departure"></i></span>
+            <span class="navList__subheading-title">Database</span>
+          </div>
+          <ul class="subList subList--hidden">
+            <li class="subList__item">Access database</li>
+          </ul>
+        </li>
+
+        <li>
+          <div class="navList__subheading row row--align-v-center">
+            <span class="navList__subheading-icon"><i class="far fa-angry"></i></span>
+            <span class="navList__subheading-title">Flask</span>
+          </div>
+          <ul class="subList subList--hidden">
+            <li class="subList__item">flask 1 </li>
+            <li class="subList__item">flask 2</li>
+          </ul>
+        </li>
+
+        <li>
+          <div class="navList__subheading row row--align-v-center">
+            <span class="navList__subheading-icon"><i class="far fa-angry"></i></span>
+            <span class="navList__subheading-title">Dash</span>
+          </div>
+          <ul class="subList subList--hidden">
+            <li class="subList__item">flask 1 </li>
+            <li class="subList__item">flask 2</li>
+          </ul>
+        </li>
+
+        <li>
+          <div class="navList__subheading row row--align-v-center">
+            <span class="navList__subheading-icon"><i class="far fa-angry"></i></span>
+            <span class="navList__subheading-title">Scraping</span>
+          </div>
+          <ul class="subList subList--hidden">
+            <li class="subList__item">flask 1 </li>
+            <li class="subList__item">flask 2</li>
+          </ul>
+        </li>
+
+
+
+        <li>
+          <div class="navList__subheading row row--align-v-center">
+            <span class="navList__subheading-icon"><i class="far fa-angry"></i></span>
+            <span class="navList__subheading-title">Code</span>
+          </div>
+          <ul class="subList subList--hidden">
+            <li class="subList__item">Regex</li>
+            <li class="subList__item">Dataframe</li>
+            <li class="subList__item">Dataviz</li>
+          </ul>
+        </li>
+
+
+        <li class="navList__heading">statistics<i class="fas fa-chart-bar"></i></li>
+
+
+      </ul>
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="main-header">
+
+
+      <div class="main-header__intro-wrapper">
+        <div class="main-header__welcome">
+          <div class="main-header__welcome-title text-light">Welcome, <strong>Matthew</strong></div>
+          <div class="main-header__welcome-subtitle text-light">How are you today?</div>
+        </div>
+        <div class="quickview">
+          <div class="quickview__item">
+            <div class="quickview__item-total">41</div>
+            <div class="quickview__item-description">
+              <i class="far fa-calendar-alt"></i>
+              <span class="text-light">Events</span>
+            </div>
+          </div>
+          <div class="quickview__item">
+            <div class="quickview__item-total">64</div>
+            <div class="quickview__item-description">
+              <i class="far fa-comment"></i>
+              <span class="text-light">Messages</span>
+            </div>
+          </div>
+          <div class="quickview__item">
+            <div class="quickview__item-total">27&deg;</div>
+            <div class="quickview__item-description">
+              <i class="fas fa-map-marker-alt"></i>
+              <span class="text-light">Austin</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="main__cards">
+      <div class="card">
+
+      </div>
+
+    
+    </div> <!-- /.main-cards -->
+  </main>
+
+  <footer class="footer">
+    <p><span class="footer__copyright">&copy;</span> 2018 LJPR</p>
+    <p>Crafted with <i class="fas fa-heart footer__icon"></i> by <a href="" target="_blank" class="footer__signature">Louis JEANPIERRE</a></p>
+  </footer>
+</div>
+<!-- partial -->
+  <script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
+<script src='https://www.amcharts.com/lib/3/amcharts.js'></script>
+<script src='https://www.amcharts.com/lib/3/serial.js'></script>
+<script src='https://www.amcharts.com/lib/3/themes/light.js'></script>
+<script  src="./script.js"></script>
+
+</body>
+</html>
