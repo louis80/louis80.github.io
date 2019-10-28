@@ -1,12 +1,18 @@
 /*### Article ###*/
-pre{
-  width: 70%;
+.post {
+  display: grid;
+  grid-template-columns: minmax(1.2rem, 1fr) minmax(auto, 57ch) minmax(1.2rem, 1fr);
 }
 
-article{
-  margin-left: 100px;
-  margin-right: 100px;
-  padding: 0;
+.post p, pre, span{
+  grid-column: 2;
+}
+
+.post img {
+  grid-column: 1 / 4;
+  width: 100%;
+  max-width: 100ch;
+  justify-self: center;
 }
 /*######*/
 
@@ -57,7 +63,7 @@ a {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #F9FAFC;
+  background-color: #272822;
 }
 .header__menu {
   position: fixed;
@@ -82,6 +88,7 @@ a {
   font-size: 20px;
   color: #777;
 }
+
 .header__input:focus {
   outline: none;
   border: none;
