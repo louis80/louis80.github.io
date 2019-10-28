@@ -1,0 +1,10 @@
+
+################################################################################
+ • Docker
+- Not enough memory :
+Switching cpu and mem to min allowed me to get docker restarted
+Cleaned up containers with "docker ps -a"
+Switching back: Docker now runs with max 2 cpu’s and 2048 memory settings
+
+Remove all stopped containers :
+docker system prune
