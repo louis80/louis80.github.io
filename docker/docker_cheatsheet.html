@@ -40,17 +40,17 @@
 
     <!-- ############################################################### -->
     <article class='post'>
-        <span class="subtitle_article"><strong>Push a commit</strong></span>
-        <pre class="language-git"><code class="language-git">
-            git add .
-            git commit -m "mssge"
-            git push origin master
+        <span class="subtitle_article"><strong> Remove all stopped containers : </strong></span>
+        <pre class="language-docker"><code class="language-docker">
+            # Remove all stopped containers
+            docker system prune
         </code></pre>
-        
-        <span class="subtitle_article"><strong>Pull a commit</strong></span>
-        <pre class="language-git"><code class="language-git">
-            git pull
-        </code></pre>
+
+        <span class="subtitle_article"><strong> Not enough memory : </strong></span>
+        <span> - Switching cpu and mem to min allowed docker to restart</br>
+        - Cleaned up containers with "docker ps -a" and "docker system prune" </br>
+        - Switching back: Docker now runs with max 2 cpu’s and 2048 memory settings</span>
+
 
     </article>
     <!-- ############################################################### -->

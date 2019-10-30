@@ -1,4 +1,4 @@
-# Data pre-processing 
+# Data pre-processing
 df_campaign.client.value_counts()
 dfDummies = pd.get_dummies(df_campaign.client)
 
@@ -26,3 +26,9 @@ ax = plt.stackplot(nb_days, cum_daily_uniqe_user, alpha=0.2, color= "#FF7F00")
 
 
 plt.show()
+
+################################################################################
+ • Docker
+
+################################################################################
+ • Python

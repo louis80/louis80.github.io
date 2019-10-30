@@ -7,11 +7,11 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
     <link rel="shortcut icon" type="image/png" href="https://img.icons8.com/nolan/64/000000/programming-flag.png">
-    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../../css/style.css">
 
     <!-- code snippets -->
-    <link rel="stylesheet" href="../../packages/prism/prism.css">
-    <script src="../../packages/prism/prism.js"></script>
+    <link rel="stylesheet" href="../../../packages/prism/prism.css">
+    <script src="../../../packages/prism/prism.js"></script>
 
 </head>
 <body>
@@ -30,24 +30,49 @@
     <div class="main-header">
       <div class="main-header__intro-wrapper">
         <div class="main-header__welcome">
-            <div class="main-header__welcome-title text-light"><strong>Python > Dataviz </strong></div>
-            <div class="main-header__welcome-subtitle text-light">Collection of beautiful graphic possibilities  </div>
+            <div class="main-header__welcome-title text-light"><strong>Python > scraping >  </strong></div>
+            <div class="main-header__welcome-subtitle text-light">Connect to the database with Python </div>
         </div>
       </div>
     </div> <!-- end of header -->
 
     <!-- ############################################################### -->
     <article class='post'>
-        <span>test</span>
+
+        <span class="subtitle_article"><strong>Basic scraping example with pyppeteer </strong></span>
         <pre class="language-python"><code class="language-python">
-            print('ok')
+        import asyncio (?)
+        from pyppeteer import launch
+
+        async def main(url, proxy=False):
+            json = {}
+
+            if proxy == False:
+                browser = await launch()
+            else:
+                browser = await launch(args =[proxys()])
+
+            page = await browser.newPage()
+            await page.goto(url)
+
+            tmp = await page.evaluate('''() => {
+                const tds = Array.from(document.querySelectorAll('#id_of table tr th'))
+                return tds.map(td => td.innerHTML)
+            }''')
+
+            json['tmp'] = tmp
+
+            await page.close()
+            await browser.close()
+
+            return json
+
+        # Call the fonction
+        json = asyncio.get_event_loop().run_until_complete(main(url, proxy))
+
         </code></pre>
-        <span>Push a commit</span>
-        <pre class="language-git"><code class="language-git">
-            git add .
-            git commit -m "mssge"
-            git push origin master
-        </code></pre>
+
+
 
     </article>
     <!-- ############################################################### -->
@@ -65,8 +90,8 @@
   <script src='https://www.amcharts.com/lib/3/amcharts.js'></script>
   <script src='https://www.amcharts.com/lib/3/serial.js'></script>
   <script src='https://www.amcharts.com/lib/3/themes/light.js'></script>
-  <script  src="../../js/script.js"></script>
-  <script defer type="text/javascript"> $("#includedSidenav").load("../../sidenav.html");</script>
+  <script defer src="../../../js/script.js"></script>
+  <script defer type="text/javascript"> $("#includedSidenav").load("../../../sidenav.html");</script>
 
 </body>
 </html>
