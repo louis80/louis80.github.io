@@ -13,9 +13,11 @@
 }
 
 .post img {
+  margin-top: 20px;
+  margin-bottom: 20px;
   grid-column: 1 / 4;
-  width: 100%;
-  max-width: 100ch;
+  width: 80%;
+  max-width: 80ch;
   justify-self: center;
 }
 /*######*/

@@ -30,8 +30,8 @@
     <div class="main-header">
       <div class="main-header__intro-wrapper">
         <div class="main-header__welcome">
-            <div class="main-header__welcome-title text-light"><strong>Python > Code > General </strong></div>
-            <div class="main-header__welcome-subtitle text-light"> Gathering of useful Python code </div>
+            <div class="main-header__welcome-title text-light"><strong>Python > Machine Learning > Data pre-processing </strong></div>
+            <div class="main-header__welcome-subtitle text-light"> Method to handle data before using machine learning algorithm  </div>
         </div>
       </div>
     </div> <!-- end of header -->
@@ -39,24 +39,19 @@
     <!-- ############################################################### -->
     <article class='post'>
 
-      <span class="subtitle_article"><strong>Basic Python code </strong></span>
+      <span class="subtitle_article"><strong>Create dummy variables</strong></span>
       <pre class="language-python"><code class="language-python">
-      # Calcul execution time
-      from datetime import datetime
-      start = datetime.now()
-      ... Some code ...
-      end = datetime.now()-start_query
+  import pandas as pd
+
+  dfDummies = pd.get_dummies(df.column_name)
+  df_full = pd.concat([df, dfDummies], axis=1, sort=False).drop(['column_name'], axis=1)
 
       </code></pre>
 
-      <span class="subtitle_article"><strong>Iterate over files whithin a folder </strong></span>
+      <span class="subtitle_article"><strong>Iterate over a dataframe</strong></span>
       <pre class="language-python"><code class="language-python">
-      from os.path import join, isfile
-      from os import listdir
+      import pandas as pd
 
-      filenames = [join(folder_path, f) for f in listdir(folder_path) if isfile(join(folder_path,f))]
-      for filename in filenames:
-          # do something ..
       </code></pre>
 
     </article>

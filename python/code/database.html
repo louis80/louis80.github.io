@@ -43,6 +43,7 @@
         <pre class="language-python"><code class="language-python">
         import yaml
         from sqlalchemy import create_engine
+        import psycopg2
 
         try:
             f = open('config.yml', 'r')
@@ -79,14 +80,15 @@
             cursor = conn.cursor()
             cursor.execute(req)
             record = cursor.fetchall()
+            names = list(map(lambda x: x[0], cursor.description))
             cursor.close()
             if (conn):
               conn.close()
-            return record
+            return record, names
 
        req = "SELECT * FROM schema.table"
-
-       df = pd.DataFrame(get_data_from_database(req))
+       record, names = get_data_from_database(req)
+       df = pd.DataFrame(data= record, columns=names)
 
         </code></pre>
 

@@ -1,9 +1,4 @@
-# Data pre-processing
-df_campaign.client.value_counts()
-dfDummies = pd.get_dummies(df_campaign.client)
 
-df_full = pd.concat([df_campaign, dfDummies], axis=1, sort=False).drop(['client'], axis=1)
-df_full.head()
 
 #############
 
