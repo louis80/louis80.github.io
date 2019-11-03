@@ -1,5 +1,44 @@
+<<<<<<< HEAD
 
 
+=======
+df.['a'].value_counts().reset_index()
+
+# Create the pandas DataFrame
+df = pd.DataFrame([[np.nan, 10, 20], [3, 15, 20], [15, 25, 20]] , columns = ['41', '43', '44'])
+print(df)
+
+print(df.rank(axis=1, ascending=False))
+
+def get_leaderboard_position(dic_score_leaderboard, nbr_days):
+    '''
+    (Input)
+    (Output)
+    '''
+    dic_position_leaderboard = {}
+
+    for day_number in range(0, nbr_days)[0:3]:
+        tmp = []
+
+        for id_player in dic_score_leaderboard.keys():
+            #if np.isnan(dic_score_leaderboard[id_player][day_number]) == False:
+            tmp.append(dic_score_leaderboard[id_player][day_number])
+
+        tmp = sorted(tmp, reverse=True)
+
+        for id_player in dic_score_leaderboard.keys():
+            if dic_score_leaderboard[id_player][day_number] in tmp:
+                if np.isnan(dic_score_leaderboard[id_player][day_number]) == False:
+                    if id_player in dic_position_leaderboard.keys():
+                        dic_position_leaderboard[id_player].append(tmp.index(dic_score_leaderboard[id_player][day_number])+1)
+                    else:
+                        dic_position_leaderboard[id_player] = [tmp.index(dic_score_leaderboard[id_player][day_number])+1]
+
+        if day_number==0:
+            print(list(dic_score_leaderboard.keys()))
+        print(tmp)
+        print(dic_position_leaderboard, '\n\n')
+>>>>>>> 66f6c68694529ef4defe91c5e24f479da7e3052f
 #############
 
 f, ax = plt.subplots(figsize=(15,5))
