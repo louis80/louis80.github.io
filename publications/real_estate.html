@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Cheat Sheet</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <link rel="shortcut icon" type="image/png" href="https://img.icons8.com/nolan/64/000000/programming-flag.png">
+    <link rel="stylesheet" href="../../../css/style.css">
+
+    <!-- code snippets -->
+    <link rel="stylesheet" href="../../../packages/prism/prism.css">
+    <script src="../../../packages/prism/prism.js"></script>
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div class="grid">
+  <header class="header">
+    <i class="fas fa-bars header__menu"></i>
+    <div class="header__search">
+      <input class="header__input" placeholder="Search..." />
+    </div>
+  </header>
+
+  <aside id="includedSidenav" class="sidenav"> </aside>
+
+  <main class="main">
+    <div class="main-header">
+      <div class="main-header__intro-wrapper">
+        <div class="main-header__welcome">
+            <div class="main-header__welcome-title text-light"><strong>Publication > Real Estate</strong></div>
+            <div class="main-header__welcome-subtitle text-light"> An overview of the french real estate </div>
+        </div>
+      </div>
+    </div> <!-- end of header -->
+
+    <!-- ############################################################### -->
+    <article class='post'>
+        <span class="Title_article">An overview of the french real estate  </span>
+
+        <iframe src= "../name.html", width="100%", height="500px", frameBorder="0"></iframe>
+
+        <span class="subtitle_article"><strong>Connexion to the database</strong></span>
+        <pre class="language-python"><code class="language-python">
+        import yaml
+        from sqlalchemy import create_engine
+        import psycopg2
+
+        try:
+            f = open('config.yml', 'r')
+            conf = yaml.safe_load(f)
+        except:
+            conf = yaml.load(os.getenv("PROJECT_CONFIG"))
+
+        engine = create_engine('postgresql://'
+              + conf["project-database"]["user"] + ':'
+              + conf["project-database"]["password"] + '@'
+              + conf["project-database"]["hostname"] +':' + '5432/'
+              + conf["project-database"]["name"])
+        </code></pre>
+
+        <span class="subtitle_article"><strong>Send dataframe to the database</strong></span>
+        <pre class="language-python"><code class="language-python">
+        df.applymap(str).to_sql('table_name',
+              con=engine, if_exists='append', index=False) # could use 'replace'
+        </code></pre>
+
+        <span class="subtitle_article"><strong>Load dataframe from database</strong></span>
+
+
+    </article>
+    <!-- ############################################################### -->
+
+  </main>
+
+
+  <footer class="footer">
+      <p><span class="footer__copyright">&copy;</span> 2019 LJPR</p>
+      <p>Crafted with <i class="fas fa-heart footer__icon"></i> by <a href="" target="_blank" class="footer__signature">Louis jpr</a></p>
+  </footer>
+</div>
+
+  <script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
+  <script src='https://www.amcharts.com/lib/3/amcharts.js'></script>
+  <script src='https://www.amcharts.com/lib/3/serial.js'></script>
+  <script src='https://www.amcharts.com/lib/3/themes/light.js'></script>
+  <script defer src="../../../js/script.js"></script>
+  <script defer type="text/javascript"> $("#includedSidenav").load("../../../sidenav.html");</script>
+
+</body>
+</html>
