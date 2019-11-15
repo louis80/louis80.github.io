@@ -49,6 +49,34 @@
 
       </code></pre>
 
+      <span class="subtitle_article"><strong>Manipulation of csv </strong></span>
+      <pre class="language-python"><code class="language-python">
+      # Count number of rows in the csv
+      with open('../data.csv', encoding='utf8', errors='ignore') as csvfile:
+          row_count = sum(1 for row in csvfile)
+          print(row_count if row_count else 'Empty')
+
+      # Import csv part
+      def get_df_sample(beg, end):
+          '''
+          (Input) beg :
+                  end :
+          (Output) df_sample :
+          '''
+          df_base = pd.read_csv('data.csv', nrows= 0) # get the columns name of the csv
+          df_sample = pd.read_csv('data.csv', skiprows=beg, nrows=(end-beg))
+          df_sample.columns = df_base.columns
+
+          return df_sample
+
+      k = 100000
+      df_full = pd.DataFrame()
+
+      for i in range(0, 10):
+          df_sample = get_df_sample((i*k),((i+1)*k))
+          df_full = pd.concat([df_full, df_sample])
+      </code></pre>
+
 
     </article>
     <!-- ############################################################### -->
