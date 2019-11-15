@@ -8,14 +8,17 @@
   margin: 8px;
   margin-top: 20px;
 }
+
 .post p, pre, span{
   grid-column: 2;
 }
 
-.post img {
+.post img, iframe {
+  margin-top: 20px;
+  margin-bottom: 20px;
   grid-column: 1 / 4;
-  width: 100%;
-  max-width: 100ch;
+  width: 80%;
+  /* max-width: 80ch; */
   justify-self: center;
 }
 /*######*/

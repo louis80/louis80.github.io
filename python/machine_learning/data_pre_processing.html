@@ -30,8 +30,8 @@
     <div class="main-header">
       <div class="main-header__intro-wrapper">
         <div class="main-header__welcome">
-            <div class="main-header__welcome-title text-light"><strong>Python > Code > Dataframe </strong></div>
-            <div class="main-header__welcome-subtitle text-light"> Gathering of useful dataframe use cases  </div>
+            <div class="main-header__welcome-title text-light"><strong>Python > Machine Learning > Data pre-processing </strong></div>
+            <div class="main-header__welcome-subtitle text-light"> Method to handle data before using machine learning algorithm  </div>
         </div>
       </div>
     </div> <!-- end of header -->
@@ -39,49 +39,20 @@
     <!-- ############################################################### -->
     <article class='post'>
 
-      <span class="subtitle_article"><strong>Basic operation on datafame</strong></span>
+      <span class="subtitle_article"><strong>Create dummy variables</strong></span>
       <pre class="language-python"><code class="language-python">
-      # concatenate 2 dataframes
-      df = pd.concat([df1, df2])
+  import pandas as pd
 
-      # change columns name
-      df.columns = ['column_name1','column_name2']
-
-      # Access element of dataframe
-      df.iat[row, column]
-
-      # deal with nan
-      df = df[df.column_name.notnull()]
-
-      # Apply function to dataframe column
-      df['name'] = df_sample.apply(lambda x : function_to_apply(x['name']), axis=1)
-
-      # drop dataframe column
-      df = df.drop(['column_name1', 'column_name2'], axis=1)
-
-      # count occurence of dataframe column
-      df['column_name'].value_counts()
-
-      # filtre on dataframe date column
-      min_date = min(df['datetime'])
-      max_date = max(df['datetime'])
-      unique_column_value = df[(df['datetime']>=min_date) & (df['datetime']<=max_date)]['col_name'].unique()
-
-      # List value count of dataframe column
-      df.column_name.value_counts()
+  dfDummies = pd.get_dummies(df.column_name)
+  df_full = pd.concat([df, dfDummies], axis=1, sort=False).drop(['column_name'], axis=1)
 
       </code></pre>
 
       <span class="subtitle_article"><strong>Iterate over a dataframe</strong></span>
       <pre class="language-python"><code class="language-python">
       import pandas as pd
-      from datetime import datetime
 
-      df = pd.DataFrame(columns=['name1', 'name2', 'time'])
-      df = df.append({'name1': 'value1', 'name2':'value2', 'time':datetime.now()}, ignore_index=True)
       </code></pre>
-
-
 
     </article>
     <!-- ############################################################### -->

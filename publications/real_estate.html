@@ -30,14 +30,17 @@
     <div class="main-header">
       <div class="main-header__intro-wrapper">
         <div class="main-header__welcome">
-            <div class="main-header__welcome-title text-light"><strong>Python > Code > Database </strong></div>
-            <div class="main-header__welcome-subtitle text-light"> Connect to the database with Python </div>
+            <div class="main-header__welcome-title text-light"><strong>Publication > Real Estate</strong></div>
+            <div class="main-header__welcome-subtitle text-light"> An overview of the french real estate </div>
         </div>
       </div>
     </div> <!-- end of header -->
 
     <!-- ############################################################### -->
     <article class='post'>
+        <span class="Title_article">An overview of the french real estate  </span>
+
+        <iframe src= "../name.html", width="100%", height="500px", frameBorder="0"></iframe>
 
         <span class="subtitle_article"><strong>Connexion to the database</strong></span>
         <pre class="language-python"><code class="language-python">
@@ -65,32 +68,7 @@
         </code></pre>
 
         <span class="subtitle_article"><strong>Load dataframe from database</strong></span>
-        <pre class="language-python"><code class="language-python">
-        import psycopg2
 
-        def database_conn():
-            return psycopg2.connect(host = conf["project-database"]["hostname"],
-                                    port = '5432',
-                                    database = conf["project-database"]["name"],
-                                    user = conf["project-database"]["user"],
-                                    password = conf["project-database"]["password"])
-
-        def get_data_from_database(req):
-            conn = database_conn()
-            cursor = conn.cursor()
-            cursor.execute(req)
-            record = cursor.fetchall()
-            names = list(map(lambda x: x[0], cursor.description))
-            cursor.close()
-            if (conn):
-              conn.close()
-            return record, names
-
-       req = "SELECT * FROM schema.table"
-       record, names = get_data_from_database(req)
-       df = pd.DataFrame(data= record, columns=names)
-
-        </code></pre>
 
     </article>
     <!-- ############################################################### -->

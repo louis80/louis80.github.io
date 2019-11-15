@@ -72,11 +72,21 @@
       k = 100000
       df_full = pd.DataFrame()
 
-      for i in range(0, 10):
+      for i in range(0, int(row_count/k)):
           df_sample = get_df_sample((i*k),((i+1)*k))
           df_full = pd.concat([df_full, df_sample])
       </code></pre>
 
+
+      <span class="subtitle_article"><strong>Iterate over files whithin a folder </strong></span>
+      <pre class="language-python"><code class="language-python">
+      from os.path import join, isfile
+      from os import listdir
+
+      filenames = [join(folder_path, f) for f in listdir(folder_path) if isfile(join(folder_path,f))]
+      for filename in filenames:
+          # do something ..
+      </code></pre>
 
     </article>
     <!-- ############################################################### -->
