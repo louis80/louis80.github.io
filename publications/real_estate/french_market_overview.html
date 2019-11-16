@@ -31,16 +31,55 @@
       <div class="main-header__intro-wrapper">
         <div class="main-header__welcome">
             <div class="main-header__welcome-title text-light"><strong>Publication > Real Estate</strong></div>
-            <div class="main-header__welcome-subtitle text-light"> An overview of the french real estate </div>
+            <div class="main-header__welcome-subtitle text-light"> An overview of the french real estate market </div>
         </div>
       </div>
     </div> <!-- end of header -->
 
     <!-- ############################################################### -->
     <article class='post'>
-        <span class="Title_article">An overview of the french real estate  </span>
+        <span class="title_article"><strong>An overview of the french real estate market</strong> </span>
 
-        <iframe src= "../name.html", width="100%", height="500px", frameBorder="0"></iframe>
+        <span class="text_article">
+          At the end of 2018, the French government published an open source dataset to meet an objective of transparency of the French real estate market.
+          This data references the real estate transactions that took place during the last five years on the metropolitan territory.<br><br>
+
+          The dataset is available from the French Ministry of Economy and Finance website:<br> https://www.data.gouv.fr/en/datasets/demandes-de-valeurs-foncieres/ <br><br>
+
+          This short study aims to firstly explore, clean and analyse this dataset for, in a second time highlight some housing price related variables.
+        </span>
+
+        <span class="title_article"><strong>Part I. text</strong> </span>
+        <span class="subtitle_article"><strong>Collecting and cleaning the data</strong></span>
+        <span class="text_article">
+          As the dataset is quite huge, Etalab (a government organisation in charge of opening and sharing public data) implemented a bash script allowing to import the data into a database.
+          Once this step achieved, it's easier to access the data needed with SQL request. <br><br>
+
+          Each row of the database corresponds to a real estate transaction and for each of them a lot of variables are informed.
+          However many of those are quite similar, therefore in order to achieve this study only few of them will be used:<br><br>
+
+          # ARRAY # <br><br>
+
+          As some value of important variables are missing, only rows with living space and surface of the property will be selected.
+          In addition, the price per square meter will be calculated for each of those transactions and the scope of study will be restricted to the house and apartment transactions.<br><br>
+
+          <pre class="language-python"><code class="language-python">
+          import yaml
+          from sqlalchemy import create_engine
+          import psycopg2
+          </code></pre>
+
+
+
+        </span>
+
+
+
+
+
+        <span class="title_article"><strong>Part II. text</strong> </span>
+
+        <iframe src= "../../../name.html", width="100%", height="500px", frameBorder="0"></iframe>
 
         <span class="subtitle_article"><strong>Connexion to the database</strong></span>
         <pre class="language-python"><code class="language-python">
