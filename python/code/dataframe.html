@@ -50,6 +50,23 @@
       # Access element of dataframe
       df.iat[row, column]
 
+      # deal with nan
+      df = df[df.column_name.notnull()]
+
+      # Apply function to dataframe column
+      df['name'] = df_sample.apply(lambda x : function_to_apply(x['name']), axis=1)
+
+      # drop dataframe column
+      df = df.drop(['column_name1', 'column_name2'], axis=1)
+
+      # count occurence of dataframe column
+      df['column_name'].value_counts()
+
+      # filtre on dataframe date column
+      min_date = min(df['datetime'])
+      max_date = max(df['datetime'])
+      unique_column_value = df[(df['datetime']>=min_date) & (df['datetime']<=max_date)]['col_name'].unique()
+
       # List value count of dataframe column
       df.column_name.value_counts()
 
@@ -63,6 +80,8 @@
       df = pd.DataFrame(columns=['name1', 'name2', 'time'])
       df = df.append({'name1': 'value1', 'name2':'value2', 'time':datetime.now()}, ignore_index=True)
       </code></pre>
+
+
 
     </article>
     <!-- ############################################################### -->
