@@ -50,7 +50,7 @@
         </span>
 
         <span class="title_article"><strong>Part I. text</strong> </span>
-        <span class="subtitle_article"><strong>Collecting and cleaning the data</strong></span>
+        <span class="subtitle_article">Collecting and cleaning the data</span>
         <span class="text_article">
           As the dataset is quite huge, Etalab (a government organisation in charge of opening and sharing public data) implemented a bash script allowing to import the data into a database.
           Once this step achieved, it's easier to access the data needed with SQL request. <br><br>
@@ -62,51 +62,88 @@
 
           As some value of important variables are missing, only rows with living space and surface of the property will be selected.
           In addition, the price per square meter will be calculated for each of those transactions and the scope of study will be restricted to the house and apartment transactions.<br><br>
-
-          <pre class="language-python"><code class="language-python">
-          import yaml
-          from sqlalchemy import create_engine
-          import psycopg2
-          </code></pre>
-
-
-
         </span>
 
+        <pre class="language-python"><code class="language-SQL">
+        SELECT count(*)
+        FROM public.dvf
+        WHERE surface_reelle_bati is not null
+        AND valeur_fonciere is not null
+        AND type_local in ('Maison', 'Appartement');
+        </code></pre>
 
 
 
+        <span class="subtitle_article">Dealing with outliers</span>
+        <span class="text_article">
+          # TO BE MODIFIED<br>
+          Outliers in real estate data could be due to a number of reasons.
+          For example, erroneous data formats, bad default values, typographical errors during data entry etc. can lead to outliers.
+          Plotting the distribution of numeric columns can give a sense of outliers in the data set.<br><br>
 
-        <span class="title_article"><strong>Part II. text</strong> </span>
+          Show code &nbsp;
+          <label class="switch">
+            <input type="checkbox" onclick="show_hide_div('code1');">
+            <span class="slider round"></span>
+          </label>
+        </span>
 
-        <iframe src= "../../../name.html", width="100%", height="500px", frameBorder="0"></iframe>
-
-        <span class="subtitle_article"><strong>Connexion to the database</strong></span>
-        <pre class="language-python"><code class="language-python">
-        import yaml
-        from sqlalchemy import create_engine
+        <pre class="language-python" id='code1' style="display:none;"><code class="language-python">
+        # Connexion to the database
         import psycopg2
 
-        try:
-            f = open('config.yml', 'r')
-            conf = yaml.safe_load(f)
-        except:
-            conf = yaml.load(os.getenv("PROJECT_CONFIG"))
+        def database_conn():
+            return psycopg2.connect(host = '',
+                                    port = '',
+                                    database = '',
+                                    user = '',
+                                    password = '')
 
-        engine = create_engine('postgresql://'
-              + conf["project-database"]["user"] + ':'
-              + conf["project-database"]["password"] + '@'
-              + conf["project-database"]["hostname"] +':' + '5432/'
-              + conf["project-database"]["name"])
-        </code></pre>
+        def get_data_from_database(req):
+            conn = database_conn()
+            cursor = conn.cursor()
+            cursor.execute(req)
+            record = cursor.fetchall()
+            names = list(map(lambda x: x[0], cursor.description))
+            cursor.close()
+            if (conn):
+                conn.close()
+            return record, names
 
-        <span class="subtitle_article"><strong>Send dataframe to the database</strong></span>
-        <pre class="language-python"><code class="language-python">
-        df.applymap(str).to_sql('table_name',
-              con=engine, if_exists='append', index=False) # could use 'replace'
-        </code></pre>
+        # Get the data to plot the distribution
+        def get_df_distrib():
+          req = """
+          SELECT type_local AS type_property, ROUND(valeur_fonciere / surface_reelle_bati) AS price_msquare
+          FROM public.dvf
+          WHERE surface_reelle_bati is not null
+          AND valeur_fonciere is not null
+          AND type_local in ('Maison', 'Appartement');
+          """
 
-        <span class="subtitle_article"><strong>Load dataframe from database</strong></span>
+          record, names = get_data_from_database(req)
+          df = pd.DataFrame(data= record, columns=names)
+
+          return df
+
+        df_distrib = get_df_distrib()
+
+        # Plot the distribution of price per square meter
+        fig = px.histogram(df_distrib, x="price_msquare", color="type_property",
+                 marginal="box", opacity=0.6)
+
+        fig.update_layout(title_text='Distribution of the price per square meter according to the type of property')
+
+        fig.show()
+      </code></pre>
+
+      <iframe src= "plot_french_market_overview/distrib.html", width="100%", height="650px", frameBorder="0"></iframe>
+
+      <span class="title_article"><strong>Part II. text</strong> </span>
+
+        <!--<iframe src= "../../../name.html", width="100%", height="500px", frameBorder="0"></iframe>-->
+
+
+      <span class="subtitle_article"><strong>Load dataframe from database</strong></span>
 
 
     </article>
@@ -120,7 +157,16 @@
       <p>Crafted with <i class="fas fa-heart footer__icon"></i> by <a href="" target="_blank" class="footer__signature">Louis jpr</a></p>
   </footer>
 </div>
-
+  <script>
+    function show_hide_div(id) {
+      if ($('#'+id).css('display') == 'none') {
+        $("#code1").show(500);
+      }else{
+        $("#code1").hide(500);
+      }
+      return false;
+    }
+  </script>
   <script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
   <script src='https://www.amcharts.com/lib/3/amcharts.js'></script>
   <script src='https://www.amcharts.com/lib/3/serial.js'></script>
