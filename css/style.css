@@ -25,12 +25,11 @@
   color:#0e111f;
 }
 
-.post p, span{
+p, span{
   grid-column: 2;
 }
 
-
-.post pre {
+pre {
   margin-top: 20px;
   margin-bottom: 20px;
   grid-column: 1 / 4;
@@ -38,8 +37,7 @@
   justify-self: center;
 }
 
-
-.post img, iframe {
+img, iframe {
   margin-top: 20px;
   margin-bottom: 20px;
   grid-column: 1 / 4;

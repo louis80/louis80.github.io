@@ -66,7 +66,6 @@
           <table class="table">
             <thead>
               <tr>
-                <th scope="col">#</th>
                 <th scope="col">Name</th>
                 <th scope="col">Description</th>
                 <th scope="col">Tags</th>
@@ -74,27 +73,34 @@
             </thead>
             <tbody>
               <tr>
-                <th scope="row">1</th>
-                <td style='vertical-align:middle;'>Mark</td>
-                <td>Otto</td>
-                <td><div class="alert alert-success" style='width:40%; margin:0; padding:8px; text-align: center;'> Valuable </div></td>
+                <td style='vertical-align:middle;'>Date of mutation</td>
+                <td style='vertical-align:middle;'>Date of signature of the contract</td>
+                <td><div class="alert alert-success" style='width:100%; margin:0; padding:8px; text-align: center;'> Valuable </div></td>
               </tr>
               <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td><div class="alert alert-danger" style='width:60%;'> Trash </div></td>
+                <td style='vertical-align:middle;'>Nature of the mutation</td>
+                <td style='vertical-align:middle;'>Sale, sale on the future state of completion, sale of land to build, adjudication, expropriation or exchange</td>
+                <td><div class="alert alert-success" style='width:100%; margin:0; padding:8px; text-align: center;'> Valuable </div></td>
               </tr>
               <tr>
-                <th scope="row">3</th>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td><div class="alert alert-warning" style='width:60%;'> Usable / duplicate </div></td>
+                <td style='vertical-align:middle;'>Property value</td>
+                <td style='vertical-align:middle;'>Net price seller</td>
+                <td><div class="alert alert-success" style='width:100%; margin:0; padding:8px; text-align: center;'> Valuable </div></td>
+              </tr>
+              <tr>
+                <td style='vertical-align:middle;'>Aera of the property</td>
+                <td style='vertical-align:middle;'>Surface measured on the ground between walls or separations and rounded to the lower square meter</td>
+                <td><div class="alert alert-warning" style='width:100%; margin:0; padding:8px; text-align: center;'> duplicate </div></td>
+              </tr>
+              <tr>
+                <td style='vertical-align:middle;'>Type of property</td>
+                <td style='vertical-align:middle;'>House, apartment, dependence (isolated) or industrial and commercial space</td>
+                <td><div class="alert alert-danger" style='width:100%; margin:0; padding:8px; text-align: center;'> Trash </div></td>
               </tr>
             </tbody>
           </table><br>
 
-          As some value of important variables are missing, only rows with living space and surface of the property will be selected.
+          As some value of important variables are missing, only rows with living space and surface of the property will be selected. A selection on the nature of the mutation will also be done.
           In addition, the price per square meter will be calculated for each of those transactions and the scope of study will be restricted to the house and apartment transactions.<br><br>
 
           Show code &nbsp;
@@ -158,7 +164,10 @@
           FROM public.dvf
           WHERE surface_reelle_bati is not null
           AND valeur_fonciere is not null
-          AND type_local in ('Maison', 'Appartement');
+          AND type_local in ('Maison', 'Appartement')
+          AND nature_mutation = 'Vente'
+          ORDER BY RANDOM()
+          LIMIT 1000000;
           """
 
           record, names = get_data_from_database(req)
@@ -170,7 +179,7 @@
 
         # Plot the distribution of price per square meter
         fig = px.histogram(df_distrib, x="price_msquare", color="type_property",
-                 marginal="box", opacity=0.6)
+                 marginal="box", opacity=0.6, nbins=100)
 
         fig.update_layout(title_text='Distribution of the price per square meter according to the type of property')
 
