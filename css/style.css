@@ -1,7 +1,7 @@
 /*### Article ###*/
 .post {
   display: grid;
-  grid-template-columns: minmax(1.2rem, 1fr) minmax(auto, 80ch) minmax(1.2rem, 1fr);
+  grid-template-columns: minmax(1.2rem, 1fr) minmax(auto, 85ch) minmax(1.2rem, 1fr);
 }
 
 .title_article{
@@ -25,19 +25,19 @@
   color:#0e111f;
 }
 
-.post p, span, pre{
+.post p, span{
   grid-column: 2;
 }
 
-/*
+
 .post pre {
   margin-top: 20px;
   margin-bottom: 20px;
   grid-column: 1 / 4;
-  width: 60%;
+  width: 55%;
   justify-self: center;
 }
-*/
+
 
 .post img, iframe {
   margin-top: 20px;

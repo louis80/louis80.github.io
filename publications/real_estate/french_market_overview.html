@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
     <link rel="shortcut icon" type="image/png" href="https://img.icons8.com/nolan/64/000000/programming-flag.png">
     <link rel="stylesheet" href="../../../css/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 
     <!-- code snippets -->
     <link rel="stylesheet" href="../../../packages/prism/prism.css">
@@ -44,12 +45,16 @@
           At the end of 2018, the French government published an open source dataset to meet an objective of transparency of the French real estate market.
           This data references the real estate transactions that took place during the last five years on the metropolitan territory.<br><br>
 
-          The dataset is available from the French Ministry of Economy and Finance website:<br> https://www.data.gouv.fr/en/datasets/demandes-de-valeurs-foncieres/ <br><br>
+          <div class="alert alert-info">
+            <i class="fa fa-info-circle"></i>
+            The dataset is available from the French Ministry of Economy and Finance website:<br>
+            <a target="_blank" rel="noopener noreferrer" href="https://www.data.gouv.fr/en/datasets/demandes-de-valeurs-foncieres/" class="alert-link">https://www.data.gouv.fr/en/datasets/demandes-de-valeurs-foncieres/</a>.
+          </div>
 
           This short study aims to firstly explore, clean and analyse this dataset for, in a second time highlight some housing price related variables.
         </span>
 
-        <span class="title_article"><strong>Part I. text</strong> </span>
+        <span class="title_article" style="font-size: 30px;"><strong>Part I. Exploratory data analysis</strong> </span>
         <span class="subtitle_article">Collecting and cleaning the data</span>
         <span class="text_article">
           As the dataset is quite huge, Etalab (a government organisation in charge of opening and sharing public data) implemented a bash script allowing to import the data into a database.
@@ -58,13 +63,48 @@
           Each row of the database corresponds to a real estate transaction and for each of them a lot of variables are informed.
           However many of those are quite similar, therefore in order to achieve this study only few of them will be used:<br><br>
 
-          # ARRAY # <br><br>
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Description</th>
+                <th scope="col">Tags</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td style='vertical-align:middle;'>Mark</td>
+                <td>Otto</td>
+                <td><div class="alert alert-success" style='width:40%; margin:0; padding:8px; text-align: center;'> Valuable </div></td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>Jacob</td>
+                <td>Thornton</td>
+                <td><div class="alert alert-danger" style='width:60%;'> Trash </div></td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>Larry</td>
+                <td>the Bird</td>
+                <td><div class="alert alert-warning" style='width:60%;'> Usable / duplicate </div></td>
+              </tr>
+            </tbody>
+          </table><br>
 
           As some value of important variables are missing, only rows with living space and surface of the property will be selected.
           In addition, the price per square meter will be calculated for each of those transactions and the scope of study will be restricted to the house and apartment transactions.<br><br>
+
+          Show code &nbsp;
+          <label class="switch">
+            <input type="checkbox" onclick="show_hide_div('code0');">
+            <span class="slider round"></span>
+          </label>
         </span>
 
-        <pre class="language-python"><code class="language-SQL">
+        <pre class="language-python" id='code0' style="display:none;"><code class="language-SQL">
         SELECT count(*)
         FROM public.dvf
         WHERE surface_reelle_bati is not null
@@ -80,6 +120,7 @@
           Outliers in real estate data could be due to a number of reasons.
           For example, erroneous data formats, bad default values, typographical errors during data entry etc. can lead to outliers.
           Plotting the distribution of numeric columns can give a sense of outliers in the data set.<br><br>
+          Huge dataset - > select aleatory values <br><br>
 
           Show code &nbsp;
           <label class="switch">
@@ -138,7 +179,12 @@
 
       <iframe src= "plot_french_market_overview/distrib.html", width="100%", height="650px", frameBorder="0"></iframe>
 
-      <span class="title_article"><strong>Part II. text</strong> </span>
+      <span class="text_article">
+        graph + knoledge. explain case of Paris
+      </span>
+
+
+      <span class="title_article" style="font-size: 30px;"><strong>Part II. Highlight of some housing price related variables</strong> </span>
 
         <!--<iframe src= "../../../name.html", width="100%", height="500px", frameBorder="0"></iframe>-->
 
@@ -160,9 +206,9 @@
   <script>
     function show_hide_div(id) {
       if ($('#'+id).css('display') == 'none') {
-        $("#code1").show(500);
+        $('#'+id).show(500);
       }else{
-        $("#code1").hide(500);
+        $('#'+id).hide(500);
       }
       return false;
     }
