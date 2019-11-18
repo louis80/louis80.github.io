@@ -75,6 +75,10 @@
       for i in range(0, int(row_count/k)):
           df_sample = get_df_sample((i*k),((i+1)*k))
           df_full = pd.concat([df_full, df_sample])
+
+      # export as excel
+      df_temp.to_excel(r'C:/Users/ljeanpierre/Documents/cv-matching-new-model/df/df_'+str(j)+'.xlsx', encoding='utf-8')
+
       </code></pre>
 
 
@@ -86,6 +90,22 @@
       filenames = [join(folder_path, f) for f in listdir(folder_path) if isfile(join(folder_path,f))]
       for filename in filenames:
           # do something ..
+      </code></pre>
+
+
+      <span class="subtitle_article"><strong>Get dataframe from request </strong></span>
+      <pre class="language-python"><code class="language-python">
+      from io import StringIO
+      
+      url = 'https://api/endpoint?q=' + query
+      request = requests.get(
+         url = url,
+         headers = {
+             'Authorization': 'Bearer 123xyz',
+             'accept':'text/csv'
+         })
+
+      df = pd.read_csv(StringIO(request.text))
       </code></pre>
 
     </article>

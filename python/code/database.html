@@ -61,7 +61,13 @@
         <span class="subtitle_article"><strong>Send dataframe to the database</strong></span>
         <pre class="language-python"><code class="language-python">
         df.applymap(str).to_sql('table_name',
-              con=engine, if_exists='append', index=False) # could use 'replace'
+                                con=engine, if_exists='append', index=False,
+                                dtype={'datefld': sqlalchemy.DateTime(),
+                                     'intfld':  sqlalchemy.types.INTEGER(),
+                                     'strfld': sqlalchemy.types.VARCHAR(length=255),
+                                     'floatfld': sqlalchemy.types.Float(precision=3, asdecimal=True),
+                                     'booleanfld': sqlalchemy.types.Boolean}
+                                ) # could use 'replace'
         </code></pre>
 
         <span class="subtitle_article"><strong>Load dataframe from database</strong></span>
