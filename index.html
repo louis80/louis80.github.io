@@ -11,6 +11,7 @@
     <!-- code snippets -->
     <link rel="stylesheet" href="../../packages/prism/prism.css">
     <script src="../../packages/prism/prism.js"></script>
+
 </head>
 <body>
 <!-- partial:index.partial.html -->
@@ -26,51 +27,53 @@
 
   <main class="main">
     <div class="main-header">
-
-
       <div class="main-header__intro-wrapper">
-        <div class="main-header__welcome">
-          <div class="main-header__welcome-title text-light">Welcome, <strong>tt</strong></div>
-          <div class="main-header__welcome-subtitle text-light">How are you today?</div>
-        </div>
-        <div class="quickview">
-          <div class="quickview__item">
-            <div class="quickview__item-total">41</div>
-            <div class="quickview__item-description">
-              <i class="far fa-calendar-alt"></i>
-              <span class="text-light">Events</span>
-            </div>
-          </div>
-          <div class="quickview__item">
-            <div class="quickview__item-total">64</div>
-            <div class="quickview__item-description">
-              <i class="far fa-comment"></i>
-              <span class="text-light">Messages</span>
-            </div>
-          </div>
-          <div class="quickview__item">
-            <div class="quickview__item-total">27&deg;</div>
-            <div class="quickview__item-description">
-              <i class="fas fa-map-marker-alt"></i>
-              <span class="text-light">Austin</span>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
 
+<!--
+<div class="card">
+  <span> python -m http.server 1337  </span>
+  <span>http://localhost:1337/index.html   </span>
+  <span>  systemctl suspend </span>
+</div>
+-->
 
-    <div class="main__cards">
-      <div class="card">
-        <span> python -m http.server 1337  </span>
 
-        <span>http://localhost:1337/index.html   </span>
+        <span class="subtitle_article" style="margin-left:40px;">Real Estate</span>
+        <div class="main-overview">
 
-        <span>  systemctl suspend </span>
-      </div>
-      <!--<iframe src= "name.html", width="100%", height="750px", frameBorder="0"></iframe>-->
+          <!-- ###########################################"" -->
+          <div class="overviewcard">
+            <div class="card_index 1" onclick="location.href='../../publications/real_estate/french_market_overview.html';">
+              <div class="card_image"> <img src="https://i.redd.it/b3esnz5ra34y.jpg" /> </div>
+              <div class="card_title title-white"> <!-- src="https://i.redd.it/b3esnz5ra34y.jpg"-->
+                <p>An overview of the <br /> French real estate market</p>
+              </div>
+            </div>
+          </div>
+          <!-- ###########################################"" -->
+          <div class="overviewcard">
+          </div>
 
-    </div> <!-- /.main-cards -->
+          <div class="overviewcard">
+            <div class="card_index 1">
+              <div class="card_image" onclick="location.href='../../publications/real_estate/french_market_overview.html';"> <img src="https://i.redd.it/b3esnz5ra34y.jpg" /> </div>
+              <div class="card_title title-white">
+                <p>An overview of the <br /> French real estate market</p>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="overviewcard" style="background-color: darkgrey; background-image: url('../../publications/real_estate/img/real_estate1.jpg');background-size: cover;background-position: center; ">
+            <div class="overviewCard-title" style="vertical-align:middle;">An overview of the <br /> French real estate market</div>
+          </div>
+
+        </div>
+
+
+
   </main>
 
   <footer class="footer">
