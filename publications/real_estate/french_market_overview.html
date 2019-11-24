@@ -189,13 +189,168 @@
       <iframe src= "plot_french_market_overview/distrib.html", width="100%", height="650px", frameBorder="0"></iframe>
 
       <span class="text_article">
-        graph + knoledge. explain case of Paris
+        graph + knoledge. explain case of Paris </br></br>
       </span>
 
+      <span class="text_article">
+        Talk about selcting 10 city and creating dataframe</br></br>
+        Show code &nbsp;
+        <label class="switch">
+          <input type="checkbox" onclick="show_hide_div('code2');">
+          <span class="slider round"></span>
+        </label>
+      </span>
+
+      <pre class="language-python" id='code2' style="display:none;"><code class="language-python">
+      def get_list_city(price_msquare_min, price_msquare_max, nbr_city=20):
+          req = """
+          SELECT SUBSTRING((nom_commune || ' ') FROM 1 FOR POSITION(' ' IN (nom_commune || ' '))) AS nom_commune
+          , count(*) AS number_transaction, AVG(valeur_fonciere / surface_reelle_bati) AS mean_price_msquare
+          FROM public.dvf
+          WHERE surface_reelle_bati is not null
+          AND valeur_fonciere is not null
+          AND type_local in ('Maison', 'Appartement')
+          AND nature_mutation = 'Vente'
+          AND (valeur_fonciere / surface_reelle_bati) > {0}
+          AND (valeur_fonciere / surface_reelle_bati) < {1}
+          GROUP BY SUBSTRING((nom_commune || ' ') FROM 1 FOR POSITION(' ' IN (nom_commune || ' ')))
+          ORDER BY number_transaction DESC
+          LIMIT {2};
+          """.format(*[price_msquare_min, price_msquare_max,nbr_city])
+
+          record, names = get_data_from_database(req)
+          df = pd.DataFrame(data= record, columns=names)
+          df = df[~df.nom_commune.isin(['Le ', 'La ', 'Les '])].replace(' ','', regex=True)
+
+          list_city = '('
+          for city in list(df.nom_commune):
+              list_city+= '\''+city+' \', '
+
+          return list_city[:-2]+')'
+
+      def get_price_volume_city(price_msquare_min, price_msquare_max, list_city):
+          req = """
+          SELECT SUBSTRING((nom_commune || ' ') FROM 1 FOR POSITION(' ' IN (nom_commune || ' '))) AS nom_commune, date_mutation, count(*) AS number_transaction, AVG(valeur_fonciere / surface_reelle_bati) AS mean_price_msquare
+          FROM public.dvf
+          WHERE surface_reelle_bati is not null
+          AND valeur_fonciere is not null
+          AND type_local in ('Maison', 'Appartement')
+          AND nature_mutation = 'Vente'
+          AND (valeur_fonciere / surface_reelle_bati) > {0}
+          AND (valeur_fonciere / surface_reelle_bati) < {1}
+          AND (SUBSTRING((nom_commune || ' ') FROM 1 FOR POSITION(' ' IN (nom_commune || ' ')))) in {2}
+          GROUP BY SUBSTRING((nom_commune || ' ') FROM 1 FOR POSITION(' ' IN (nom_commune || ' '))), date_mutation
+          """.format(*[price_msquare_min, price_msquare_max, list_city])
+
+          record, names = get_data_from_database(req)
+          df = pd.DataFrame(data= record, columns=names)
+          df.mean_price_msquare = df.mean_price_msquare.apply(int)
+          df.nom_commune = df.nom_commune.replace(' ','', regex=True)
+
+          return df
+
+      list_city = get_list_city(price_msquare_min=200, price_msquare_max=20000, nbr_city=13)
+      df = get_price_volume_city(price_msquare_min=200, price_msquare_max=20000, list_city=list_city)
+      </code></pre>
+
+      <!-- Plot dataframe here -->
+
+      <span class="text_article">
+        talk about plitng what </br></br>
+        Show code &nbsp;
+        <label class="switch">
+          <input type="checkbox" onclick="show_hide_div('code3');">
+          <span class="slider round"></span>
+        </label>
+      </span>
+
+      <pre class="language-python" id='code3' style="display:none;"><code class="language-python">
+      def resample_monthly_df(df):
+          df.set_index(pd.to_datetime(df['date_mutation']), inplace=True)
+          df = df.groupby(['nom_commune']).resample('M',how='mean')
+          df = df.reset_index()
+          df.mean_price_msquare = df.mean_price_msquare.apply(int)
+          df.number_transaction = df.number_transaction.apply(int)
+          return df
+
+      # https://plot.ly/~empet/14983/subplots-with-two-y-axes-in-each-cell/#/
+
+      def get_trace_city(a, city, color='255, 0, 0'):
+          df_city = a[a.nom_commune==city]
+          trace_price = go.Scatter(
+                          x=df_city.date_mutation,
+                          y=df_city['mean_price_msquare'],
+                          name=str('Square meter price'),
+                          line = dict(color='rgba('+color+', 0.9)', width=1),
+                          line_shape='spline')
+
+          trace_volume = go.Scatter(
+                              x=df_city.date_mutation,
+                              y=df_city['number_transaction'],
+                              name=str('Sales volume'),
+                              line = dict(color='rgba('+color+', 0.3)', width=1),
+                              line_shape='spline',
+                              fillcolor='rgba('+color+', 0.2)',
+                              fill='tozeroy' )
+
+          return trace_price, trace_volume
+
+      def set_layout_yaxis(fig, cols):
+          fig.layout.yaxis.update(title='Price per square meter')
+          if cols ==1 : fig.layout.yaxis2.update(title='Sales volume')
+          elif cols ==2 : fig.layout.yaxis4.update(title='Sales volume')
+          elif cols ==3 : fig.layout.yaxis6.update(title='Sales volume')
+          elif cols ==4 : fig.layout.yaxis8.update(title='Sales volume')
+          else : print('too much columns')
+          return fig
+
+      def get_multiplot_price_volume(df, list_color, rows, cols):
+
+          fig = make_subplots(rows=rows,
+                              cols=cols,
+                              print_grid=True,
+                              horizontal_spacing=0.2,
+                              subplot_titles=df.nom_commune.unique(),
+                              specs=[[{"secondary_y": True} for x in range(cols)] for y in range(rows)]
+                             )
+
+          coord =[[x+1, y+1] for x in range(rows) for y in range(cols)]
+          print(coord)
+          cnt = 0
+
+          for city in df.nom_commune.unique():
+              trace_price, trace_volume = get_trace_city(df, city, color=list_color[cnt])
+
+              fig.add_trace(trace_price, coord[cnt][0], coord[cnt][1], secondary_y=False)
+              fig.add_trace(trace_volume, coord[cnt][0], coord[cnt][1], secondary_y=True)
+
+              cnt += 1
+
+          fig = set_layout_yaxis(fig, cols)
+
+          fig.layout.update(title='Evolution of the price per square meter & the number of transactions',
+                        autosize= False,
+                        width= 1000,
+                        height= 900,
+                        #showlegend=False,
+                        hovermode='x',
+                        paper_bgcolor='rgba(0,0,0,0)',
+                        plot_bgcolor='rgba(0,0,0,0)')
+          return fig
+
+      df_resample = resample_monthly_df(df)
+
+      list_color = ['204,0,0','204,102,0', '153,153,0', '102,204,0', '0,153,0', '0,204,204', '0,102,204','0,0,255', '102,0,204', '153,0,76']
+
+      fig = get_multiplot_price_volume(df_resample, list_color, 5, 2)
+      fig.show()
+      </code></pre>
+
+      <iframe src= "plot_french_market_overview/multi_plot.html", width="100%", height="1000px", frameBorder="0" style="margin-left:150px;"></iframe>
+      <iframe src= "plot_french_market_overview/price_evolution.html", width="100%", height="600", frameBorder="0"></iframe>
 
       <span class="title_article" style="font-size: 30px;"><strong>Part II. Highlight of some housing price related variables</strong> </span>
 
-        <!--<iframe src= "../../../name.html", width="100%", height="500px", frameBorder="0"></iframe>-->
 
 
       <span class="subtitle_article"><strong>Load dataframe from database</strong></span>

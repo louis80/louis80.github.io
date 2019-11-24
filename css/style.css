@@ -29,7 +29,7 @@ p, span{
   grid-column: 2;
 }
 
-pre {
+pre{
   margin-top: 20px;
   margin-bottom: 20px;
   grid-column: 1 / 4;
@@ -37,7 +37,8 @@ pre {
   justify-self: center;
 }
 
-iframe {
+
+iframe{
   margin-top: 20px;
   margin-bottom: 20px;
   grid-column: 1 / 4;
@@ -820,7 +821,7 @@ input:checked + .slider:before {
   font-family: sans-serif;
   font-weight: bold;
   font-size: 20px;
-  margin-top: -130px;
+  margin-top: -135px;
   margin-left:10px;
   margin-right:10px;
 
@@ -837,4 +838,13 @@ input:checked + .slider:before {
 
 .title-white {
   color: white;
+}
+
+.title_index{
+  margin-left:50px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-size: 30px;
+  color:#0e111f;
+  font-weight: bold;
 }
