@@ -13,7 +13,28 @@
     <!-- code snippets -->
     <link rel="stylesheet" href="../../../packages/prism/prism.css">
     <script src="../../../packages/prism/prism.js"></script>
+    <style>
+        .main-header {
+          position: relative;
+          display: flex;
+          justify-content: space-between;
+          height: 400px;
+          color: #FFF;
+          background-size: cover;
+          background-image: url("img/real_estate3.jpg");
+          background-repeat: no-repeat;
+          background-position: center;
+          margin-bottom: 20px;
+        }
 
+        .main-header__intro-wrapper {
+          background: rgba(255, 255, 255, 0);
+        }
+
+        .table_df{
+          vertical-align:middle; text-align: center;
+        }
+    </style>
 </head>
 <body>
 <!-- partial:index.partial.html -->
@@ -31,8 +52,8 @@
     <div class="main-header">
       <div class="main-header__intro-wrapper">
         <div class="main-header__welcome">
-            <div class="main-header__welcome-title text-light"><strong>Publication > Real Estate</strong></div>
-            <div class="main-header__welcome-subtitle text-light"> An overview of the french real estate market </div>
+            <!--<div class="main-header__welcome-title text-light"><strong>Publication > Real Estate</strong></div>
+            <div class="main-header__welcome-subtitle text-light"> An overview of the french real estate market </div>-->
         </div>
       </div>
     </div> <!-- end of header -->
@@ -193,7 +214,10 @@
       </span>
 
       <span class="text_article">
-        Talk about selcting 10 city and creating dataframe</br></br>
+        In order to get an idea of the evolution of the French real estate market on the period considered, let's look at the 10 cities with the highest number of sales.
+        Once those cities are identified, we can collect the mean price per square meter and the number of sales aggregated by month:
+
+        </br></br>
         Show code &nbsp;
         <label class="switch">
           <input type="checkbox" onclick="show_hide_div('code2');">
@@ -253,10 +277,60 @@
       df = get_price_volume_city(price_msquare_min=200, price_msquare_max=20000, list_city=list_city)
       </code></pre>
 
-      <!-- Plot dataframe here -->
+<!--      <div style="grid-column:1/4; width:78%; margin: auto; text-align: center; padding-left;30px;">
+        <iframe src= "plot_french_market_overview/df_price_volume.html", width="800px;", height="370px", frameBorder="0"></iframe>
+      </div>-->
+      <style>
+      .table_head th{
+        height: 60px;
+        background: #0e111f;
+        color:white;
+        vertical-align:middle;
+
+      }
+      .table_df{
+        vertical-align:middle; text-align: center;
+      }
+      </style>
+
+
 
       <span class="text_article">
-        talk about plitng what </br></br>
+        <table class="table">
+          <thead>
+            <tr class='table_head'>
+              <th scope="col" style='vertical-align:middle; text-align: center;'>date_mutation</th>
+              <th scope="col" style='vertical-align:middle; text-align: center;'>nom_commune</th>
+              <th scope="col" style='vertical-align:middle; text-align: center;'>number_transaction</th>
+              <th scope="col" style='vertical-align:middle; text-align: center;'>mean_price_msquare</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style='background-color:#E0E0E0;'>
+              <td style='vertical-align:middle; text-align: center;'>2014-01-31T00:00:00</td>
+              <td style='vertical-align:middle; text-align: center;'>Bordeaux</td>
+              <td style='vertical-align:middle; text-align: center;' style='vertical-align:middle; text-align: center;'>16</td>
+              <td style='vertical-align:middle; text-align: center;'>4541</td>
+            </tr>
+            <tr>
+              <td style='vertical-align:middle; text-align: center;'>2014-02-28T00:00:00</td>
+              <td style='vertical-align:middle; text-align: center;'>Bordeaux</td>
+              <td style='vertical-align:middle; text-align: center;'>29</td>
+              <td style='vertical-align:middle; text-align: center;'>4563</td>
+            </tr>
+            <tr style='background-color:#E0E0E0;'>
+              <td style='vertical-align:middle; text-align: center;'>2014-03-31T00:00:00</td>
+              <td style='vertical-align:middle; text-align: center;'>Bordeaux</td>
+              <td style='vertical-align:middle; text-align: center;'>11</td>
+              <td style='vertical-align:middle; text-align: center;'>4914</td>
+            </tr>
+          </tbody>
+        </table><br>
+
+          The 10 cities selected are the following ones: Bordeaux, Lille, Lyon, Marseille, Montpellier, Nantes Nice, Paris, Rennes, Toulouse</br></br>
+
+         From this dataframe we can plot, for each of those cities, the sales number compared to the price per square meter:
+        </br></br>
         Show code &nbsp;
         <label class="switch">
           <input type="checkbox" onclick="show_hide_div('code3');">
@@ -311,13 +385,11 @@
                               print_grid=True,
                               horizontal_spacing=0.2,
                               subplot_titles=df.nom_commune.unique(),
-                              specs=[[{"secondary_y": True} for x in range(cols)] for y in range(rows)]
-                             )
+                              specs=[[{"secondary_y": True} for x in range(cols)] for y in range(rows)])
 
-          coord =[[x+1, y+1] for x in range(rows) for y in range(cols)]
-          print(coord)
+          coord = [[x+1, y+1] for x in range(rows) for y in range(cols)]
+
           cnt = 0
-
           for city in df.nom_commune.unique():
               trace_price, trace_volume = get_trace_city(df, city, color=list_color[cnt])
 
@@ -346,7 +418,19 @@
       fig.show()
       </code></pre>
 
-      <iframe src= "plot_french_market_overview/multi_plot.html", width="100%", height="1000px", frameBorder="0" style="margin-left:150px;"></iframe>
+
+      <div style="grid-column:1/4; width:78%; margin: auto; text-align: center;margin-right:0px;">
+        <iframe src= "plot_french_market_overview/multi_plot.html", width="100%", height="930px", frameBorder="0" style="grid-column:1/4; width:100%; "></iframe> <!-- style="margin-left:150px;" -->
+      </div>
+
+      <span class="text_article">
+
+        We can observe that, from october 2018, the number of sales decrease sharply for Montpellier, Lyon and Rennes. This explains the volatility of prices for those cities which is then much more important.</br></br>
+        The reason for missing data is that some mutations are not provided due to the fact they have not been registered yet.</br></br>
+
+        It is possible to smooth the time series in order to mitigate extreme values and therefore, to have a closer and more legible representation of reality.
+
+      </span>
       <iframe src= "plot_french_market_overview/price_evolution.html", width="100%", height="600", frameBorder="0"></iframe>
 
       <span class="title_article" style="font-size: 30px;"><strong>Part II. Highlight of some housing price related variables</strong> </span>
