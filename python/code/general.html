@@ -49,7 +49,7 @@
 
       </code></pre>
 
-      <span class="subtitle_article"><strong>Manipulation of csv </strong></span>
+      <span class="subtitle_article"><strong>Manipulation of csv or excel files </strong></span>
       <pre class="language-python"><code class="language-python">
       # Count number of rows in the csv
       with open('../data.csv', encoding='utf8', errors='ignore') as csvfile:
@@ -79,6 +79,9 @@
       # export as excel
       df_temp.to_excel(r'C:/Users/ljeanpierre/Documents/cv-matching-new-model/df/df_'+str(j)+'.xlsx', encoding='utf-8')
 
+      # Import excel
+      df_excel = pd.read_excel('grdf_not_protected.xlsx', converters = {'CP (PCE)': str}).fillna('')
+
       </code></pre>
 
 
@@ -96,7 +99,7 @@
       <span class="subtitle_article"><strong>Get dataframe from request </strong></span>
       <pre class="language-python"><code class="language-python">
       from io import StringIO
-      
+
       url = 'https://api/endpoint?q=' + query
       request = requests.get(
          url = url,
@@ -106,6 +109,13 @@
          })
 
       df = pd.read_csv(StringIO(request.text))
+
+      # other solution
+      url = 'https://api-adresse.data.gouv.fr/search/?q=' + query
+      response = requests.get(url)
+      if response.status_code == 200:
+          data = response.json()
+          print(data)
       </code></pre>
 
     </article>
