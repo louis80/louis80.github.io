@@ -30,8 +30,8 @@
     <div class="main-header">
       <div class="main-header__intro-wrapper">
         <div class="main-header__welcome">
-            <div class="main-header__welcome-title text-light"><strong>Python > Code > Dataframe </strong></div>
-            <div class="main-header__welcome-subtitle text-light"> Gathering of useful dataframe use cases  </div>
+            <div class="main-header__welcome-title text-light"><strong>Gathering of useful dataframe use cases   </strong></div>
+            <div class="main-header__welcome-subtitle text-light">Python › Code › Dataframe</div>
         </div>
       </div>
     </div> <!-- end of header -->
@@ -70,7 +70,16 @@
       # List value count of dataframe column
       df.column_name.value_counts()
 
+      # Multiply one row with each dataframe rows
+      avg_df = pd.DataFrame({
+        var_name: dfb.multiply(
+            weights['temperature_weights'],
+            axis=1, level='column_name').sum(axis=1)
+        })
+      dfb -> (8063, 32) | weights['temperature_weights'] -> (32,)
       </code></pre>
+
+      https://towardsdatascience.com/top-3-pandas-functions-you-dont-know-about-probably-5ae9e1c964c8
 
       <span class="subtitle_article"><strong>Iterate over a dataframe</strong></span>
       <pre class="language-python"><code class="language-python">

@@ -31,9 +31,6 @@
           background: rgba(255, 255, 255, 0);
         }
 
-        .table_df{
-          vertical-align:middle; text-align: center;
-        }
     </style>
 </head>
 <body>
@@ -60,6 +57,23 @@
 
     <!-- ############################################################### -->
     <article class='post'>
+
+          <!-- <nav class="breadcrumb breadcrumb_type5" aria-label="Breadcrumb">
+            <ol class="breadcrumb__list r-list">
+              <li class="breadcrumb__group">
+                <a href="#0" class="breadcrumb__point r-link">Home</a>
+                <span class="breadcrumb__divider" aria-hidden="true">›</span>
+              </li>
+              <li class="breadcrumb__group">
+                <a href="#0" class="breadcrumb__point r-link">Publications</a>
+                <span class="breadcrumb__divider" aria-hidden="true">›</span>
+              </li>
+              <li class="breadcrumb__group">
+                <span class="breadcrumb__point" aria-current="page" style='color:#0e111f;'>Real Estate</span>
+              </li>
+            </ol>
+          </nav> -->
+
         <span class="title_article"><strong>An overview of the french real estate market</strong> </span>
 
         <span class="text_article">
@@ -417,7 +431,6 @@
       fig = get_multiplot_price_volume(df_resample, list_color, 5, 2)
       fig.show()
       </code></pre>
-
 
       <div style="grid-column:1/4; width:78%; margin: auto; text-align: center;margin-right:0px;">
         <iframe src= "plot_french_market_overview/multi_plot.html", width="100%", height="930px", frameBorder="0" style="grid-column:1/4; width:100%; "></iframe> <!-- style="margin-left:150px;" -->
