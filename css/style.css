@@ -37,8 +37,7 @@ pre{
   justify-self: center;
 }
 
-
-iframe{
+iframe, .cheatsheet_img{
   margin-top: 20px;
   margin-bottom: 20px;
   grid-column: 1 / 4;
@@ -58,6 +57,25 @@ html, body {
 a {
   text-decoration: none;
 }
+
+/* CHEATSHEET */
+.subtitle_article_cheatsheet{
+  font-size: 20px;
+  color:#0e111f;
+  font-weight: bold;
+  margin-top:20px;
+  margin-bottom:10px;
+  margin-left: 60px;
+}
+
+.cheatsheet_code{
+  all: unset;
+  grid-column: 2;
+  width: 80%;
+  justify-self: center;
+}
+
+/* END CHEATSHEET */
 
 .text-light {
   font-weight: 300;

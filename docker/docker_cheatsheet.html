@@ -32,23 +32,23 @@
     <div class="main-header">
       <div class="main-header__intro-wrapper">
         <div class="main-header__welcome">
-            <div class="main-header__welcome-title text-light"><strong>GitHub CheatSheet</strong></div>
-            <div class="main-header__welcome-subtitle text-light">Gathering of useful GitHub command </div>
+            <div class="main-header__welcome-title text-light"><strong>Docker CheatSheet</strong></div>
+            <div class="main-header__welcome-subtitle text-light">Gathering of useful Docker command </div>
         </div>
       </div>
     </div> <!-- end of header -->
 
     <!-- ############################################################### -->
     <article class='post'>
-        <span class="subtitle_article"><strong> Remove all stopped containers : </strong></span>
-        <pre class="language-docker"><code class="language-docker">
+        <span class="subtitle_article_cheatsheet"><strong> Remove all stopped containers : </strong></span>
+        <pre class="language-docker cheatsheet_code"><code class="language-docker">
             # Remove all stopped containers
             docker system prune
 
              tail -n 10 /var/log/syslog
         </code></pre>
 
-        <span class="subtitle_article"><strong> Not enough memory : </strong></span>
+        <span class="subtitle_article_cheatsheet"><strong> Not enough memory : </strong></span>
         <span> - Switching cpu and mem to min allowed docker to restart</br>
         - Cleaned up containers with "docker ps -a" and "docker system prune" </br>
         - Switching back: Docker now runs with max 2 cpu’s and 2048 memory settings</span>
