@@ -96,6 +96,8 @@
        record, names = get_data_from_database(req)
        df = pd.DataFrame(data= record, columns=names)
 
+       # simplified version
+       df = pd.read_sql_query('SELECT * FROM table LIMIT 20', engine)
         </code></pre>
 
     </article>

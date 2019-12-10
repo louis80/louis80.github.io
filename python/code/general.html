@@ -80,7 +80,7 @@
       df_temp.to_excel(r'C:/Users/ljeanpierre/Documents/cv-matching-new-model/df/df_'+str(j)+'.xlsx', encoding='utf-8')
 
       # Import excel
-      df_excel = pd.read_excel('grdf_not_protected.xlsx', converters = {'CP (PCE)': str}).fillna('')
+      df = pd.read_excel('file.xlsx', converters = {'colname': str}, nrows=10).fillna('')
 
       </code></pre>
 
