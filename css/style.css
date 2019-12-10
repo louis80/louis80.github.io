@@ -259,11 +259,13 @@ a {
   border-bottom: 2px solid rgba(255, 255, 255, 0.5);
   transform: translateY(-50%) rotate(225deg);
 }
+
 .sidenav__sublist {
   list-style-type: none;
   margin: 0;
   padding: 10px 0 0;
 }
+
 .sidenav--active {
   transform: translateX(0);
 }
