@@ -72,7 +72,78 @@
 
         </code></pre>
 
+        <span class="subtitle_article"><strong>Basic scraping example with pyppeteer </strong></span>
+        <pre class="language-python"><code class="language-python">
+          import pandas as pd
+          from datetime import datetime
+          from requests import get
+          from bs4 import BeautifulSoup
 
+          ########## Partie 1 : Extraire une liste d'artciel avec titre et lien ################
+
+          # ton dataframe pour stocker le résultats des requêtes
+          df = pd.DataFrame(columns=['title', 'link', 'state_words', 'date_extract'])
+
+          # ta requête
+          request = 'migration climatique'
+
+          # Execute ta requête et recupère le code html
+          html_code = get("https://scholar.google.com/scholar?hl=en&as_sdt=0,5&q="+request).text
+
+          # parse ta page html en objet structuré
+          soup = BeautifulSoup(html_code, 'lxml')
+
+          # selectionne les divs dont la classe est gs_scl
+          mydivs = soup.findAll("div", {"class": "gs_scl"})
+          print('Ton nombre de divs trouvées (i.e ton nombre d\'articles si tu as identifié la class correctement) : ', len(mydivs))
+
+          # pour chacune des divs de ta sélection
+          for div in soup.findAll("div", {"class": "gs_scl"}):
+              titre = div.find('h3')
+              # si tu as une balise <a> i.e une balise de lien alors tu essayes d'extraire titre et lien
+              if titre.find('a'):
+                  try:
+                      # print(titre.find('a')['href'])
+                      # print(titre.find('a').text, '\n')
+
+                      # ajoute une ligne à ton dataframe
+                      df = df.append({'title': titre.find('a').text, 'link': titre.find('a')['href'], 'state_words': False, 'date_extract':datetime.now()}, ignore_index=True)
+                  except:
+                      pass
+
+          print(df)
+
+          ########## Partie 2 : vérifier la présence des mots dans l'article ################
+
+          list_mots = ['développement', 'partenariat', 'autre_mot', 'ect']
+
+          # count_row_df permet d'iterer sur le dataframe
+          count_row_df = 0
+
+          # Pour chacun des liens du dataframe
+          for lien in df['link']:
+              # recupère le hmtl de l'article (inclut son texte)
+              html_code = get(lien).text
+
+              state = False
+              # on vérifie la présence d'au moins un mot
+              for mot in list_mots:
+                  if mot in html_code:
+                      # si au moin un mot match on update state
+                      df.iat[count_row_df, 2] = True # 2 -> state_words = 3 ème colonne (0, 1, 2, ...)
+
+              # on incrémente count_row_df de 1
+              count_row_df += 1
+              print(lien, ' : ', state, '\n\n')
+
+          print(df)
+
+          # selectionne uniquement les articles ayant au moins un mot de matché
+          df = df[df['state_words']==True]
+
+          # On export le dataframe en excel ou csv
+          df.to_excel("scrap_article_google.xlsx") # plein d'options possibles (encodage ect ..) 
+        </code></pre>
 
     </article>
     <!-- ############################################################### -->

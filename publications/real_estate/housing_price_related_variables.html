@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Cheat Sheet</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <link rel="shortcut icon" type="image/png" href="https://img.icons8.com/nolan/64/000000/programming-flag.png">
+    <link rel="stylesheet" href="../../../css/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+    <!-- code snippets -->
+    <link rel="stylesheet" href="../../../packages/prism/prism.css">
+    <script src="../../../packages/prism/prism.js"></script>
+    <style>
+        .main-header {
+          position: relative;
+          display: flex;
+          justify-content: space-between;
+          height: 400px;
+          color: #FFF;
+          background-size: cover;
+          background-image: url("img/real_estate3.jpg");
+          background-repeat: no-repeat;
+          background-position: center;
+          margin-bottom: 20px;
+        }
+
+        .main-header__intro-wrapper {
+          background: rgba(255, 255, 255, 0);
+        }
+
+    </style>
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div class="grid">
+  <header class="header">
+    <i class="fas fa-bars header__menu"></i>
+    <div class="header__search">
+      <input class="header__input" placeholder="Search..." />
+    </div>
+  </header>
+
+  <aside id="includedSidenav" class="sidenav"> </aside>
+
+  <main class="main">
+    <div class="main-header">
+      <div class="main-header__intro-wrapper">
+        <div class="main-header__welcome">
+            <!--<div class="main-header__welcome-title text-light"><strong>Publication > Real Estate</strong></div>
+            <div class="main-header__welcome-subtitle text-light"> An overview of the french real estate market </div>-->
+        </div>
+      </div>
+    </div> <!-- end of header -->
+
+    <!-- ############################################################### -->
+    <article class='post'>
+
+      <span class="title_article"><strong>An overview of the french real estate market</strong> </span>
+
+      <span class="text_article">
+        After looking at the datalab dataset, lets take a step back and consider the market as a whole
+        <div class="alert alert-info">
+          <i class="fa fa-info-circle"></i>
+          The dataset is available from the French Ministry of Economy and Finance website:<br>
+          <a target="_blank" rel="noopener noreferrer" href="https://www.data.gouv.fr/en/datasets/demandes-de-valeurs-foncieres/" class="alert-link">https://www.data.gouv.fr/en/datasets/demandes-de-valeurs-foncieres/</a>.
+        </div>
+
+      </span>
+
+      <span class="title_article" style="font-size: 30px;"><strong>Part II. Highlight of some housing price related variables</strong> </span>
+
+
+
+      <span class="subtitle_article">title</span>
+      <span class="text_article">
+          text
+      </span>
+
+
+
+
+
+      <span class="text_article">
+        THINGS TO DO :
+        - Distribution price per city vs France as a whole
+        -
+      </span>
+
+    </article>
+    <!-- ############################################################### -->
+
+  </main>
+
+
+  <footer class="footer">
+      <p><span class="footer__copyright">&copy;</span> 2019 LJPR</p>
+      <p>Crafted with <i class="fas fa-heart footer__icon"></i> by <a href="" target="_blank" class="footer__signature">Louis jpr</a></p>
+  </footer>
+</div>
+  <script>
+    function show_hide_div(id) {
+      if ($('#'+id).css('display') == 'none') {
+        $('#'+id).show(500);
+      }else{
+        $('#'+id).hide(500);
+      }
+      return false;
+    }
+  </script>
+  <script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
+  <script src='https://www.amcharts.com/lib/3/amcharts.js'></script>
+  <script src='https://www.amcharts.com/lib/3/serial.js'></script>
+  <script src='https://www.amcharts.com/lib/3/themes/light.js'></script>
+  <script defer src="../../../js/script.js"></script>
+  <script defer type="text/javascript"> $("#includedSidenav").load("../../../sidenav.html");</script>
+
+</body>
+</html>

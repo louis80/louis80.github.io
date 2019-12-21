@@ -50,8 +50,9 @@
       # Access element of dataframe
       df.iat[row, column]
 
-      # deal with nan
+      # deal with nan / None
       df = df[df.column_name.notnull()]
+      df.column_name = df.column_name.apply(lambda x: x if not pd.isnull(x) else 'Null')
 
       # Apply function to dataframe column
       df['name'] = df_sample.apply(lambda x : function_to_apply(x['name']), axis=1)
@@ -69,6 +70,10 @@
 
       # List value count of dataframe column
       df.column_name.value_counts()
+
+      # Selection on text within dataframe column
+      a = [name for name in df.column_name.unique() if 'test' in name.lower()]
+      df = df[~df.column_name.isin(a)] # ~ -> not 
 
       # Multiply one row with each dataframe rows
       avg_df = pd.DataFrame({
