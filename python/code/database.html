@@ -30,8 +30,8 @@
     <div class="main-header">
       <div class="main-header__intro-wrapper">
         <div class="main-header__welcome">
-            <div class="main-header__welcome-title text-light"><strong>Python > Code > Database </strong></div>
-            <div class="main-header__welcome-subtitle text-light"> Connect to the database with Python </div>
+            <div class="main-header__welcome-title text-light"><strong>Connect to the database with Python </strong></div>
+            <div class="main-header__welcome-subtitle text-light"> Python › Code › Database </div>
         </div>
       </div>
     </div> <!-- end of header -->
@@ -39,8 +39,8 @@
     <!-- ############################################################### -->
     <article class='post'>
 
-        <span class="subtitle_article"><strong>Connexion to the database</strong></span>
-        <pre class="language-python"><code class="language-python">
+        <span class="subtitle_article_cheatsheet"><strong>Connexion to the database</strong></span>
+        <pre class="language-python cheatsheet_code"><code class="language-python">
         import yaml
         from sqlalchemy import create_engine
         import psycopg2
@@ -58,8 +58,8 @@
               + conf["project-database"]["name"])
         </code></pre>
 
-        <span class="subtitle_article"><strong>Send dataframe to the database</strong></span>
-        <pre class="language-python"><code class="language-python">
+        <span class="subtitle_article_cheatsheet"><strong>Send dataframe to the database</strong></span>
+        <pre class="language-python cheatsheet_code"><code class="language-python">
         df.applymap(str).to_sql('table_name',
                                 con=engine, if_exists='append', index=False,
                                 dtype={'datefld': sqlalchemy.DateTime(),
@@ -70,8 +70,8 @@
                                 ) # could use 'replace'
         </code></pre>
 
-        <span class="subtitle_article"><strong>Load dataframe from database</strong></span>
-        <pre class="language-python"><code class="language-python">
+        <span class="subtitle_article_cheatsheet"><strong>Load dataframe from database</strong></span>
+        <pre class="language-python cheatsheet_code"><code class="language-python">
         import psycopg2
 
         def database_conn():
@@ -96,6 +96,8 @@
        record, names = get_data_from_database(req)
        df = pd.DataFrame(data= record, columns=names)
 
+       # simplified version
+       df = pd.read_sql_query('SELECT * FROM table LIMIT 20', engine)
         </code></pre>
 
     </article>

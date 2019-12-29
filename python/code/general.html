@@ -30,8 +30,8 @@
     <div class="main-header">
       <div class="main-header__intro-wrapper">
         <div class="main-header__welcome">
-            <div class="main-header__welcome-title text-light"><strong>Python > Code > General </strong></div>
-            <div class="main-header__welcome-subtitle text-light"> Gathering of useful Python code </div>
+            <div class="main-header__welcome-title text-light"><strong>Gathering of useful Python code </strong></div>
+            <div class="main-header__welcome-subtitle text-light"> Python › Code › General </div>
         </div>
       </div>
     </div> <!-- end of header -->
@@ -39,8 +39,8 @@
     <!-- ############################################################### -->
     <article class='post'>
 
-      <span class="subtitle_article"><strong>Basic Python code </strong></span>
-      <pre class="language-python"><code class="language-python">
+      <span class="subtitle_article_cheatsheet"><strong>Basic Python code </strong></span>
+      <pre class="language-python cheatsheet_code"><code class="language-python">
       # Calcul execution time
       from datetime import datetime
       start = datetime.now()
@@ -49,8 +49,8 @@
 
       </code></pre>
 
-      <span class="subtitle_article"><strong>Manipulation of csv or excel files </strong></span>
-      <pre class="language-python"><code class="language-python">
+      <span class="subtitle_article_cheatsheet"><strong>Manipulation of csv or excel files </strong></span>
+      <pre class="language-python cheatsheet_code"><code class="language-python">
       # Count number of rows in the csv
       with open('../data.csv', encoding='utf8', errors='ignore') as csvfile:
           row_count = sum(1 for row in csvfile)
@@ -80,13 +80,13 @@
       df_temp.to_excel(r'C:/Users/ljeanpierre/Documents/cv-matching-new-model/df/df_'+str(j)+'.xlsx', encoding='utf-8')
 
       # Import excel
-      df_excel = pd.read_excel('grdf_not_protected.xlsx', converters = {'CP (PCE)': str}).fillna('')
+      df = pd.read_excel('file.xlsx', converters = {'colname': str}, nrows=10).fillna('')
 
       </code></pre>
 
 
-      <span class="subtitle_article"><strong>Iterate over files whithin a folder </strong></span>
-      <pre class="language-python"><code class="language-python">
+      <span class="subtitle_article_cheatsheet"><strong>Iterate over files whithin a folder </strong></span>
+      <pre class="language-python cheatsheet_code"><code class="language-python">
       from os.path import join, isfile
       from os import listdir
 
@@ -96,8 +96,8 @@
       </code></pre>
 
 
-      <span class="subtitle_article"><strong>Get dataframe from request </strong></span>
-      <pre class="language-python"><code class="language-python">
+      <span class="subtitle_article_cheatsheet"><strong>Get dataframe from request </strong></span>
+      <pre class="language-python cheatsheet_code"><code class="language-python">
       from io import StringIO
 
       url = 'https://api/endpoint?q=' + query
