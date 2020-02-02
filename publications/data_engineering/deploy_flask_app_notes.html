@@ -1,0 +1,105 @@
+https://www.digitalocean.com/community/tutorials/how-to-serve-flask-applications-with-gunicorn-and-nginx-on-ubuntu-18-04#prerequisites
+https://www.digitalocean.com/community/tutorials/how-to-build-and-deploy-a-flask-application-using-docker-on-ubuntu-18-04#prerequisites
+
+Nginx
+sudo apt install nginx
+
+if port 80 already used
+sudo lsof -i :80
+sudo kill -9 <process_id>
+
+if "Failed to start A high performance web server and a reverse proxy server"
+-> Removing default site worked (For me this error was caused by a default nginx site already on port 80)
+sudo rm /etc/nginx/sites-enabled/default
+sudo service nginx restart
+
+if status inactive :
+sudo ufw enable
+sudo ufw default deny
+And I then do:
+sudo iptables -L
+
+test if running
+if [ -e /var/run/nginx.pid ]; then echo "nginx is running"; fi
+
+#####
+[Unit]
+Description=Gunicorn instance to serve myproject
+After=network.target
+
+[Service]
+User=eisti
+Group=www-data
+WorkingDirectory=/home/eisti/myproject
+Environment="PATH=/home/eisti/myproject/myprojectenv/bin"
+ExecStart=/home/eisti/myproject/myprojectenv/bin/gunicorn --workers 3 --bind unix:myproject.sock -m 007 wsgi:app
+
+[Install]
+WantedBy=multi-user.target
+#####
+
+
+
+server {
+    listen 80;
+    server_name ljpr.app www.ljpr.app;
+
+    location / {
+        include proxy_params;
+        proxy_pass http://unix:/home/eisti/myproject/myproject.sock;
+    }
+}
+
+
+http://ljpr.app
+
+sudo certbot --nginx -d your_domain -d www.ljpr.app
+
+To get ipv4 public
+
+dig TXT +short o-o.myaddr.l.google.com @ns1.google.com
+
+##################################################
+ljpr.app
+sudo mkdir -p /var/www/ljpr.app/html
+sudo chown -R $USER:$USER /var/www/ljpr.app/html
+sudo chmod -R 755 /var/www/ljpr.app
+nano /var/www/ljpr.app/html/index.html
+sudo nano /etc/nginx/sites-available/ljpr.app
+####
+server {
+        listen 80;
+        listen [::]:80;
+
+        root /var/www/ljpr.app/html;
+        index index.html index.htm index.nginx-debian.html;
+
+        server_name ljpr.app www.ljpr.app;
+
+        location / {
+                try_files $uri $uri/ =404;
+        }
+}
+#####
+sudo ln -s /etc/nginx/sites-available/ljpr.app /etc/nginx/sites-enabled/
+sudo nano /etc/nginx/nginx.conf
+##################################################
+
+
+https://check-your-website.server-daten.de/?q=forcecommit.com
+
+https://canyouseeme.org/
+
+https://www.ssllabs.com/ssltest/analyze.html?d=www.ljpr.app
+
+http://192.168.0.1/
+http://192.168.0.1/login.html
+telnet open 88.142.195.111 80
+
+
+
+
+
+
+
+sudo certbot --nginx -d ljpr.app -d www.ljpr.app

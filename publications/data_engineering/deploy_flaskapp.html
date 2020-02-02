@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Cheat Sheet</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <link rel="shortcut icon" type="image/png" href="https://img.icons8.com/nolan/64/000000/programming-flag.png">
+    <link rel="stylesheet" href="../../../css/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+    <!-- code snippets -->
+    <link rel="stylesheet" href="../../../packages/prism/prism.css">
+    <script src="../../../packages/prism/prism.js"></script>
+    <style>
+        .main-header {
+          position: relative;
+          display: flex;
+          justify-content: space-between;
+          height: 400px;
+          color: #FFF;
+          background-size: cover;
+          background-image: url("img/server.jpg");
+          background-repeat: no-repeat;
+          background-position: center;
+          margin-bottom: 20px;
+        }
+
+        .main-header__intro-wrapper {
+          background: rgba(255, 255, 255, 0);
+        }
+
+        pre{
+          margin-top: 20px;
+          margin-bottom: 20px;
+          grid-column: 2;
+          width: 100%;
+          justify-self: center;
+        }
+    </style>
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div class="grid">
+  <header class="header">
+    <i class="fas fa-bars header__menu"></i>
+    <div class="header__search">
+      <input class="header__input" placeholder="Search..." />
+    </div>
+  </header>
+
+  <aside id="includedSidenav" class="sidenav"> </aside>
+
+  <main class="main">
+    <div class="main-header">
+      <div class="main-header__intro-wrapper">
+        <div class="main-header__welcome">
+            <!--<div class="main-header__welcome-title text-light"><strong>Publication > Real Estate</strong></div>
+            <div class="main-header__welcome-subtitle text-light"> An overview of the french real estate market </div>-->
+        </div>
+      </div>
+    </div> <!-- end of header -->
+
+    <!-- ############################################################### -->
+    <article class='post'>
+
+      <span class="title_article" style="font-size: 30px;"><strong>Deployment of a Flask app on Ubuntu server </strong> </span>
+      <!-- ### Beg connection SSH ### -->
+      <span class="subtitle_article" style="font-size: 24px;">Step 0 - Connection via SSH to the Ubuntu server</span>
+      <span class="text_article">
+        Secure Shell (SSH) is a cryptographic network protocol used for a secure connection between a client and a server.<br><br>
+        <strong> Server side:</strong><br>
+        Install and enable SSH on Ubuntu system
+
+      </span>
+
+      <pre class="language-python"><code class="language-python">
+        sudo apt update
+        sudo apt install openssh-server
+        # Verify installation and service is running
+        sudo systemctl status ssh
+      </code></pre>
+
+      <span class="text_article">
+        <strong>Client side:</strong><br>
+        Install openssh
+      </span>
+
+      <pre class="language-python"><code class="language-python">
+        # sudo apt-get remove openssh-client openssh-server
+        sudo apt-get install openssh-client openssh-server
+      </code></pre>
+
+      <span class="text_article">
+        Connect to the Ubuntu machine on local network
+      </span>
+
+      <pre class="language-python"><code class="language-python">
+        ssh username_server@local_ip_address
+        # To get the username
+        echo $USER
+        # To get the local ip adress
+        hostname -I
+      </code></pre>
+
+      <span class="text_article">
+        Connect to the Ubuntu machine over Internet
+      </span>
+
+      <pre class="language-python"><code class="language-python">
+        ssh username_server@public_ip_address
+        # To get the username
+        echo $USER
+        # To get the local ip adress
+        curl ifconfig.me
+      </code></pre>
+
+    <span class="text_article">
+      Useful SSH command
+    </span>
+
+    <pre class="language-python"><code class="language-python">
+      # Stop SSH connection
+      sudo systemctl stop ssh
+      # Start SSH connection
+      sudo systemctl start ssh
+    </code></pre>
+    <!-- ### End connection SSH ### -->
+
+    <span class="subtitle_article" style="font-size: 24px;margin-top:50px;">Step 1 - Prerequisites</span>
+    <!-- ### Beg installation Nginx ### -->
+    <span class="subtitle_article" style=''>1. Installation of Nginx</span>
+    <span class="text_article">
+      Nginx is one of the most popular web servers in the world.<br><br>
+
+      <div class="alert alert-info">
+        <i class="fa fa-info-circle"></i>
+        The following installation should be done through a regular non-root user with sudo privileges on the server used.
+      </div>
+
+      Install Nginx: <br>
+    </span>
+    <!-- ### End installation Nginx ### -->
+    <pre class="language-python"><code class="language-python">
+      sudo apt update
+      sudo apt install nginx
+    </code></pre>
+
+    <span class="text_article">
+      Adjusting the Firewall:
+    </span>
+
+    <pre class="language-python"><code class="language-python">
+      # Allow HTTP traffic
+      sudo ufw allow 'Nginx HTTP'
+      # See status
+      sudo ufw status
+    </code></pre>
+
+
+    <span class="text_article">
+      Check that the Nginx server is running:
+    </span>
+
+    <pre class="language-python"><code class="language-python">
+      systemctl status nginx
+    </code></pre>
+
+
+    <span class="subtitle_article" style='margin-top:30px;'>2. Configure domain name pointing to the server</span>
+    <span class="text_article">
+
+    </span>
+
+    <pre class="language-python"><code class="language-python">
+
+    </code></pre>
+
+    <span class="subtitle_article" style="font-size: 24px;margin-top:50px;">Step 2 - Instanciation of the Flask app</span>
+    <!-- ### Beg installation Nginx ### -->
+    <span class="subtitle_article" style=''>1. Preparation of Python components</span>
+    <span class="text_article">
+      Installation of Python components
+    </span>
+
+    <pre class="language-python"><code class="language-python">
+      sudo apt update
+      sudo apt install python3-pip python3-dev build-essential libssl-dev libffi-dev python3-setuptools
+    </code></pre>
+
+    <span class="text_article">
+      Creating a Python Virtual Environment
+    </span>
+
+    <pre class="language-python"><code class="language-python">
+      # install the venv module
+      sudo apt install python3-venv
+    </code></pre>
+
+
+
+
+
+
+
+    <span class="text_article">
+
+    </span>
+
+    <pre class="language-python"><code class="language-python">
+
+    </code></pre>
+
+
+
+
+    </article>
+    <!-- ############################################################### -->
+
+  </main>
+
+
+  <footer class="footer">
+      <p><span class="footer__copyright">&copy;</span> 2019 LJPR</p>
+      <p>Crafted with <i class="fas fa-heart footer__icon"></i> by <a href="" target="_blank" class="footer__signature">Louis jpr</a></p>
+  </footer>
+</div>
+  <script>
+    function show_hide_div(id) {
+      if ($('#'+id).css('display') == 'none') {
+        $('#'+id).show(500);
+      }else{
+        $('#'+id).hide(500);
+      }
+      return false;
+    }
+  </script>
+  <script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
+  <script src='https://www.amcharts.com/lib/3/amcharts.js'></script>
+  <script src='https://www.amcharts.com/lib/3/serial.js'></script>
+  <script src='https://www.amcharts.com/lib/3/themes/light.js'></script>
+  <script defer src="../../../js/script.js"></script>
+  <script defer type="text/javascript"> $("#includedSidenav").load("../../../sidenav.html");</script>
+
+</body>
+</html>

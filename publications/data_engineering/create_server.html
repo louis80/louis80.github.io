@@ -1,0 +1,135 @@
+https://www.digitalocean.com/community/tutorials/how-to-deploy-a-flask-application-on-an-ubuntu-vps
+
+1. Connexion ssh
+a) Initialisation
+coté client :
+sudo apt-get remove openssh-client openssh-server
+sudo apt-get install openssh-client openssh-server
+
+coté serveur :
+sudo apt-get install openssh-server
+
+b) Test localhost
+echo $USER
+
+Test ssh :
+ssh user_name@localhost
+
+to deconnect :
+exit
+
+Unable to lock the administration directory (/var/lib/dpkg/),
+pgrep -a apt
+sudo kill porcessnumber
+ou
+sudo rm /var/lib/dpkg/lock
+sudo dpkg --configure -a
+
+c) ssh connection
+réseau local :
+ssh user_name_server@ip_local
+ssh eisti@192.168.0.35 (c..78)
+
+à distance :
+ssh user_name_server@ip_server
+ssh eisti@88.142.195.111
+
+2. Installation des prérequis
+a) apache2
+apt-get install apache2
+source /etc/apache2/envvars
+apache2 -S
+
+b) Python
+sudo apt-get update && sudo apt-get install python3.6
+python -V
+pip3 -V
+alias python=python3
+python
+ctrl + z to quit command line
+sudo pip install virtualenv
+
+c) module wsgi
+aptitude install libapache2-mod-wsgi python-dev
+sudo a2enmod wsgi
+
+Deploy flask app
+cd /var/www
+sudo mkdir FlaskApp
+cd FlaskApp
+sudo mkdir FlaskApp
+sudo mkdir static templates
+sudo nano /var/www/FlaskApp/FlaskApp/__init__.py
+####
+from flask import Flask
+app = Flask(__name__)
+@app.route("/")
+def hello():
+    return "Hello, I love Digital Ocean!"
+if __name__ == "__main__":
+    # app.run()
+    app.run(host='0.0.0.0')
+####
+
+install Flask
+sudo virtualenv -p python3 venv
+source venv/bin/activate
+sudo pip install Flask
+sudo python __init__.py
+### If port already used ###
+sudo lsof -i :5000
+sudo kill -9 <process_id>
+###
+deactivate
+
+Configure and Enable a New Virtual Host
+sudo nano /etc/apache2/sites-available/FlaskApp.conf
+mv /etc/apache2/sites-available/FlaskApp /etc/apache2/sites-available/FlaskApp.conf
+
+#####
+<VirtualHost *:80>
+		ServerName mywebsite.com
+		ServerAdmin admin@mywebsite.com
+		WSGIScriptAlias / /var/www/FlaskApp/flaskapp.wsgi
+		<Directory /var/www/FlaskApp/FlaskApp/>
+			Order allow,deny
+			Allow from all
+		</Directory>
+		Alias /static /var/www/FlaskApp/FlaskApp/static
+		<Directory /var/www/FlaskApp/FlaskApp/static/>
+			Order allow,deny
+			Allow from all
+		</Directory>
+		ErrorLog ${APACHE_LOG_DIR}/error.log
+		LogLevel warn
+		CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+#####
+sudo a2ensite FlaskApp
+
+Create the .wsgi File
+cd /var/www/FlaskApp
+sudo nano flaskapp.wsgi
+#####
+#!/usr/bin/python
+import sys
+import logging
+logging.basicConfig(stream=sys.stderr)
+sys.path.insert(0,"/var/www/FlaskApp/")
+
+from FlaskApp import app as application
+application.secret_key = 'Add your secret key'
+#####
+
+sudo service apache2 restart
+
+Launch the application
+192.168.0.35:8090
+## Change basic port ##
+sudo vi /etc/apache2/ports.conf
+Listen 192.168.0.35:8090
+/etc/apache2/sites-enabled/000-default.conf
+8090
+.
+
+nano etc/hosts
