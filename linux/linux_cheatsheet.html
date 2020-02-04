@@ -43,16 +43,48 @@
 
         <span class="subtitle_article_cheatsheet"><strong>Basic Linux Command </strong></span>
         <pre class="language-docker cheatsheet_code"><code class="language-docker">
-            # Remove all stopped containers
+            # Make the system sleep
+            systemctl suspend
+
+            # Show the last 10 lines of the file syslog
             tail -n 10 /var/log/syslog
+
+            # Check port use
+            sudo lsof -i :5000
+            sudo kill -9 <process_id>
+
         </code></pre>
 
         <span class="subtitle_article_cheatsheet"><strong> SSH Connection </strong></span>
-        <pre class="language-docker cheatsheet_code"><code class="language-docker">
-            # Remove all stopped containers
-            docker system prune
+        <pre class="language-python cheatsheet_code"><code class="language-python">
+          ### Server side ###
+          sudo apt install openssh-server
+          # Verify installation and service is running
+          sudo systemctl status ssh
 
-             tail -n 10 /var/log/syslog
+          ### Client side ###
+          # sudo apt-get remove openssh-client openssh-server
+          sudo apt-get install openssh-client openssh-server
+
+          ### Connect to the Ubuntu machine on local network ###
+          ssh username_server@local_ip_address
+          # To get the username
+          echo $USER
+          # To get the local ip adress
+          hostname -I
+
+          ### Connect to the Ubuntu machine over Internet ###
+          ssh username_server@public_ip_address
+          # To get the username
+          echo $USER
+          # To get the local ip adress
+          curl ifconfig.me
+
+          ### Useful SSH command ###
+          # Stop SSH connection
+          sudo systemctl stop ssh
+          # Start SSH connection
+          sudo systemctl start ssh
         </code></pre>
 
     </article>
