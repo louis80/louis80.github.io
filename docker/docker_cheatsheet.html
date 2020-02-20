@@ -46,12 +46,17 @@
         <pre class="language-docker cheatsheet_code"><code class="language-docker">
             # Show running containers
             docker ps
-
             # Show all containers
             docker ps -a
-
+            # Kill container
+            docker kill container_ID
             # Stop container
             docker stop my_container
+
+            # Build
+            docker build -t name_app .
+            # Run
+            docker run -p 80:80 name_app
 
             # Deploy to Heroku
             heroku login
