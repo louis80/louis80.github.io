@@ -41,6 +41,27 @@
 
     <!-- ############################################################### -->
     <article class='post'>
+
+        <span class="subtitle_article_cheatsheet"><strong>Basic Docker Command </strong></span>
+        <pre class="language-docker cheatsheet_code"><code class="language-docker">
+            # Show running containers
+            docker ps
+
+            # Show all containers
+            docker ps -a
+
+            # Stop container
+            docker stop my_container
+
+            # Deploy to Heroku
+            heroku login
+            heroku container:login
+            heroku container:push web --app appname
+            heroku container:release web --app appname
+
+
+        </code></pre>
+
         <span class="subtitle_article_cheatsheet"><strong> Remove all stopped containers : </strong></span>
         <pre class="language-docker cheatsheet_code"><code class="language-docker">
             # Remove all stopped containers

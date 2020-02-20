@@ -47,7 +47,34 @@
       ... Some code ...
       end = datetime.now()-start_query
 
+      # Enumerate
+      date_range = ['2014', '2015', '2016', '2017', '2018']
+      for N, q in enumerate(date_range):
+          print(N, ' : ', q)
+      # 0 : 2014
+      # 1 : 2015
+      # ...
       </code></pre>
+
+
+      <span class="subtitle_article_cheatsheet"><strong> Virtual environment </strong></span>
+      <pre class="language-python cheatsheet_code"><code class="language-python">
+      # Install virtualvenv
+      python -m pip install --user virtualenv
+
+      # Create a virtual environment
+      python -m venv env_name
+
+      # Activate the environment
+      .\env_name\Scripts\activate
+
+      # Install requirements
+      pip install -r requirements.txt
+
+      # Leaving the virtual environment
+      deactivate
+      </code></pre>
+
 
       <span class="subtitle_article_cheatsheet"><strong>Manipulation of csv or excel files </strong></span>
       <pre class="language-python cheatsheet_code"><code class="language-python">
