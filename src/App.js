@@ -2,15 +2,21 @@ import React from 'react';
 import { HashRouter as Router, Route } from 'react-router-dom';
 
 import './App.css';
+
 import LeftBar from './components/layout/LeftBar'
 
-function BlogPage() {
-  return <div>TESTT Blog page</div>;
-}
+import LandingPageArticle from './components/article/landingPage'
+import CovidImmo from './components/article/covidImmo'
+
+import PythonGeneral from './components/python/general'
+import PythonDataframe from './components/python/dataframe'
+import PythonDatabase from './components/python/database'
 
 function ShowDiv() {
-  return <div style={{border:'solid green 10px', height:'100%', width:'100%'}}> test </div>;
+  return <div>TESTT</div>;
 }
+
+
 
 class App extends React.Component {
   render() {
@@ -19,9 +25,20 @@ class App extends React.Component {
       <Router>
         <LeftBar/> 
         <div style={{height:'100%', width:'100%'}}>
-          <div className='' style={{backgroundColor:'grey', height:'56px', width:'100%'}}> test </div>
-          <Route exact path="/" component={BlogPage} />
+          <div className='' style={{backgroundColor:'#333', height:'52px', width:'100%'}}>  </div>
+          <Route exact path="/" component={LandingPageArticle} />
+          <Route exact path="/article/impact-du-covid-sur-immobilier" component={CovidImmo} />
+
+
           <Route exact path="/test" component={ShowDiv} />
+
+          <Route exact path="/python/general" component={PythonGeneral} />
+          <Route exact path="/python/dataframe" component={PythonDataframe} />
+          <Route exact path="/python/database" component={PythonDatabase} />
+
+          <Route exact path="/react" component={ShowDiv} />
+
+          <Route exact path="/postgresql" component={ShowDiv} />
         </div>
       </Router>
         
