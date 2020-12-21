@@ -19,6 +19,7 @@ function ShowDiv() {
 
 
 class App extends React.Component {
+  
   render() {
     return (
       <div className='d-flex' style={{height:'100%', width:'100%'}}> 
@@ -39,6 +40,8 @@ class App extends React.Component {
           <Route exact path="/react" component={ShowDiv} />
 
           <Route exact path="/postgresql" component={ShowDiv} />
+
+          <Route exact path="/github" component={ShowDiv} />
         </div>
       </Router>
         

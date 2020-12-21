@@ -1,7 +1,6 @@
 import React from 'react';
-import { Menu, Button } from 'antd';
+import { Menu, Button} from 'antd';
 import { Link } from "react-router-dom";
-
 import Icon from '@ant-design/icons';
 
 import {
@@ -80,50 +79,50 @@ class LeftBar extends React.Component {
           </Menu.Item>
 
           <SubMenu key="sub1" icon={<IconFont type="icon-python" />} title="Python">
-            <Menu.Item key="7">
+            <Menu.Item key="2">
                 <Link to="/python/general">General</Link> 
             </Menu.Item>
-            <Menu.Item key="13">
+            <Menu.Item key="3">
                 <Link to="/python/dataframe"> Dataframe </Link> 
             </Menu.Item>
-            <Menu.Item key="14">
+            <Menu.Item key="4">
                 <Link to="/python/database"> Database </Link> 
             </Menu.Item>
-            <Menu.Item key="15">
+            <Menu.Item key="5">
                 <Link to="/python/plotly"> Plotly </Link> 
             </Menu.Item>
-            <SubMenu key="sub5" title="Scraping">
-              <Menu.Item key="17">Option 11</Menu.Item>
-              <Menu.Item key="18">Option 12</Menu.Item>
+            <SubMenu key="sub2" title="Scraping">
+              <Menu.Item key="6">BeautifulSoup</Menu.Item>
+              <Menu.Item key="7">Selenium</Menu.Item>
             </SubMenu>
 
           </SubMenu>
 
-          <Menu.Item key="2" icon={<ReactSvgIcon style={{fontSize: '17px'}} />}>
+          <Menu.Item key="8" icon={<ReactSvgIcon style={{fontSize: '17px'}} />}>
             <Link to="/react">
                 React
             </Link> 
           </Menu.Item>
 
-          <Menu.Item key="3" icon={<PostgresIcon style={{fontSize: '17px'}} />}>
+          <Menu.Item key="9" icon={<PostgresIcon style={{fontSize: '17px'}} />}>
             <Link to="/postgresql">
                 PostGresQL
             </Link> 
           </Menu.Item>
 
-          <Menu.Item key="3" icon={<GithubSvgIcon style={{fontSize: '20px'}}/>}>
-            <Link to="/postgresql">
+          <Menu.Item key="10" icon={<GithubSvgIcon style={{fontSize: '20px'}}/>}>
+            <Link to="/github">
                 Github
             </Link> 
           </Menu.Item>
 
 
-          <SubMenu key="sub2" icon={<AppstoreOutlined />} title="Navigation Two">
-            <Menu.Item key="9">Option 9</Menu.Item>
-            <Menu.Item key="10">Option 10</Menu.Item>
-            <SubMenu key="sub3" title="Submenu">
-              <Menu.Item key="11">Option 11</Menu.Item>
-              <Menu.Item key="12">Option 12</Menu.Item>
+          <SubMenu key="sub3" icon={<AppstoreOutlined />} title="Navigation Two">
+            <Menu.Item key="11">Option 9</Menu.Item>
+            <Menu.Item key="12">Option 10</Menu.Item>
+            <SubMenu key="sub4" title="Submenu">
+              <Menu.Item key="13">Option 11</Menu.Item>
+              <Menu.Item key="14">Option 12</Menu.Item>
             </SubMenu>
           </SubMenu>
         </Menu>
