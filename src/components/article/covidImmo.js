@@ -152,9 +152,9 @@ function CovidImmo() {
             au profit d’une nouvelle corrélation entre création monétaire et hausse du prix des actifs financiers et immobiliers.
             </p>
 
-            <p style={{marginLeft:'4rem', marginTop:'2rem'}} className="text bold">GRAPHIQUE </p>
+            <p style={{marginLeft:'4rem', marginTop:'2rem'}} className="text bold">TITRE GRAPHIQUE ? </p>
             <div style={{margin:'4rem', marginTop:'1rem', marginBottom:'1rem'}}> { <InflationCreationMonetaire/> } </div>
-            <p style={{marginLeft:'4rem'}} className="text source">Source : </p>
+            <p style={{marginLeft:'4rem'}} className="text source">Source : Insee, Banque de France </p>
 
             <p className="text" style={{marginTop:'1rem'}}>
             Ces économistes expliquent cette corrélation par le mécanisme de rééquilibrage de portefeuille : la création monétaire implique que les épargnants détiennent initialement trop de monnaie par rapport à leur souhait, ils essaient donc de se débarrasser de cette monnaie en achetant des actifs (actions, obligations, immobilier). A l’équilibre, la structure des portefeuilles est rééquilibrée par la hausse du prix des actifs due à ces achats.

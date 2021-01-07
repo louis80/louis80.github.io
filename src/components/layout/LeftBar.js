@@ -40,36 +40,78 @@ const GithubSvg = () => (
 );
 const GithubSvgIcon = props => <Icon component={GithubSvg} {...props} />;
 
+function menuTopBar(collapsed) {
+  return (
+    <Menu
+      defaultSelectedKeys={['1']}
+      mode="horizontal"
+      theme="dark"
+      style={{height:'100%'}}
+    >
+      <Menu.Item key="1" icon={<FileTextOutlined />}>
+        <Link to="/">
+            Article         
+        </Link> 
+      </Menu.Item>
+
+      <SubMenu key="sub1" icon={<IconFont type="icon-python" />} title="Python">
+        <Menu.Item key="2">
+            <Link to="/python/general">General</Link> 
+        </Menu.Item>
+        <Menu.Item key="3">
+            <Link to="/python/dataframe"> Dataframe </Link> 
+        </Menu.Item>
+        <Menu.Item key="4">
+            <Link to="/python/database"> Database </Link> 
+        </Menu.Item>
+        <Menu.Item key="5">
+            <Link to="/python/plotly"> Plotly </Link> 
+        </Menu.Item>
+        <SubMenu key="sub2" title="Scraping">
+          <Menu.Item key="6">BeautifulSoup</Menu.Item>
+          <Menu.Item key="7">Selenium</Menu.Item>
+        </SubMenu>
+      </SubMenu>
+
+      <Menu.Item key="8" icon={<ReactSvgIcon style={{fontSize: '17px'}} />}>
+        <Link to="/react">
+            React
+        </Link> 
+      </Menu.Item>
+
+      <Menu.Item key="9" icon={<PostgresIcon style={{fontSize: '17px'}} />}>
+        <Link to="/postgresql">
+            PostGresQL
+        </Link> 
+      </Menu.Item>
+
+      <Menu.Item key="10" icon={<GithubSvgIcon style={{fontSize: '20px'}}/>}>
+        <Link to="/github">
+            Github
+        </Link> 
+      </Menu.Item>
 
 
+      <SubMenu key="sub3" icon={<AppstoreOutlined />} title="Navigation Two">
+        <Menu.Item key="11">Option 9</Menu.Item>
+        <Menu.Item key="12">Option 10</Menu.Item>
+        <SubMenu key="sub4" title="Submenu">
+          <Menu.Item key="13">Option 11</Menu.Item>
+          <Menu.Item key="14">Option 12</Menu.Item>
+        </SubMenu>
+      </SubMenu>
 
+    </Menu>
+  )
+};
 
-const { SubMenu } = Menu;
-
-class LeftBar extends React.Component {
-  state = {
-    collapsed: true,
-  };
-
-  toggleCollapsed = () => {
-    this.setState({
-      collapsed: !this.state.collapsed,
-    });
-  };
-
-  render() {
-    return (
-      // style={{backgroundColor:'rgb(0, 21, 41)'}}
-      <div className={`${this.state.collapsed ? 'style-left-bar-collapsed' : 'style-left-bar-not-collapsed'}`} style={{position:'static',height:'100%'}}>
-      <div className={`${this.state.collapsed ? 'style-left-bar-collapsed' : 'style-left-bar-not-collapsed'}`} style={{height:'100%', position:'fixed', backgroundColor:'rgb(0, 21, 41)'}}>
-        <Button type="primary" onClick={this.toggleCollapsed} style={{ margin:8, marginLeft: 16, backgroundColor:'rgb(0, 21, 41)'}}>
-          {React.createElement(this.state.collapsed ? MenuUnfoldOutlined : MenuFoldOutlined)}
-        </Button>
-        <Menu
+function menuLeftBar(collapsed) {
+  return (
+    <Menu
           defaultSelectedKeys={['1']}
           mode="inline"
+          inlineCollapsed={collapsed}
           theme="dark"
-          inlineCollapsed={this.state.collapsed}
           style={{height:'100%'}}
         >
           <Menu.Item key="1" icon={<FileTextOutlined />}>
@@ -116,7 +158,6 @@ class LeftBar extends React.Component {
             </Link> 
           </Menu.Item>
 
-
           <SubMenu key="sub3" icon={<AppstoreOutlined />} title="Navigation Two">
             <Menu.Item key="11">Option 9</Menu.Item>
             <Menu.Item key="12">Option 10</Menu.Item>
@@ -126,8 +167,56 @@ class LeftBar extends React.Component {
             </SubMenu>
           </SubMenu>
         </Menu>
-      </div>
-      </div>
+  )
+};
+
+const { SubMenu } = Menu;
+
+class LeftBar extends React.Component {
+  state = {
+    collapsed: true,
+    width : window.innerWidth
+  };
+  
+  handleResizeBar = e => {
+    this.setState({width: window.innerWidth});
+  };
+
+  componentDidMount() {
+    window.addEventListener("resize", this.handleResizeBar);
+    this.handleResizeBar();
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.handleResizeBar);
+  }
+
+  toggleCollapsed = () => {
+    this.setState({
+      collapsed: !this.state.collapsed,
+    });
+  };
+
+  render() {
+    return (
+      // style={{backgroundColor:'rgb(0, 21, 41)'}}
+      <div style={{}}>
+      {this.state.width > 700 ?
+
+        <div className={`${this.state.collapsed ? 'style-left-bar-collapsed' : 'style-left-bar-not-collapsed'}`} style={{position:'static',height:'100%'}}>
+        <div className={`${this.state.collapsed ? 'style-left-bar-collapsed' : 'style-left-bar-not-collapsed'}`} style={{height:'100%', position:'fixed', backgroundColor:'rgb(0, 21, 41)'}}>
+          <Button type="primary" onClick={this.toggleCollapsed} style={{ margin:8, marginLeft: 16, backgroundColor:'rgb(0, 21, 41)'}}>
+            {React.createElement(this.state.collapsed ? MenuUnfoldOutlined : MenuFoldOutlined)}
+          </Button>
+          {menuLeftBar(this.state.collapsed)}
+        </div>
+        </div>
+      :
+        <div style={{position:'static', width:'100%'}}>
+          {menuTopBar(this.state.collapsed)}
+        </div>
+      }
+    </div>
     );
   }
 }

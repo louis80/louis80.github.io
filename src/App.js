@@ -19,14 +19,37 @@ function ShowDiv() {
 
 
 class App extends React.Component {
-  
+  constructor(props) {
+    super(props);
+    this.state = {paddingLeftBar : '80px' };
+  }
+
+
+  handleResize = e => {
+    if (window.innerWidth > 700){
+      this.setState({paddingLeftBar: '80px'});
+    }else{
+      this.setState({paddingLeftBar: '0px'});
+    }
+  };
+
+  componentDidMount() {
+    window.addEventListener("resize", this.handleResize);
+    this.handleResize();
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.handleResize);
+  }
   render() {
+    
+    console.log(this.state);
     return (
-      <div className='d-flex' style={{height:'100%', width:'100%'}}> 
+      <div className='' style={{}}> 
       <Router>
-        <LeftBar/> 
-        <div style={{height:'100%', flexGrow: "100"}}>
-          <div className='' style={{backgroundColor:'#333', height:'48px', width:'100%'}}>  </div>
+        <LeftBar/>
+        <div style={{height:'100%', paddingLeft:this.state.paddingLeftBar}}>
+          <div className='' style={{backgroundColor:'#333', height:'51px', width:'100%'}}>  </div>
           <Route exact path="/" component={LandingPageArticle} />
           <Route exact path="/article/impact-du-covid-sur-immobilier" component={CovidImmo} />
 

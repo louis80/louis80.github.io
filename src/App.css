@@ -16,7 +16,7 @@
 
 .container-page{
   max-width:1140px;
-  display:block;
+  /*display:block;*/
   margin-left: auto;
   margin-right: auto;
   padding: 2rem;
