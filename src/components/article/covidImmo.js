@@ -11,7 +11,6 @@ function CovidImmo() {
         <div>
             <div className='header-image'></div>
             <div className='header-title' style={{maxWidth:'1140px', 'margin-left': 'auto', 'margin-right': 'auto', 'padding-left': '2rem', 'padding-right': '2rem'}}  >
-            TITRE DE l'ARTICLE 
             </div>
         </div>
         <div className='container-page' >
@@ -21,9 +20,10 @@ function CovidImmo() {
                     <HomeIcon fontSize='small'/>
                 </Link>
                 <Typography color="textPrimary"> Article </Typography>
-                <Typography color="textPrimary"> Titre article covid immo </Typography>
+                <Typography color="textPrimary"> Impacts du Covid-19 sur le marché de l'immobilier </Typography>
             </Breadcrumbs>
             
+            <h1 className='title' style={{marginTop:'3rem'}}> Impacts du Covid-19 sur le marché de l'immobilier </h1>
             <p className="introduction" style={{marginTop:'2rem'}}>
             Depuis le début de la crise Covid, les analyses se multiplient dans de nombreux domaines pour anticiper à quoi ressemblera “le monde d’après”. Le marché de l’immobilier est lui aussi affecté par la crise, et son futur apparaît aujourd’hui incertain. Sans prétendre prédire l’évolution du cours de ce marché, cet article vise à en expliquer les déterminants essentiels, et les principaux enjeux. 
             </p>

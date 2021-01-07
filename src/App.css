@@ -14,6 +14,13 @@
 /* ----------------------------------------------------- */
 /* ARTICLE */
 
+.img-article{
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+  background-position: center center !important;
+}
+
+
 .container-page{
   max-width:1140px;
   /*display:block;*/
@@ -45,6 +52,17 @@
   top:20vh;
   left:20vh;
   position: absolute
+}
+
+.title{
+  font-size: 35px;
+  line-height: 1;
+  color: #1e1e1e;
+  font-weight: bold;
+  display: block;
+  padding-left: 18px;
+  position: relative;
+  
 }
 
 .sub-title{
