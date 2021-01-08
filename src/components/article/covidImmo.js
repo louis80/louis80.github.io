@@ -1,11 +1,41 @@
+import React from 'react';
+
 import { Link } from "react-router-dom";
 import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import Typography from '@material-ui/core/Typography';
 import HomeIcon from '@material-ui/icons/Home';
 
-import { CommercialisationLogementsNeufs, EvolSocioParis, InflationCreationMonetaire } from './covidImmoFigure';
+import { CommercialisationLogementsNeufs, EvolSocioParis, InflationCreationMonetaire, RatioDebtImmoIncome } from './covidImmoFigure';
 
-function CovidImmo() {
+import img_1 from '../article/img/graph1.PNG';
+import img_2 from '../article/img/graph2.PNG';
+import img_3 from '../article/img/graph3.PNG';
+import img_4 from '../article/img/graph4.PNG';
+
+class CovidImmo extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {width_ : window.innerWidth };
+    }
+
+    handleResize = e => {
+
+        this.setState({width_ : window.innerWidth});
+        console.log('width', this.state.width_);
+    };
+
+    componentDidMount() {
+        window.addEventListener("resize", this.handleResize);
+        this.handleResize();
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener("resize", this.handleResize);
+    }
+
+    render() {
+
+//function CovidImmo() {
     return (
     <div>
         <div>
@@ -65,11 +95,15 @@ function CovidImmo() {
             </p>
 
             <p style={{marginLeft:'4rem', marginTop:'2rem'}} className="text bold">Commercialisation de logements neufs en France</p>
+            { this.state.width_ > 1080 ?
             <div style={{margin:'4rem', marginTop:'1rem', marginBottom:'1rem'}}> <CommercialisationLogementsNeufs/> </div>
+            :
+            <img src={img_1} class="card-img img-article h-100" alt="image-article"></img>
+            }
             <p style={{marginLeft:'4rem'}} className="text source">Source : www.statistiques.developpement-durable.gouv.fr</p>
 
             <p className="text" style={{marginTop:'1rem'}}>
-            [Commentaire ? (+ possible d'obtenir un historique plus long) (+ expliciter encours ?)]
+           
             </p>
             <p className="text" style={{marginTop:'2rem'}}>
             Cette rigidité de l’offre à court terme permet de parler d’un marché dépendant de la demande à court terme.
@@ -95,7 +129,11 @@ function CovidImmo() {
             </p>
 
             <p style={{marginLeft:'4rem', marginTop:'2rem'}} className="text bold">Evolution de la population selon la catégorie socioprofessionnelle à Paris</p>
-            <div style={{margin:'4rem', marginTop:'1rem', marginBottom:'1rem'}}> <EvolSocioParis/> </div>
+            { this.state.width_ > 1080 ?
+             <div style={{margin:'4rem', marginTop:'1rem', marginBottom:'1rem'}}> <EvolSocioParis/> </div>
+            :
+            <img src={img_2} class="card-img img-article h-100" alt="image-article"></img>
+            }
             <p style={{marginLeft:'4rem'}} className="text source">Source : Insee, Paris Notaires Services</p>
 
             <p className="text" style={{marginTop:'1rem'}}>
@@ -121,6 +159,18 @@ function CovidImmo() {
             Une première explication, structurelle, tient en ce que depuis la crise de 2008 l’endettement privé est davantage surveillé par les autorités de régulation. 
             Par exemple, ce dernier figure parmi les nouveaux indicateurs macroéconomiques proposés par la Banque de France.
             Le scénario espagnol de 2008, ou la crise financière avait révélé l’ampleur du niveau d’endettement privé, semble donc impossible.
+            </p>
+
+            <p style={{marginLeft:'4rem', marginTop:'2rem'}} className="text bold">Dette immobilière des ménages rapportée à leur revenu disponible </p>
+            { this.state.width_ > 1080 ?
+                <div style={{margin:'4rem', marginTop:'1rem', marginBottom:'1rem'}}> { <RatioDebtImmoIncome/> } </div>
+            :
+            <img src={img_3} class="card-img img-article h-100" alt="image-article"></img>
+            }
+            <p style={{marginLeft:'4rem'}} className="text source">Source : OCDE </p>
+
+
+            <p className="text" style={{marginTop:'1rem'}}>
             Une seconde raison, conjoncturelle, réside dans l’intervention massive de l’État français pour soutenir l’économie. Cette intervention, notamment avec le chômage partiel, a pu largement réduire l’impact de la crise sur la demande.
             </p>
             <p className="text bold" style={{marginTop:'2rem'}}>
@@ -153,7 +203,11 @@ function CovidImmo() {
             </p>
 
             <p style={{marginLeft:'4rem', marginTop:'2rem'}} className="text bold">TITRE GRAPHIQUE ? </p>
-            <div style={{margin:'4rem', marginTop:'1rem', marginBottom:'1rem'}}> { <InflationCreationMonetaire/> } </div>
+            { this.state.width_ > 1080 ?
+                <div style={{margin:'4rem', marginTop:'1rem', marginBottom:'1rem'}}> { <InflationCreationMonetaire/> } </div>
+            :
+            <img src={img_4} class="card-img img-article h-100" alt="image-article"></img>
+            }
             <p style={{marginLeft:'4rem'}} className="text source">Source : Insee, Banque de France </p>
 
             <p className="text" style={{marginTop:'1rem'}}>
@@ -191,6 +245,7 @@ function CovidImmo() {
         </div>
     </div>
     );
+    }
 }
 
 export default CovidImmo;

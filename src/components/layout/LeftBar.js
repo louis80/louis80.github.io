@@ -203,8 +203,8 @@ class LeftBar extends React.Component {
       <div style={{}}>
       {this.state.width > 700 ?
 
-        <div className={`${this.state.collapsed ? 'style-left-bar-collapsed' : 'style-left-bar-not-collapsed'}`} style={{position:'static',height:'100%'}}>
-        <div className={`${this.state.collapsed ? 'style-left-bar-collapsed' : 'style-left-bar-not-collapsed'}`} style={{height:'100%', position:'fixed', backgroundColor:'rgb(0, 21, 41)'}}>
+        <div className={`${this.state.collapsed ? 'style-left-bar-collapsed' : 'style-left-bar-not-collapsed'}`} style={{position:'static',height:'100%', zIndex: '1'}}>
+        <div className={`${this.state.collapsed ? 'style-left-bar-collapsed' : 'style-left-bar-not-collapsed'}`} style={{height:'100%', position:'fixed', zIndex: '1', backgroundColor:'rgb(0, 21, 41)'}}>
           <Button type="primary" onClick={this.toggleCollapsed} style={{ margin:8, marginLeft: 16, backgroundColor:'rgb(0, 21, 41)'}}>
             {React.createElement(this.state.collapsed ? MenuUnfoldOutlined : MenuFoldOutlined)}
           </Button>

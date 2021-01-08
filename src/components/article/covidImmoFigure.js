@@ -583,6 +583,117 @@ class InflationCreationMonetaire extends Component {
     }
   }
 
+  class RatioDebtImmoIncome extends Component {
+    chartRef = React.createRef();
+    componentDidMount() {
+        const myChartRef = this.chartRef.current.getContext("2d");
+        new Chart(myChartRef, {
+            type: "line",
+            data: {
+                //Bring in data
+                labels: ["1995", "1996", "1997", "1998", "1999", "2000", "2001", "2002", "2003", "2004", "2005", "2006", "2007", "2008", "2009", "2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019"],
+                datasets: [
+
+                  
+                  {
+                    borderColor: "rgba(0, 0, 0, 0.6 )", 
+                    // backgroundColor: "green", 
+                    fill: false,
+                    label: "Allemagne",
+                    yAxisID: 'A',
+                    data:["98.38999", "102.936", "106.7141", "111.3736", "116.2119", "118.4232", "114.7619", "116.0388", "114.5731", "112.8574", "110.7233", "108.1574", "105.1233", "101.8345", "102.595", "100.595", "98.38264000000001", "97.21162", "96.55417", "95.58514", "95.01755", "94.53259", "94.58971", "94.75551999999999", "96.2133"],
+                    type: 'line',
+                  },
+                  //{
+                    // borderColor: "darkBlue", 
+                    // backgroundColor: "green", 
+                    // fill: false,
+                    // label: "USA",
+                    // yAxisID: 'A',
+                    // data:["94.30469000000001", "96.22100999999999", "97.3432", "98.52856", "102.6665", "104.0255", "107.6555", "112.7325", "120.83200000000001", "127.5723", "135.5351", "140.5759", "143.6107", "136.8497", "135.8478", "128.6968", "121.4275", "114.7026", "116.48200000000001", "111.5192", "108.3295", "108.3967", "107.3953", "104.575"],
+                    // type: 'line',
+                  // },
+                  {
+                    borderColor: "rgba(238, 238, 0, 0.6)", 
+                    fill: false,
+                    label: "Espagne",
+                    yAxisID: 'A',
+                    data: ["64.01708", "64.77859000000001", "67.05067", "72.68475", "79.93459", "84.66525", "87.19019", "94.61031", "102.7121", "114.5074", "126.9269", "142.1469", "149.1548", "146.4012", "145.9195", "145.9475", "140.2461", "141.8113", "134.1725", "128.3346", "118.9835", "114.3275", "110.3096", "107.2154", "104.9661"],
+                    type: 'line',
+                  },
+                  {
+                    borderColor: "rgba(240, 52, 52, 0.6)", 
+                    fill: false,
+                    label: "Royaume-Uni",
+                    yAxisID: 'A',
+                    data: ["98.63763", "96.50214", "98.03683000000001", "103.8206", "105.4171", "107.5819", "115.1893", "126.4023", "138.2088", "147.8326", "152.5913", "163.1321", "166.8308", "165.612", "160.2875", "156.7602", "155.9122", "150.4379", "146.2001", "145.8121", "141.5402", "144.9941", "146.3367", "143.3744", "142.0891"],
+                    type: 'line',
+                  },
+                  {
+                    borderColor: "rgb(0,0,139, 0.6)", 
+                    fill: false,
+                    label: "France",
+                    yAxisID: 'A',
+                    data: ["68.6235", "71.24432", "74.94621", "75.34821", "77.97491", "76.50024", "78.59366", "81.03689", "85.13754", "86.87676", "92.30894", "97.27893", "101.0741", "102.7998", "109.3832", "112.8121", "113.4587", "108.2649", "110.3357", "111.1832", "115.4928", "115.8367", "119.7405", "118.4489", "122.1306"],
+                    type: 'line',
+                  },
+                ]
+            },
+            options: {
+              elements: {
+                point:{
+                    radius: 0
+                }
+              },
+              spanGaps: true,
+              tooltips: {
+                mode: 'index',
+                intersect: true
+              },
+              scales: {
+                xAxes: [{
+                  // stacked: true,
+                  gridLines: {
+                    display: false,
+                  },
+                }],
+                yAxes: [{
+                  // stacked: true, 
+                  id: 'A',
+                  type: 'linear',
+                  position: 'left',
+                  ticks: {
+                    beginAtZero: true,
+                    min: 50,
+                    max: 170
+                  },
+                  gridLines: {
+                    // display: false,
+                  },
+                  scaleLabel: {
+                    display: true,
+                    labelString: 'Indice (base 100)',
+                    fontColor: "grey",
+                  }
+                },]
+              },
+          
+            },
+            
+        });
+    }
+    render() {
+        return (
+            <div>
+                <canvas
+                    id="myChart"
+                    ref={this.chartRef}
+                />
+            </div>
+        )
+    }
+  }
+
 
 // https://france-inflation.com/inflation-depuis-1901.php
 // http://www.cgedd.developpement-durable.gouv.fr/prix-immobilier-evolution-a-long-terme-a1048.html
@@ -595,5 +706,6 @@ class InflationCreationMonetaire extends Component {
 export {
   CommercialisationLogementsNeufs,
   EvolSocioParis,
-  InflationCreationMonetaire
+  InflationCreationMonetaire,
+  RatioDebtImmoIncome
 }
