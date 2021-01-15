@@ -39,10 +39,6 @@ for idx, q in enumerate(date_range):
 # 0 : 2014
 # 1 : 2015
 # ...
-
-# Concatenate dataframe
-df = pd.concat([df1, df2])
-
 `;
 
 const virtualEnvironment = `
@@ -53,7 +49,7 @@ python -m pip install --user virtualenv
 python -m venv env_name
 
 # Activate the environment
-.\env_name\Scripts\activate # Windows
+.\\env_name\\Scripts\\activate # Windows
 source env_name/bin/activate # linux
 
 # Install requirements
@@ -117,20 +113,20 @@ class PythonGeneral extends React.Component {
             </Breadcrumbs>
 
             <div>
-                <span className="" style={{marginBottom:'10px'}}><strong>Basic Python code </strong></span>
-                {CodeHighlight(basicPythonCode)}
+                <span className="title-code-section">Basic Python code </span>
+                <div style={{marginTop:'15px'}}> {CodeHighlight(basicPythonCode)} </div>
             </div>
-            <div>
-                <span className="" style={{marginBottom:'10px'}}><strong>Virtual Environment </strong></span>
-                {CodeHighlight(virtualEnvironment)}
+            <div style={{marginTop:'30px'}}>
+                <span className="title-code-section"> Virtual Environment </span>
+                <div style={{marginTop:'15px'}}> {CodeHighlight(virtualEnvironment)} </div> 
             </div>
-            <div>
-                <span className="" style={{marginBottom:'10px'}}><strong>Manipulation of csv or excel files </strong></span>
-                {CodeHighlight(csvExcelManipulation)}
+            <div style={{marginTop:'30px'}}>
+                <span className="title-code-section"> Manipulation of csv or excel files </span>
+                <div style={{marginTop:'15px'}}> {CodeHighlight(csvExcelManipulation)} </div> 
             </div>
-            <div>
-                <span className="" style={{marginBottom:'10px'}}><strong>Iterate over files whithin a folder </strong></span>
-                {CodeHighlight(iterateOverFiles)}
+            <div style={{marginTop:'30px'}}>
+                <span className="title-code-section"> Iterate over files whithin a folder </span>
+                <div style={{marginTop:'15px'}}> {CodeHighlight(iterateOverFiles)} </div> 
             </div>
         </div>
         );

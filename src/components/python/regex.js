@@ -77,7 +77,7 @@ df = pd.DataFrame(columns=['name1', 'name2', 'time'])
 df = df.append({'name1': 'value1', 'name2':'value2', 'time':datetime.now()}, ignore_index=True)
 `;
 
-class PythonDataframe extends React.Component {
+class PythonRegex extends React.Component {
 
     render() {
         return (
@@ -85,22 +85,17 @@ class PythonDataframe extends React.Component {
             <Breadcrumbs separator="›" aria-label="breadcrumb" style={{marginBottom:'2rem', fontweight:'600'}}>
                 <HomeIcon fontSize='small'/>
                 <Typography style={{fontWeight:'500', fontSize:'14px'}}> Python </Typography>
-                <Typography style={{fontWeight:'500', fontSize:'14px'}}> Dataframe </Typography>
+                <Typography style={{fontWeight:'500', fontSize:'14px'}}> Regex </Typography>
             </Breadcrumbs>
 
             <div>
-                <span className="title-code-section">Basic operation on datafame </span>
-                <div style={{marginTop:'15px'}}> {CodeHighlight(BasicOperation)}  </div>
+                <span className="title-code-section">Title  </span>
+                <div style={{marginTop:'15px'}}> {CodeHighlight('text')}  </div>
             </div>
-            <div style={{marginTop:'30px'}}>
-                <span className="title-code-section"> Add element to a dataframe </span>
-                <div style={{marginTop:'15px'}}> {CodeHighlight(AddElementToDataframe)} </div> 
-            </div>
-
-            
+           
         </div>
         );
     }
 }
 
-export default PythonDataframe;
+export default PythonRegex;

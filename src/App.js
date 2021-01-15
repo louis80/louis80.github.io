@@ -11,6 +11,12 @@ import CovidImmo from './components/article/covidImmo'
 import PythonGeneral from './components/python/general'
 import PythonDataframe from './components/python/dataframe'
 import PythonDatabase from './components/python/database'
+import PythonRegex from './components/python/regex'
+
+import Requests from './components/python/scraping/requests'
+import BeautifulSoup from './components/python/scraping/beautifulsoup'
+import Selenium from './components/python/scraping/selenium'
+
 
 function ShowDiv() {
   return <div>TESTT</div>;
@@ -59,6 +65,11 @@ class App extends React.Component {
           <Route exact path="/python/general" component={PythonGeneral} />
           <Route exact path="/python/dataframe" component={PythonDataframe} />
           <Route exact path="/python/database" component={PythonDatabase} />
+          <Route exact path="/python/dataviz" component={ShowDiv} />
+          <Route exact path="/python/regex" component={PythonRegex} />
+          <Route exact path="/python/scraping/requests" component={Requests} />
+          <Route exact path="/python/scraping/beautifulsoup" component={BeautifulSoup} />
+          <Route exact path="/python/scraping/selenium" component={Selenium} />
 
           <Route exact path="/react" component={ShowDiv} />
 

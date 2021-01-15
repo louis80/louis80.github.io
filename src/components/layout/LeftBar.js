@@ -131,11 +131,21 @@ function menuLeftBar(collapsed) {
                 <Link to="/python/database"> Database </Link> 
             </Menu.Item>
             <Menu.Item key="5">
-                <Link to="/python/plotly"> Plotly </Link> 
+                <Link to="/python/dataviz"> Dataviz </Link> 
+            </Menu.Item>
+            <Menu.Item key="15">
+                <Link to="/python/regex"> Regex </Link> 
             </Menu.Item>
             <SubMenu key="sub2" title="Scraping">
-              <Menu.Item key="6">BeautifulSoup</Menu.Item>
-              <Menu.Item key="7">Selenium</Menu.Item>
+              <Menu.Item key="16">
+                <Link to="/python/scraping/requests"> Requests </Link> 
+              </Menu.Item>
+              <Menu.Item key="6">
+                <Link to="/python/scraping/beautifulsoup"> BeautifulSoup </Link> 
+              </Menu.Item>
+              <Menu.Item key="7">
+                <Link to="/python/scraping/selenium"> Selenium </Link> 
+              </Menu.Item>
             </SubMenu>
 
           </SubMenu>

@@ -219,7 +219,7 @@ class CovidImmo extends React.Component {
             </p>
             <p className="text" style={{marginTop:'1rem'}}>
             Toutefois, face aux craintes d’une possible bulle immobilière, les banques restreignent les crédits en sélectionnant de manière plus exigeante les dossiers d’achats immobiliers.
-             Ainsi, le Haut conseil de stabilité financière demande désormais aux banques de ne pas prêter au-delà du taux d’endettement de 33%, et sur des durées maximales de 25 ans.
+             Le Haut conseil de stabilité financière demande désormais aux banques de ne pas prêter au-delà du taux d’endettement de 33%, et sur des durées maximales de 25 ans.
               Cette mesure aura donc potentiellement deux conséquences : approfondir la segmentation du marché bancaire immobilier entre les ménages disposant de revenus élevés et les autres, et transférer le surplus de monnaie émis par des achats d’actifs non pas immobiliers mais financiers. Ainsi selon l’Autorité des marchés financiers les achats d’actions par les particuliers ont été multipliés par trois au mois de mars. 
               Cette hausse pourrait toutefois s’expliquer également par les opportunités boursières permises par la crise sanitaire. 
 
