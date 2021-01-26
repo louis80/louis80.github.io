@@ -1,5 +1,6 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { HashRouter as Router, Route } from 'react-router-dom';
+import ReactGA from 'react-ga';
 
 import './App.css';
 
@@ -17,20 +18,17 @@ import Requests from './components/python/scraping/requests'
 import BeautifulSoup from './components/python/scraping/beautifulsoup'
 import Selenium from './components/python/scraping/selenium'
 
-import withTracker from './withTracker';
+import withTracker from './withTracker'
 
 function ShowDiv() {
   return <div>TESTT</div>;
 }
-
-
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {paddingLeftBar : '80px' };
   }
-
 
   handleResize = e => {
     if (window.innerWidth > 700){

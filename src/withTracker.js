@@ -3,14 +3,13 @@ import GoogleAnalytics from "react-ga";
 
 GoogleAnalytics.initialize("G-VYJT4TRYGN");
 
-const withTracker = (WrappedComponent, options = {}) => {
-  const trackPage = page => {
-    GoogleAnalytics.set({
-      page,
-      ...options,
-    });
-    GoogleAnalytics.pageview(page);
-  };
+export default function withTracker(WrappedComponent, options = {}) {
+    const trackPage = (page) => {
+        window.gtag('send', 'page_view', {
+            page_location: window.location.href,
+            page_path: window.location.pathname            
+        });
+    };
 
   // eslint-disable-next-line
   const HOC = class extends Component {
@@ -40,4 +39,3 @@ const withTracker = (WrappedComponent, options = {}) => {
   return HOC;
 };
 
-export default withTracker;
