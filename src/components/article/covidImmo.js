@@ -19,9 +19,7 @@ class CovidImmo extends React.Component {
     }
 
     handleResize = e => {
-
         this.setState({width_ : window.innerWidth});
-        console.log('width', this.state.width_);
     };
 
     componentDidMount() {

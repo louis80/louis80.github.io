@@ -374,7 +374,7 @@ class EvolSocioParis extends Component {
                     ctx.textAlign = 'center';
                     ctx.textBaseline = 'bottom';
                     this.data.datasets.forEach(function (dataset) {
-                        console.log('data', dataset.data[0].y)
+                        
                         if ( dataset.data.length === 1 && dataset.data[0].y === 82){
                           var model_ = dataset._meta[Object.keys(dataset._meta)[0]].data[0]._model;
                           var width_ = ctx.measureText('Ouvriers : - 21.7% sur dix ans').width+10;
