@@ -18,7 +18,7 @@ import Requests from './components/python/scraping/requests'
 import BeautifulSoup from './components/python/scraping/beautifulsoup'
 import Selenium from './components/python/scraping/selenium'
 
-import withTracker from './withTracker'
+// import withTracker from './withTracker'
 
 function ShowDiv() {
   return <div>TESTT</div>;
@@ -54,8 +54,8 @@ class App extends React.Component {
         <LeftBar/>
         <div style={{height:'100%', paddingLeft:this.state.paddingLeftBar}}>
           <div className='' style={{backgroundColor:'#333', height:'51px', width:'100%'}}>  </div>
-          <Route exact path="/" component={withTracker(LandingPageArticle)} />
-          <Route exact path="/article/impact-du-covid-sur-immobilier" component={withTracker(CovidImmo)} />
+          <Route exact path="/" component={LandingPageArticle} />
+          <Route exact path="/article/impact-du-covid-sur-immobilier" component={CovidImmo} />
 
 
           <Route exact path="/test" component={ShowDiv} />

@@ -5,9 +5,14 @@ GoogleAnalytics.initialize("G-VYJT4TRYGN");
 
 export default function withTracker(WrappedComponent, options = {}) {
     const trackPage = (page) => {
+
+        console.log('page', page);
+        console.log('window.location.href : ', window.location.href);
+        console.log('window.location.pathname : ',window.location.pathname);
+
         window.gtag('send', 'page_view', {
             page_location: window.location.href,
-            page_path: window.location.pathname            
+            page_path: page //window.location.pathname            
         });
     };
 
@@ -16,7 +21,7 @@ export default function withTracker(WrappedComponent, options = {}) {
     componentDidMount() {
       // eslint-disable-next-line
       const page = this.props.location.pathname + this.props.location.search;
-      console.log(page);
+      console.log('page', page);
       trackPage(page);
     }
 
@@ -26,7 +31,10 @@ export default function withTracker(WrappedComponent, options = {}) {
       const nextPage =
         this.props.location.pathname + this.props.location.search;
 
+      console.log('CHEMIN : ', currentPage, ' : ',nextPage );
+
       if (currentPage !== nextPage) {
+        console.log('nextPage : ',nextPage);
         trackPage(nextPage);
       }
     }

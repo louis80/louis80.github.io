@@ -60,6 +60,11 @@ unique_column_value_between_date = df[(df['datetime']>=min_date) & (df['datetime
 list_name_containing_test = [name for name in df.column_name.unique() if 'test' in name.lower()]
 df = df[~df.column_name.isin(list_name_containing_test)] # ~ -> not 
 
+# Count number of observations by date 
+df = pd.DataFrame(df.date.value_counts()).reset_index()
+df.columns = ['date', 'count']
+df = df.sort_values(by='date')
+
 # Multiply each dataframe rows by a vector
 avg_df = pd.DataFrame({
     var_name: dfb.multiply(
