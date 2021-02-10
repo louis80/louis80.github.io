@@ -19,6 +19,24 @@
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
       gtag('config', 'G-VYJT4TRYGN');
+      console.log('----------------------');
+      window.addEventListener("load", function(event) {
+          var url = window.location.href;
+          console.log('url load : ', url);
+          gtag('config', 'G-VYJT4TRYGN', {
+            'page_title' : url,
+            'page_path': url
+          });
+      });
+      window.addEventListener('popstate', function(){
+          var url = window.location.href;
+          console.log('url popstate : ', url);
+          gtag('config', 'G-VYJT4TRYGN', {
+            'page_title' : url,
+            'page_path': url
+          });
+      });
+      console.log('----------------------');
     </script>
     <!-- END Global site tag (gtag.js) - Google Analytics -->
     <!-- Google Tag Manager -->
