@@ -240,6 +240,19 @@ class CovidImmo extends React.Component {
             Cette difficulté à anticiper l’évolution de ce marché ne doit pourtant pas dissuader de s’intéresser davantage à l’évolution des prix immobiliers. En effet, ils ont des conséquences multiples dans nos sociétés, souvent méconnues et pourtant essentielles.  
             </p>
 
+            <p className="text bold" style={{marginTop:'3rem'}}>
+            Sources
+            </p>
+            <p className="text" style={{marginTop:'1rem', marginBottom:'2rem'}}>
+                Conjoncture immobilière au 1er trimestre 2020 {"\n"} 
+                Rapport d’information du Sénat “Les communes face à l’inflation des prix de l’immobilier : quels moyens d’action pour réguler le marché ?”, mai 2020
+                Note : “Quel impact attendre de la crise actuelle sur le marché immobilier résidentiel français ?”, Caisse des dépôts, 7 juillet 2020
+                Pouvoir d’achat. Le grand mensonge, Philippe Herlin, 2018
+                L’économie post covid, Patrick Artus et Olivier Pastré, 2020
+                L’archipel français, Jérome Fourquet, 2019 
+                Article “Marché immobilier : tendance et évolution des prix de l’immobilier”, sur le site Notaire.fr, octobre 2020
+                Article “Le marché du bâtiment : bilan et perspectives en 2020”, sur le site batimat.com, 6 juillet 2002
+            </p>
         </div>
     </div>
     );
