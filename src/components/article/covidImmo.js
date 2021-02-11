@@ -243,16 +243,16 @@ class CovidImmo extends React.Component {
             <p className="text bold" style={{marginTop:'3rem'}}>
             Sources
             </p>
-            <p className="text" style={{marginTop:'1rem', marginBottom:'2rem'}}>
-                Conjoncture immobilière au 1er trimestre 2020 {"\n"} 
-                Rapport d’information du Sénat “Les communes face à l’inflation des prix de l’immobilier : quels moyens d’action pour réguler le marché ?”, mai 2020
-                Note : “Quel impact attendre de la crise actuelle sur le marché immobilier résidentiel français ?”, Caisse des dépôts, 7 juillet 2020
-                Pouvoir d’achat. Le grand mensonge, Philippe Herlin, 2018
-                L’économie post covid, Patrick Artus et Olivier Pastré, 2020
-                L’archipel français, Jérome Fourquet, 2019 
-                Article “Marché immobilier : tendance et évolution des prix de l’immobilier”, sur le site Notaire.fr, octobre 2020
-                Article “Le marché du bâtiment : bilan et perspectives en 2020”, sur le site batimat.com, 6 juillet 2002
-            </p>
+            
+            <p className="text" style={{marginTop:'1rem', marginBottom:'1rem'}}> Conjoncture immobilière au 1er trimestre 2020 </p>  
+            <p className="text" style={{marginTop:'1rem', marginBottom:'1rem'}}> Rapport d’information du Sénat “Les communes face à l’inflation des prix de l’immobilier : quels moyens d’action pour réguler le marché ?”, mai 2020 </p>  
+            <p className="text" style={{marginTop:'1rem', marginBottom:'1rem'}}> Note : “Quel impact attendre de la crise actuelle sur le marché immobilier résidentiel français ?”, Caisse des dépôts, 7 juillet 2020 </p>  
+            <p className="text" style={{marginTop:'1rem', marginBottom:'1rem'}}> Pouvoir d’achat. Le grand mensonge, Philippe Herlin, 2018 </p>  
+            <p className="text" style={{marginTop:'1rem', marginBottom:'1rem'}}> L’économie post covid, Patrick Artus et Olivier Pastré, 2020 </p>  
+            <p className="text" style={{marginTop:'1rem', marginBottom:'1rem'}}> L’archipel français, Jérome Fourquet, 2019 </p>  
+            <p className="text" style={{marginTop:'1rem', marginBottom:'1rem'}}> Article “Marché immobilier : tendance et évolution des prix de l’immobilier”, sur le site Notaire.fr, octobre 2020 </p>  
+            <p className="text" style={{marginTop:'1rem', marginBottom:'1rem'}}> Article “Le marché du bâtiment : bilan et perspectives en 2020”, sur le site batimat.com, 6 juillet 2020 </p>  
+            
         </div>
     </div>
     );
