@@ -38,7 +38,7 @@ class CovidImmo extends React.Component {
     <div>
         <div>
             <div className='header-image'></div>
-            <div className='header-title' style={{maxWidth:'1140px', 'margin-left': 'auto', 'margin-right': 'auto', 'padding-left': '2rem', 'padding-right': '2rem'}}  >
+            <div className='header-title' style={{maxWidth:'1140px', marginLeft: 'auto', marginRight: 'auto', paddingLeft: '2rem', paddingRight: '2rem'}}  >
             </div>
         </div>
         <div className='container-page' >
