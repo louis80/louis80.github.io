@@ -8,6 +8,8 @@ import LeftBar from './components/layout/LeftBar'
 
 import LandingPageArticle from './components/article/landingPage'
 import CovidImmo from './components/article/covidImmo'
+import DeployAWS from './components/article/deployAWS/deployAWS'
+
 
 import PythonGeneral from './components/python/general'
 import PythonDataframe from './components/python/dataframe'
@@ -47,16 +49,16 @@ class App extends React.Component {
     window.removeEventListener("resize", this.handleResize);
   }
   render() {
-    
+
     return (
-      <div> 
+      <div>
       <Router>
         <LeftBar/>
         <div style={{height:'100%', paddingLeft:this.state.paddingLeftBar}}>
           <div className='' style={{backgroundColor:'#333', height:'51px', width:'100%'}}>  </div>
           <Route exact path="/" component={LandingPageArticle} />
           <Route exact path="/article/impact-du-covid-sur-immobilier" component={CovidImmo} />
-
+          <Route exact path="/article/deploy-webapp-on-aws" component={DeployAWS} />
 
           <Route exact path="/test" component={ShowDiv} />
 
@@ -76,7 +78,7 @@ class App extends React.Component {
           <Route exact path="/github" component={ShowDiv} />
         </div>
       </Router>
-        
+
       </div>
     );
   }
