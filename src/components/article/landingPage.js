@@ -8,6 +8,9 @@ import Chip from '@material-ui/core/Chip';
 import ImgImmo from '../article/img/img_immo-min.jpeg';
 import ImgDeployAWS from '../article/img/deploy-aws/img-deploy-aws.jpg';
 
+import ImgFrance from '../article/img/france.png';
+import ImgRoyaumeUni from '../article/img/royaume-uni.png';
+
 
 import dic_article from './list_article.js';
 
@@ -42,18 +45,21 @@ function getArticleOld(dic_article, LogoImg) {
     )
   }
 
-function getArticle(dic_article, LogoImg) {
+function getArticle(dic_article, LogoImg, LogoLang) {
   return (
     <div className='my-5' style={{maxWidth: "1130px", cursor: 'pointer', boxShadow: '0 0 30px 6px rgba(31, 51, 73, 0.10)', marginRight:'auto', marginLeft:'auto'}}>
       <div className="row m-0">
 
           <div className="container-img-article m-0" style={{backgroundColor:'grey'}}>
             <img src={LogoImg}  class="card-img img-article h-100" alt="image-article"></img>
-
           </div>
 
           <div className="container-resume-article m-0">
-              <h3 className="card-title-article m-0" > {dic_article.title} </h3>
+              <div className='d-flex'>
+                <h3 className="card-title-article m-0" > {dic_article.title} </h3>
+                <img src={LogoLang}  class='my-auto ml-auto' style={{height:'30px'}} alt="lang-flag"></img>
+
+              </div>
               <div className="mb-1 mt-2">
               {dic_article.tag.map((tag) => (
                 <Chip className='m-1' label={tag} style={{cursor: 'pointer'}} />
@@ -82,8 +88,8 @@ class LandingPageArticle extends React.Component {
         <div className='container-page' >
 
             <div>  </div>
-            <div> <Link to="/article/deploy-webapp-on-aws"> { getArticle(dic_article[1], ImgDeployAWS) } </Link> </div>
-            <div> <Link to="/article/impact-du-covid-sur-immobilier"> { getArticle(dic_article[0], ImgImmo) } </Link> </div>
+            <div> <Link to="/article/deploy-webapp-on-aws"> { getArticle(dic_article[1], ImgDeployAWS, ImgRoyaumeUni) } </Link> </div>
+            <div> <Link to="/article/impact-du-covid-sur-immobilier"> { getArticle(dic_article[0], ImgImmo, ImgFrance) } </Link> </div>
 
         </div>
         );

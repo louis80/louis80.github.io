@@ -48,6 +48,7 @@ class DeployAWS extends React.Component {
 
             <h1 className='title' style={{marginTop:'3rem'}}> The easiest way to deploy a webapp using AWS </h1>
             <p className="introduction" style={{marginTop:'2rem'}}>
+            The main objective of this article is to present a simple way to deploy a webapp using the different Amazon web services.<br/><br/>
             This tutorial assumes that : <br/>
             • you have knowledge on implementing a webapp using React,  Python (Flask) and PostgreSQL<br/>
             • you have an AWS account setup and ready to use<br/><br/>
