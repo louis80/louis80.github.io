@@ -20,7 +20,11 @@
 
 /* ----------------------------------------------------- */
 /* ARTICLE */
-
+@media (max-width: 700px) {
+    .img-article{
+      width: 100%;
+    }
+}
 @media (max-width: 600px) {
     .container-img-article{
         width: 100%;
