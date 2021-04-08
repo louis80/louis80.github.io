@@ -31,22 +31,25 @@ function CodeHighlight(codesample) {
 }
 
 const ConnectionToDatabase = `
-import yaml
+import sqlalchemy
 from sqlalchemy import create_engine
 import psycopg2
 
-# need improvment
-try:
-    f = open('config.yml', 'r')
-    conf = yaml.safe_load(f)
-except:
-    conf = yaml.load(os.getenv("PROJECT_CONFIG"))
+USER = 'postgres'
+PASSWORD = 'h5mOqOUQBOn1EwN7lJcC'
+PORT = '5432'
+HOST = 'database-1.cowuzsvpx5fl.eu-west-3.rds.amazonaws.com'
+DBNAME = 'database-1'
 
-engine = create_engine('postgresql://'
-      + conf["project-database"]["user"] + ':'
-      + conf["project-database"]["password"] + '@'
-      + conf["project-database"]["hostname"] +':' + '5432/'
-      + conf["project-database"]["name"])
+uri_aws = 'postgresql://'+USER+':'+PASSWORD+'@'+HOST+'/'+USER
+
+engine = create_engine(uri_aws)
+print(engine.table_names())
+# return [] as we didn't created any table
+`;
+
+const InstallZappa = `
+pip install zappa
 `;
 
 
@@ -130,7 +133,7 @@ class DeployAWS extends React.Component {
             <img src={security_group_12} style={{border:'solid silver 0.5px'}} class="card-img img-article h-100" alt="image-article"></img>
 
             <p className="text" style={{marginTop:'1rem'}}>
-            blabla security <br/><br/>
+            [blabla security] <br/><br/>
             Finally click on “Create security group” at the bottom of the page
             </p>
 
@@ -162,7 +165,13 @@ class DeployAWS extends React.Component {
             <p className="text" style={{fontWeight:'bold', marginTop:'2rem'}}>
             Access the database from Python
             </p>
-
+            <p className="text" style={{marginTop:'1rem'}}>
+            As we have selected "Password authentication" in the "Database authentication" settings,
+            we only need the authentication information previously defined to access the database from a Python script
+            </p>
+            <p className="text" style={{marginTop:'1rem'}}>
+            [WHERE TO FIND IDS]
+            </p>
             <div style={{marginTop:'15px'}}> {CodeHighlight(ConnectionToDatabase)} </div>
 
             <p className="text" style={{marginTop:'1rem'}}>
@@ -173,8 +182,24 @@ class DeployAWS extends React.Component {
 
             <h2 className='sub-title' style={{marginTop:'3rem'}}> II. Deploy the API </h2>
             <p className="text" style={{marginTop:'2rem'}}>
-            Text descriptin
+            Regarding the deployment of the API, we are going to use Zappa, an open source python project
+            which allow us to build, deploy and update an API on aws services (AWS Lambda and API Gateway).<br/>
+            According to their documentation :
             </p>
+            <div className="text" style={{backgroundColor:'rgba(192,192,192,0.1)', borderLeft: 'solid #007bff 5px', fontStyle: 'italic', padding:'10px'}}>
+            «Zappa makes it super easy to build and deploy server-less, event-driven Python applications (including, but not limited to, WSGI web apps)
+            on AWS Lambda + API Gateway. Think of it as "serverless" web hosting for your Python apps.
+            That means infinite scaling, zero downtime, zero maintenance - and at a fraction of the cost of your current deployments!»
+            </div>
+            <p className="text" style={{marginTop:'1rem'}}>
+            If you want more information on how zappa works or insights about serverless web hosting,
+            you can read their very well done documentation <a target="_blank" href='https://github.com/zappa/Zappa' style={{textDecoration: 'underline'}}>here</a>.<br/>
+            Let's start the deployment by installing the Zappa package :
+            </p>
+            <div style={{marginTop:'15px'}}> {CodeHighlight(InstallZappa)} </div>
+            <pre><code>&lt;p&gt;Sample text here...&lt;/p&gt;
+            &lt;p&gt;And another line of sample text here...&lt;/p&gt;
+            </code></pre>
 
             <h2 className='sub-title' style={{marginTop:'3rem'}}> III. Deploy the front-end </h2>
             <p className="text" style={{marginTop:'2rem'}}>
