@@ -64,8 +64,8 @@
 
 
 .container-page{
-  max-width:1140px;
-  /*display:block;*/
+  max-width:940px;
+  /*display:block;   max-width:1140px;*/
   margin-left: auto;
   margin-right: auto;
   padding: 2rem;

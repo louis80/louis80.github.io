@@ -8,9 +8,15 @@ import Typography from '@material-ui/core/Typography';
 import HomeIcon from '@material-ui/icons/Home';
 
 import img_recap from './img/recap_steps.PNG';
+
 import security_group_11 from './img/11_security_group.PNG';
 import security_group_12 from './img/12_security_group.PNG';
 import database_13 from './img/13_database.PNG';
+
+import iam_register_21 from './img/21_iam_register.PNG';
+import iam_register_22 from './img/22_iam_register.PNG';
+// import a from './img/a.PNG';
+
 
 function CodeHighlight(codesample) {
     return (
@@ -197,9 +203,14 @@ class DeployAWS extends React.Component {
             <p className="text" style={{fontWeight:'bold', marginTop:'2rem'}}>
             Setup the AWS credentials
             </p>
+          
             IAM > Users > Add user <br/>
-            Select AWS access type → Programmatic access <br/>
-            Attach existing policies directly → AdministratorAccess <br/>
+            Select AWS access type → Programmatic access <br/> <br/>
+            <img src={iam_register_21} style={{border:'solid silver 0.5px'}} class="card-img img-article h-100" alt="image-article"></img>
+            <br/><br/>
+            Attach existing policies directly → AdministratorAccess <br/><br/>
+            <img src={iam_register_22} style={{border:'solid silver 0.5px'}} class="card-img img-article h-100" alt="image-article"></img>
+            <br/>
             pass pass → Create user <br/>
             → Access key ID <br/>
             → Secret access key <br/><br/>
