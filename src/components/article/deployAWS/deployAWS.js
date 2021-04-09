@@ -48,9 +48,6 @@ print(engine.table_names())
 # return [] as we didn't created any table
 `;
 
-const InstallZappa = `
-pip install zappa
-`;
 
 
 class DeployAWS extends React.Component {
@@ -193,13 +190,83 @@ class DeployAWS extends React.Component {
             </div>
             <p className="text" style={{marginTop:'1rem'}}>
             If you want more information on how zappa works or insights about serverless web hosting,
-            you can read their very well done documentation <a target="_blank" href='https://github.com/zappa/Zappa' style={{textDecoration: 'underline'}}>here</a>.<br/>
+            you can read their very well done documentation <a target="_blank" href='https://github.com/zappa/Zappa' style={{textDecoration: 'underline'}}>here</a>.
+            </p>
+
+
+            <p className="text" style={{fontWeight:'bold', marginTop:'2rem'}}>
+            Setup the AWS credentials
+            </p>
+            IAM > Users > Add user <br/>
+            Select AWS access type → Programmatic access <br/>
+            Attach existing policies directly → AdministratorAccess <br/>
+            pass pass → Create user <br/>
+            → Access key ID <br/>
+            → Secret access key <br/><br/>
+
+            Install awscli <br/>
+            aws --version # to verify installation <br/>
+            code : aws configure <br/>
+
+            https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html
+
+            <p className="text" style={{fontWeight:'bold', marginTop:'2rem'}}>
+            Setup the virtual environment
+            </p>
+            <p className="text" style={{marginTop:'1rem'}}>
+            <span style={{marginRight:'4px', padding:'2px 4px',backgroundColor:'silver', borderRadius:'3px'}}>Pipenv</span>
+            is a Python package that we will used to create our virtual environment.
+            To install it, you can use the following command in a Python bash :
+            </p>
+            <div style={{marginTop:'15px'}}> {CodeHighlight(`\n$ pip install pipenv\n`)} </div>
+            <p className="text" style={{marginTop:'1rem'}}>
+            Creating our virtual environment is then quite simple, just go in the root of the project where the requirements.txt file is located and type :
+            </p>
+            <div style={{marginTop:'15px'}}> {CodeHighlight(`\n$ pipenv install\n`)} </div>
+            <p className="text" style={{marginTop:'1rem'}}>
+            As there is already a requirements.txt file, It will generate a Pipfile file with the requirements and a virtual environment folder (otherwise, it would have generate an empty Pipfile).<br/>
+            To activate the virtual environment that pipenv already generated, go with :
+            </p>
+            <div style={{marginTop:'15px'}}> {CodeHighlight(`\n$ pipenv shell\n`)} </div>
+
+
+            <p className="text" style={{fontWeight:'bold', marginTop:'2rem'}}>
+            Configure Zappa
+            </p>
+            <p className="text" style={{marginTop:'1rem'}}>
+            We can install Zappa package by simply using the following command :
+            </p>
+            <div style={{marginTop:'15px'}}> {CodeHighlight(`\n$ pipenv install zappa\n`)} </div>
+            <p className="text" style={{marginTop:'1rem'}}>
+            It will then be added the Pipfile which is intended to specify packages requirements for
+            the Python application, both to development and execution.<br/>
+            Then just run :
+            </p>
+            <div style={{marginTop:'15px'}}> {CodeHighlight(`\n$ zappa init\n`)} </div>
+            <p className="text" style={{marginTop:'1rem'}}>
+            Which will generate a zappa_settings.json file including the deployment configuration.
+            </p>
+
+
+            <br/><br/><br/><br/><br/>
+            https://stackoverflow.com/questions/46330327/how-are-pipfile-and-pipfile-lock-used <br/> <br/>
+            Pipenv is both a package and virtual environment management tool that uses the Pipfile <br/>
+
+            # If you only have a requirements.txt file available when running pipenv install,
+             pipenv will automatically import the contents of this file and create a Pipfile for you. <br/>
+
+            pip install pipenv <br/>
+            pipenv install
+            <p className="text" style={{marginTop:'1rem'}}>
             Let's start the deployment by installing the Zappa package :
             </p>
-            <div style={{marginTop:'15px'}}> {CodeHighlight(InstallZappa)} </div>
+            <div style={{marginTop:'15px'}}> {CodeHighlight(`\npip install zappa\n`)} </div>
             <pre><code>&lt;p&gt;Sample text here...&lt;/p&gt;
             &lt;p&gt;And another line of sample text here...&lt;/p&gt;
             </code></pre>
+
+
+
 
             <h2 className='sub-title' style={{marginTop:'3rem'}}> III. Deploy the front-end </h2>
             <p className="text" style={{marginTop:'2rem'}}>
