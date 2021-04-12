@@ -42,9 +42,9 @@ from sqlalchemy import create_engine
 import psycopg2
 
 USER = 'postgres'
-PASSWORD = 'h5mOqOUQBOn1EwN7lJcC'
+PASSWORD = 'your_password'
 PORT = '5432'
-HOST = 'database-1.cowuzsvpx5fl.eu-west-3.rds.amazonaws.com'
+HOST = 'database-1.xxxxxxxxxxxx.eu-west-3.rds.amazonaws.com'
 DBNAME = 'database-1'
 
 uri_aws = 'postgresql://'+USER+':'+PASSWORD+'@'+HOST+'/'+USER
@@ -134,9 +134,11 @@ class DeployAWS extends React.Component {
             </p>
 
             <img src={security_group_12} style={{border:'solid silver 0.5px'}} class="card-img img-article h-100" alt="image-article"></img>
-
+            <br/><br/>
+            <div class="alert alert-warning" role="alert">
+            <strong>[blabla security]  </strong>
+            </div>
             <p className="text" style={{marginTop:'1rem'}}>
-            [blabla security] <br/><br/>
             Finally click on “Create security group” at the bottom of the page
             </p>
 
@@ -203,23 +205,41 @@ class DeployAWS extends React.Component {
             <p className="text" style={{fontWeight:'bold', marginTop:'2rem'}}>
             Setup the AWS credentials
             </p>
-          
-            IAM > Users > Add user <br/>
-            Select AWS access type → Programmatic access <br/> <br/>
+            <p className="text" style={{marginTop:'1rem'}}>
+            The first step of the API deployment is to setup AWS credentials.
+            To do so, search for "IAM" in the AWS console then click on "Users" and on "Add user".<br/>
+            Choose a username and for "Access type", select "Programmatic access" : <br/>
+            </p>
             <img src={iam_register_21} style={{border:'solid silver 0.5px'}} class="card-img img-article h-100" alt="image-article"></img>
-            <br/><br/>
-            Attach existing policies directly → AdministratorAccess <br/><br/>
+            <br/>
+            <p className="text" style={{marginTop:'1rem'}}>
+            Regarding the user permissions, select "Attach existing policies directly" and set the policies as "AdministratorAccess" which sould be the first proposition : <br/>
+            </p>
             <img src={iam_register_22} style={{border:'solid silver 0.5px'}} class="card-img img-article h-100" alt="image-article"></img>
             <br/>
-            pass pass → Create user <br/>
+            <p className="text" style={{marginTop:'1rem'}}>
+            After that, you can pass the tag section and diretly create the user.
+            You will obtain : <br/>
             → Access key ID <br/>
-            → Secret access key <br/><br/>
+            → Secret access key <br/>
+            Keep them somewhere as we will use them later.  <br/>
+            </p>
 
-            Install awscli <br/>
+
+            <div class="alert alert-warning" role="alert">
+            <strong>Creating a user this way is not optimal from a security point of view </strong> but AWS permissions can get quite complicated, so to get things up and running quickly
+            we will start this way and I will come back to it at the end of this tutorial.
+            </div>
+            <p className="text" style={{marginTop:'1rem'}}>
+            To configure the identifiers that will be used by Zappa for the deployment
+            install the AWS CLI (that you can find <a target="_blank" href='https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html' style={{textDecoration: 'underline'}}>here</a>)
+            and once it's done, in a new console write :
+            </p>
+            <div style={{marginTop:'15px'}}> {CodeHighlight(`\n$ aws configure\n`)} </div>
+            <p className="text" style={{marginTop:'1rem'}}>
+            You will be prompted for configuration values such as your AWS Access Key Id and your AWS Secret Access Key that you can copy and paste<br/>
             aws --version # to verify installation <br/>
-            code : aws configure <br/>
-
-            https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html
+            </p>
 
             <p className="text" style={{fontWeight:'bold', marginTop:'2rem'}}>
             Setup the virtual environment
@@ -256,25 +276,66 @@ class DeployAWS extends React.Component {
             <div style={{marginTop:'15px'}}> {CodeHighlight(`\n$ zappa init\n`)} </div>
             <p className="text" style={{marginTop:'1rem'}}>
             Which will generate a zappa_settings.json file including the deployment configuration.
+            You can press enter for all the questions in order to get the default configuration.<br/>
+            We get then a file looking like that : <br/>
             </p>
-
-
-            <br/><br/><br/><br/><br/>
-            https://stackoverflow.com/questions/46330327/how-are-pipfile-and-pipfile-lock-used <br/> <br/>
-            Pipenv is both a package and virtual environment management tool that uses the Pipfile <br/>
-
-            # If you only have a requirements.txt file available when running pipenv install,
-             pipenv will automatically import the contents of this file and create a Pipfile for you. <br/>
-
-            pip install pipenv <br/>
-            pipenv install
+            <div style={{marginTop:'15px'}}>
+              {CodeHighlight(`\n zappa_settings.json
+{
+    "dev": {
+        "app_function": "app.app",
+        "profile_name": "default",
+        "project_name": "flask-api-example",
+        "runtime": "python3.7",
+        "s3_bucket": "flask-api-example",
+        "aws_region": "eu-west-3"
+    }
+} \n`)}
+            </div>
             <p className="text" style={{marginTop:'1rem'}}>
-            Let's start the deployment by installing the Zappa package :
+            Where : <br/>
+            • <strong> app_function </strong> txt <br/>
+            • <strong> profile_name </strong> txt <br/>
+            • <strong> project_name </strong> txt <br/>
+            • <strong> runtime </strong> txt <br/>
+            • <strong> s3_bucket </strong> txt <br/>
+            • <strong> aws_region </strong> txt <br/>
             </p>
-            <div style={{marginTop:'15px'}}> {CodeHighlight(`\npip install zappa\n`)} </div>
-            <pre><code>&lt;p&gt;Sample text here...&lt;/p&gt;
-            &lt;p&gt;And another line of sample text here...&lt;/p&gt;
-            </code></pre>
+            <p className="text" style={{marginTop:'1rem'}}>
+            To add our environment variables (our database connection information),
+            we can simply add the following line to the Zappa configuration file :
+            </p>
+            <div style={{marginTop:'15px'}}>
+              {CodeHighlight(`\n zappa_settings.json
+{
+    "dev": {
+        ...
+        "aws_region": "eu-west-3",
+        "environment_variables": {
+            "HOST":"ec2-xx-xxx-xxx-xxx.eu-west-1.compute.amazonaws.com",
+            "DATABASE":"DATABASE_NAME",
+            "USER":"USERNAME",
+            "PASSWORD":"YOUR_PASSWORD",
+        },
+        "exclude": [".env", "env_name"]
+    }
+} \n`)}
+            </div>
+            <p className="text" style={{marginTop:'1rem'}}>
+            In addition, I added the "exclude" option to be sure that the local id located in the <i>.env</i> file are not deployed.<br/><br/>
+            Now that we have configured our Zappa settings, we can deploy the API by simply using the following command :
+            </p>
+            <div style={{marginTop:'15px'}}> {CodeHighlight(`\n$ zappa deploy dev \n`)} </div>
+
+
+
+
+
+            <br/><br/><br/>
+            to see deployment -> go to AWS Lambda
+            <br/><br/>
+            https://stackoverflow.com/questions/46330327/how-are-pipfile-and-pipfile-lock-used <br/> <br/>
+
 
 
 
