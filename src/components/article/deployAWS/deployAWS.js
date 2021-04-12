@@ -136,7 +136,9 @@ class DeployAWS extends React.Component {
             <img src={security_group_12} style={{border:'solid silver 0.5px'}} class="card-img img-article h-100" alt="image-article"></img>
             <br/><br/>
             <div class="alert alert-warning" role="alert">
-            <strong>[blabla security]  </strong>
+            <strong>Setting up the database access like this is not optimal from a security point of view </strong>
+            but for the simplicity of this tutorial and to get things up and running quickly
+            we will start this way and I will come back to it at the end of this tutorial.
             </div>
             <p className="text" style={{marginTop:'1rem'}}>
             Finally click on “Create security group” at the bottom of the page
