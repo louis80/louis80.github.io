@@ -137,7 +137,7 @@ class DeployAWS extends React.Component {
             <br/><br/>
             <div class="alert alert-warning" role="alert">
             <strong>Setting up the database access like this is not optimal from a security point of view </strong>
-            but for the simplicity of this tutorial and to get things up and running quickly
+            but for the simplicity of this example and to get things up and running quickly
             we will start this way and I will come back to it at the end of this tutorial.
             </div>
             <p className="text" style={{marginTop:'1rem'}}>
@@ -229,7 +229,8 @@ class DeployAWS extends React.Component {
 
 
             <div class="alert alert-warning" role="alert">
-            <strong>Creating a user this way is not optimal from a security point of view </strong> but AWS permissions can get quite complicated, so to get things up and running quickly
+            <strong>Creating a user this way is not optimal from a security point of view </strong>
+            but AWS permissions can get quite complicated, so to get things up and running quickly
             we will start this way and I will come back to it at the end of this tutorial.
             </div>
             <p className="text" style={{marginTop:'1rem'}}>
@@ -296,12 +297,12 @@ class DeployAWS extends React.Component {
             </div>
             <p className="text" style={{marginTop:'1rem'}}>
             Where : <br/>
-            • <strong> app_function </strong> txt <br/>
-            • <strong> profile_name </strong> txt <br/>
-            • <strong> project_name </strong> txt <br/>
-            • <strong> runtime </strong> txt <br/>
-            • <strong> s3_bucket </strong> txt <br/>
-            • <strong> aws_region </strong> txt <br/>
+            • <strong> app_function </strong> module.object_name <br/>
+            • <strong> profile_name </strong> is from the credentials files <br/>
+            • <strong> project_name </strong> is generated automatically <br/>
+            • <strong> runtime </strong> whatever we use in our environment <br/>
+            • <strong> s3_bucket </strong> the bucket is created automatically<br/>
+            • <strong> aws_region </strong> choose the closest region  <br/>
             </p>
             <p className="text" style={{marginTop:'1rem'}}>
             To add our environment variables (our database connection information),
@@ -329,7 +330,9 @@ class DeployAWS extends React.Component {
             </p>
             <div style={{marginTop:'15px'}}> {CodeHighlight(`\n$ zappa deploy dev \n`)} </div>
 
-
+            <p className="text" style={{marginTop:'1rem'}}>
+            In order to update our deployment version </p>
+            <div style={{marginTop:'15px'}}> {CodeHighlight(`\n$ zappa update  dev \n`)} </div>
 
 
 
