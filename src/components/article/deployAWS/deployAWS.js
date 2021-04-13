@@ -111,8 +111,46 @@ class DeployAWS extends React.Component {
             {/*---------------------------------------------------------------------------------*/}
             <h2 className='sub-title' style={{marginTop:'3rem'}}> 0. Run the app locally </h2>
             <p className="text" style={{marginTop:'2rem'}}>
-            Text descriptin
+            For the purpose of this tutorial, we are going to use a simple todo list web app which you can find  
+            <a target="_blank" href='https://github.com/louis80/example_deploy_aws' style={{textDecoration: 'underline'}}> here</a><br/>
+            This repository is slightly adapted from this one <a target="_blank" href='https://github.com/rHuggler/flask-react-todo' style={{textDecoration: 'underline'}}> https://github.com/rHuggler/flask-react-todo </a> 
+            with some modifications made for this tutorial
             </p>
+            <p className="text" style={{fontWeight:'bold', marginTop:'2rem'}}>
+            Launch the backend 
+            </p>
+            <p className="text" style={{marginTop:'1rem'}}>
+            <span style={{marginRight:'4px', padding:'2px 4px',backgroundColor:'silver', borderRadius:'3px'}}>Pipenv</span>
+            is a Python package that we will used to create our virtual environment.
+            To install it, you can use the following command in a Python bash :
+            </p>
+            <div style={{marginTop:'15px'}}> {CodeHighlight(`\n$ pip install pipenv\n`)} </div>
+            <p className="text" style={{marginTop:'1rem'}}>
+            Creating our virtual environment is then quite simple, just go in the "flask_api" folder where the requirements.txt file is located and type :
+            </p>
+            <div style={{marginTop:'15px'}}> {CodeHighlight(`\n$ pipenv install\n`)} </div>
+            <p className="text" style={{marginTop:'1rem'}}>
+            As there is already a requirements.txt file, It will generate a Pipfile file with the requirements and a virtual environment folder (otherwise, it would have generate an empty Pipfile).<br/>
+            To activate the virtual environment that pipenv already generated, go with :
+            </p>
+            <div style={{marginTop:'15px'}}> {CodeHighlight(`\n$ pipenv shell\n`)} </div>
+            <p className="text" style={{marginTop:'1rem'}}>
+            Then to start the API : 
+            </p>
+            <div style={{marginTop:'15px'}}> {CodeHighlight(`\n$ pipenv run python app.py --FLASK_CONFIG=dev \n`)} </div>
+
+            <p className="text" style={{fontWeight:'bold', marginTop:'2rem'}}>
+            Launch the frontend 
+            </p>
+            <p className="text" style={{marginTop:'1rem'}}>
+            Open a new console, go in the "react_client" folder and type :
+            </p>
+            <div style={{marginTop:'15px'}}> {CodeHighlight(`\n$ npm install \n`)} </div>
+            <p className="text" style={{marginTop:'1rem'}}>
+            then run :
+            </p>
+            <div style={{marginTop:'15px'}}> {CodeHighlight(`\n$ npm start \n`)} </div>
+            
 
 
             <h2 className='sub-title' style={{marginTop:'3rem'}}> I. Setup the database </h2>
@@ -245,28 +283,12 @@ class DeployAWS extends React.Component {
             </p>
 
             <p className="text" style={{fontWeight:'bold', marginTop:'2rem'}}>
-            Setup the virtual environment
-            </p>
-            <p className="text" style={{marginTop:'1rem'}}>
-            <span style={{marginRight:'4px', padding:'2px 4px',backgroundColor:'silver', borderRadius:'3px'}}>Pipenv</span>
-            is a Python package that we will used to create our virtual environment.
-            To install it, you can use the following command in a Python bash :
-            </p>
-            <div style={{marginTop:'15px'}}> {CodeHighlight(`\n$ pip install pipenv\n`)} </div>
-            <p className="text" style={{marginTop:'1rem'}}>
-            Creating our virtual environment is then quite simple, just go in the root of the project where the requirements.txt file is located and type :
-            </p>
-            <div style={{marginTop:'15px'}}> {CodeHighlight(`\n$ pipenv install\n`)} </div>
-            <p className="text" style={{marginTop:'1rem'}}>
-            As there is already a requirements.txt file, It will generate a Pipfile file with the requirements and a virtual environment folder (otherwise, it would have generate an empty Pipfile).<br/>
-            To activate the virtual environment that pipenv already generated, go with :
-            </p>
-            <div style={{marginTop:'15px'}}> {CodeHighlight(`\n$ pipenv shell\n`)} </div>
-
-
-            <p className="text" style={{fontWeight:'bold', marginTop:'2rem'}}>
             Configure Zappa
             </p>
+            <p className="text" style={{marginTop:'1rem'}}>
+            To setup Zappa, open a console and go back to "flask_api" folder in order to activate the virtual environment that we created previously :
+            </p>
+            <div style={{marginTop:'15px'}}> {CodeHighlight(`\n$ pipenv shell\n`)} </div>
             <p className="text" style={{marginTop:'1rem'}}>
             We can install Zappa package by simply using the following command :
             </p>
