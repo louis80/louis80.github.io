@@ -111,13 +111,14 @@ class DeployAWS extends React.Component {
             {/*---------------------------------------------------------------------------------*/}
             <h2 className='sub-title' style={{marginTop:'3rem'}}> 0. Run the app locally </h2>
             <p className="text" style={{marginTop:'2rem'}}>
-            For the purpose of this tutorial, we are going to use a simple todo list web app which you can find  
+            For the purpose of this tutorial, we are going to use a simple todo list web app which you can find
             <a target="_blank" href='https://github.com/louis80/example_deploy_aws' style={{textDecoration: 'underline'}}> here</a><br/>
-            This repository is slightly adapted from this one <a target="_blank" href='https://github.com/rHuggler/flask-react-todo' style={{textDecoration: 'underline'}}> https://github.com/rHuggler/flask-react-todo </a> 
-            with some modifications made for this tutorial
+            This repository is adapted from this one <a target="_blank" href='https://github.com/rHuggler/flask-react-todo' style={{textDecoration: 'underline'}}> https://github.com/rHuggler/flask-react-todo </a>
+            with slight modifications made for this tutorial.<br/><br/>
+            To start with, clone repository via SSH or HTTP and cd into it.
             </p>
-            <p className="text" style={{fontWeight:'bold', marginTop:'2rem'}}>
-            Launch the backend 
+            <p className="text" style={{fontWeight:'bold', marginTop:'1rem'}}>
+            Launch the backend
             </p>
             <p className="text" style={{marginTop:'1rem'}}>
             <span style={{marginRight:'4px', padding:'2px 4px',backgroundColor:'silver', borderRadius:'3px'}}>Pipenv</span>
@@ -135,23 +136,28 @@ class DeployAWS extends React.Component {
             </p>
             <div style={{marginTop:'15px'}}> {CodeHighlight(`\n$ pipenv shell\n`)} </div>
             <p className="text" style={{marginTop:'1rem'}}>
-            Then to start the API : 
+            Then to start the API :
             </p>
             <div style={{marginTop:'15px'}}> {CodeHighlight(`\n$ pipenv run python app.py --FLASK_CONFIG=dev \n`)} </div>
 
             <p className="text" style={{fontWeight:'bold', marginTop:'2rem'}}>
-            Launch the frontend 
+            Launch the frontend
             </p>
             <p className="text" style={{marginTop:'1rem'}}>
-            Open a new console, go in the "react_client" folder and type :
+            Open a new console, go in the oot of the repository folder (and "react_client") and type :
             </p>
             <div style={{marginTop:'15px'}}> {CodeHighlight(`\n$ npm install \n`)} </div>
             <p className="text" style={{marginTop:'1rem'}}>
             then run :
             </p>
             <div style={{marginTop:'15px'}}> {CodeHighlight(`\n$ npm start \n`)} </div>
-            
-
+            <p className="text" style={{marginTop:'1rem'}}>
+            the front-end should open automatically at this adress
+             <a target="_blank" href='http://127.0.0.1:3000' style={{textDecoration: 'underline'}}> http://127.0.0.1:3000</a>
+            </p>
+            <p className="text" style={{marginTop:'1rem'}}>
+            and you should see :
+            </p>
 
             <h2 className='sub-title' style={{marginTop:'3rem'}}> I. Setup the database </h2>
             <p className="text" style={{fontWeight:'bold', marginTop:'2rem'}}>
@@ -219,8 +225,10 @@ class DeployAWS extends React.Component {
             </p>
             <div style={{marginTop:'15px'}}> {CodeHighlight(ConnectionToDatabase)} </div>
 
+
             <p className="text" style={{marginTop:'1rem'}}>
-            test
+            The webapp is implemented to work without database configuration. but for testing purpose let's add .env file
+
             </p>
 
 

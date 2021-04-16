@@ -15,7 +15,7 @@ const dic_article = [
         url: '',
         img_link:"",
         tag:['Webapp', 'AWS'],
-        description:"This tutorial is broken down into several parts : after setting up a web application that works locally, we are going to deploy the database using Amazon RDS. Once done, the Flask API will be deployed using Zappa (). Finally the front-end will be deployed using AWS Amplify",
+        description:"The main objective of this article is to present a simple way to deploy a webapp using the different Amazon web services. This tutorial is broken down into several parts : after setting up a web application that works locally, we are going to deploy the database using Amazon RDS. Once done, the Flask API will be deployed using Zappa (). Finally the front-end will be deployed using AWS Amplify",
         date:'Mars 2021',
         time:'14 minutes'
     },
