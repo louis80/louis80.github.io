@@ -15,6 +15,8 @@ import database_13 from './img/13_database.PNG';
 
 import iam_register_21 from './img/21_iam_register.PNG';
 import iam_register_22 from './img/22_iam_register.PNG';
+
+import webapp from './img/webapp.png';
 // import a from './img/a.PNG';
 
 
@@ -144,13 +146,13 @@ class DeployAWS extends React.Component {
             Launch the frontend
             </p>
             <p className="text" style={{marginTop:'1rem'}}>
-            Open a new console, go in the oot of the repository folder (and "react_client") and type :
+            Open a new console, go in the root of the repository folder (and "react_client") and type :
             </p>
-            <div style={{marginTop:'15px'}}> {CodeHighlight(`\n$ npm install \n`)} </div>
+            <div style={{marginTop:'15px'}}> {CodeHighlight(`\n$ npm install --prefix react_client \n`)} </div>
             <p className="text" style={{marginTop:'1rem'}}>
             then run :
             </p>
-            <div style={{marginTop:'15px'}}> {CodeHighlight(`\n$ npm start \n`)} </div>
+            <div style={{marginTop:'15px'}}> {CodeHighlight(`\n$ npm start --prefix react_client \n`)} </div>
             <p className="text" style={{marginTop:'1rem'}}>
             the front-end should open automatically at this adress
              <a target="_blank" href='http://127.0.0.1:3000' style={{textDecoration: 'underline'}}> http://127.0.0.1:3000</a>
@@ -158,6 +160,7 @@ class DeployAWS extends React.Component {
             <p className="text" style={{marginTop:'1rem'}}>
             and you should see :
             </p>
+            <img src={webapp} style={{border:'solid silver 1px'}} class="card-img img-article h-100" alt="image-article"></img>
 
             <h2 className='sub-title' style={{marginTop:'3rem'}}> I. Setup the database </h2>
             <p className="text" style={{fontWeight:'bold', marginTop:'2rem'}}>
@@ -287,7 +290,6 @@ class DeployAWS extends React.Component {
             <div style={{marginTop:'15px'}}> {CodeHighlight(`\n$ aws configure\n`)} </div>
             <p className="text" style={{marginTop:'1rem'}}>
             You will be prompted for configuration values such as your AWS Access Key Id and your AWS Secret Access Key that you can copy and paste<br/>
-            aws --version # to verify installation <br/>
             </p>
 
             <p className="text" style={{fontWeight:'bold', marginTop:'2rem'}}>
@@ -296,32 +298,31 @@ class DeployAWS extends React.Component {
             <p className="text" style={{marginTop:'1rem'}}>
             To setup Zappa, open a console and go back to "flask_api" folder in order to activate the virtual environment that we created previously :
             </p>
-            <div style={{marginTop:'15px'}}> {CodeHighlight(`\n$ pipenv shell\n`)} </div>
+            <div style={{marginTop:'15px'}}> {CodeHighlight(`\n$ pipenv shell \n`)} </div>
             <p className="text" style={{marginTop:'1rem'}}>
             We can install Zappa package by simply using the following command :
             </p>
-            <div style={{marginTop:'15px'}}> {CodeHighlight(`\n$ pipenv install zappa\n`)} </div>
+            <div style={{marginTop:'15px'}}> {CodeHighlight(`\n$ pipenv install zappa \n`)} </div>
             <p className="text" style={{marginTop:'1rem'}}>
             It will then be added the Pipfile which is intended to specify packages requirements for
             the Python application, both to development and execution.<br/>
             Then just run :
             </p>
-            <div style={{marginTop:'15px'}}> {CodeHighlight(`\n$ zappa init\n`)} </div>
+            <div style={{marginTop:'15px'}}> {CodeHighlight(`\n$ zappa init \n`)} </div>
             <p className="text" style={{marginTop:'1rem'}}>
-            Which will generate a zappa_settings.json file including the deployment configuration.
             You can press enter for all the questions in order to get the default configuration.<br/>
-            We get then a file looking like that : <br/>
+            It will then generate a zappa_settings.json file including the deployment configuration  : <br/>
             </p>
             <div style={{marginTop:'15px'}}>
               {CodeHighlight(`\n zappa_settings.json
 {
     "dev": {
         "app_function": "app.app",
+        "aws_region": "eu-west-3",
         "profile_name": "default",
         "project_name": "flask-api-example",
         "runtime": "python3.7",
-        "s3_bucket": "flask-api-example",
-        "aws_region": "eu-west-3"
+        "s3_bucket": "bucket-example-deploy-aws"
     }
 } \n`)}
             </div>
@@ -343,7 +344,7 @@ class DeployAWS extends React.Component {
 {
     "dev": {
         ...
-        "aws_region": "eu-west-3",
+        "s3_bucket": "bucket-example-deploy-aws",
         "environment_variables": {
             "HOST":"ec2-xx-xxx-xxx-xxx.eu-west-1.compute.amazonaws.com",
             "DATABASE":"DATABASE_NAME",
@@ -359,19 +360,38 @@ class DeployAWS extends React.Component {
             Now that we have configured our Zappa settings, we can deploy the API by simply using the following command :
             </p>
             <div style={{marginTop:'15px'}}> {CodeHighlight(`\n$ zappa deploy dev \n`)} </div>
+            <p className="text" style={{marginTop:'1rem'}}>
+            And if everything went well, you should see something like :
+            </p>
+            <div style={{marginTop:'15px'}}> {CodeHighlight(`\n Your application is now live at: https://xxxxxxxxxx.execute-api.eu-west-3.amazonaws.com/dev \n`)} </div>
+            <p className="text" style={{marginTop:'1rem'}}>
+            meaning <strong> your API is deployed ! </strong> <br/> 
+            To understand what's happening under the hood, let's look at the Zappa documentation : <br/>
+            </p>
+            <div className="text" style={{backgroundColor:'rgba(192,192,192,0.1)', borderLeft: 'solid #007bff 5px', fontStyle: 'italic', padding:'10px'}}>
+            when you call deploy, Zappa will automatically package up your application and local virtual environment into a Lambda-compatible archive,
+            replace any dependencies with versions with wheels compatible with lambda, 
+            set up the function handler and necessary WSGI Middleware, upload the archive to S3,
+            create and manage the necessary Amazon IAM policies and roles, register it as a new Lambda function,
+            create a new API Gateway resource, create WSGI-compatible routes for it, link it to the new Lambda function,
+            and finally delete the archive from your S3 bucket. Handy!
+            </div>
+            <p className="text" style={{marginTop:'1rem'}}>
+            To access those newly created items from AWS website :<br/>
+            → Look for "S3" services in the searchbar, a new bucket named "bucket-example-deploy-aws" should be displayed<br/>
+            → Look for "API Gateway" in the searchbar, a new API named "flask-api-example" should be displayed   <br/>
+            → Look for "Lambda" in the searchbar, a new function named "flask-api-example" should be displayed  
+            </p>
 
             <p className="text" style={{marginTop:'1rem'}}>
-            In order to update our deployment version </p>
-            <div style={{marginTop:'15px'}}> {CodeHighlight(`\n$ zappa update  dev \n`)} </div>
+            To update our deployment version, you can use :
+            </p>
+            <div style={{marginTop:'15px'}}> {CodeHighlight(`\n$ zappa update dev \n`)} </div>
 
-
-
-            <br/><br/><br/>
-            to see deployment -> go to AWS Lambda
-            <br/><br/>
-            https://stackoverflow.com/questions/46330327/how-are-pipfile-and-pipfile-lock-used <br/> <br/>
-
-
+            <p className="text" style={{marginTop:'1rem'}}>
+            And to see the logs :  
+            </p>
+            <div style={{marginTop:'15px'}}> {CodeHighlight(`\n$ zappa tail dev \n`)} </div>
 
 
 
