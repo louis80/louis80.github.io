@@ -39,7 +39,6 @@ function CodeHighlight(codesample) {
 }
 
 const ConnectionToDatabase = `
-import sqlalchemy
 from sqlalchemy import create_engine
 import psycopg2
 
@@ -53,7 +52,6 @@ uri_aws = 'postgresql://'+USER+':'+PASSWORD+'@'+HOST+'/'+USER
 
 engine = create_engine(uri_aws)
 print(engine.table_names())
-# return [] as we didn't created any table
 `;
 
 
@@ -220,21 +218,30 @@ class DeployAWS extends React.Component {
             Access the database from Python
             </p>
             <p className="text" style={{marginTop:'1rem'}}>
-            As we have selected "Password authentication" in the "Database authentication" settings,
-            we only need the authentication information previously defined to access the database from a Python script
-            </p>
-            <p className="text" style={{marginTop:'1rem'}}>
-            [WHERE TO FIND IDS]
+            To access the database from a Python script, watch what it contains or connect it to our API,
+            we need the authentication information previously defined.<br/>
+            First, let's try to access the database from a Python script. 
+            To do so, we can use the <span style={{marginRight:'4px', padding:'2px 4px',backgroundColor:'silver', borderRadius:'3px'}}>sqlalchemy</span> 
+            package using the following code :
             </p>
             <div style={{marginTop:'15px'}}> {CodeHighlight(ConnectionToDatabase)} </div>
-
-
             <p className="text" style={{marginTop:'1rem'}}>
-            The webapp is implemented to work without database configuration. but for testing purpose let's add .env file
-
+            which should return [ ] as we didn't created any table for the moment.
             </p>
-
-
+            <p className="text" style={{marginTop:'1rem'}}>
+            Now that we have checked the connection from a python script, we can test to connect our local API with the deployed database. 
+            Thereby, for testing purpose, let's create a .env file in the "flask_api" folder with our connection information : 
+            </p>
+            <div style={{marginTop:'15px'}}> {CodeHighlight(`\n 
+export USERDB = postgres
+export PASSWORD = your_password
+export PORT = 5432
+export HOST = database-1.xxxxxxxxxxxx.eu-west-3.rds.amazonaws.com
+export DBNAME = database-1
+\n`)} </div>
+            <p className="text" style={{marginTop:'1rem'}}>
+            The API is setup in a way to detect if this .env file exist and use the credentials provided this way.
+            </p>
 
             <h2 className='sub-title' style={{marginTop:'3rem'}}> II. Deploy the API </h2>
             <p className="text" style={{marginTop:'2rem'}}>
@@ -364,8 +371,10 @@ class DeployAWS extends React.Component {
             And if everything went well, you should see something like :
             </p>
             <div style={{marginTop:'15px'}}> {CodeHighlight(`\n Your application is now live at: https://xxxxxxxxxx.execute-api.eu-west-3.amazonaws.com/dev \n`)} </div>
+            <div class="alert alert-success" role="alert">
+            meaning <strong> your API is deployed ! </strong>
+            </div>
             <p className="text" style={{marginTop:'1rem'}}>
-            meaning <strong> your API is deployed ! </strong> <br/> 
             To understand what's happening under the hood, let's look at the Zappa documentation : <br/>
             </p>
             <div className="text" style={{backgroundColor:'rgba(192,192,192,0.1)', borderLeft: 'solid #007bff 5px', fontStyle: 'italic', padding:'10px'}}>
