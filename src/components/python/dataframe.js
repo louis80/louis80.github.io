@@ -51,6 +51,9 @@ df = df.drop(['column_name1', 'column_name2'], axis=1)
 df['column_name'].value_counts()
 df.column_name.value_counts()
 
+# count using groupby
+df_sub_count = pd.DataFrame(df_sub.groupby('var1')['var2'].nunique()).reset_index()
+
 # filtre on dataframe date column
 min_date = min(df['datetime'])
 max_date = max(df['datetime'])
