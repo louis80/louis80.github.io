@@ -17,6 +17,9 @@ import iam_register_21 from './img/21_iam_register.PNG';
 import iam_register_22 from './img/22_iam_register.PNG';
 
 import webapp from './img/webapp.png';
+
+import deploy_build_31 from './img/31_deploy_build.PNG';
+import deploy_domain_32 from './img/32_deploy_domain.PNG';
 // import a from './img/a.PNG';
 
 
@@ -220,8 +223,8 @@ class DeployAWS extends React.Component {
             <p className="text" style={{marginTop:'1rem'}}>
             To access the database from a Python script, watch what it contains or connect it to our API,
             we need the authentication information previously defined.<br/>
-            First, let's try to access the database from a Python script. 
-            To do so, we can use the <span style={{marginRight:'4px', padding:'2px 4px',backgroundColor:'silver', borderRadius:'3px'}}>sqlalchemy</span> 
+            First, let's try to access the database from a Python script.
+            To do so, we can use the <span style={{marginRight:'4px', padding:'2px 4px',backgroundColor:'silver', borderRadius:'3px'}}>sqlalchemy</span>
             package using the following code :
             </p>
             <div style={{marginTop:'15px'}}> {CodeHighlight(ConnectionToDatabase)} </div>
@@ -229,10 +232,10 @@ class DeployAWS extends React.Component {
             which should return [ ] as we didn't created any table for the moment.
             </p>
             <p className="text" style={{marginTop:'1rem'}}>
-            Now that we have checked the connection from a python script, we can test to connect our local API with the deployed database. 
-            Thereby, for testing purpose, let's create a .env file in the "flask_api" folder with our connection information : 
+            Now that we have checked the connection from a python script, we can test to connect our local API with the deployed database.
+            Thereby, for testing purpose, let's create a .env file in the "flask_api" folder with our connection information :
             </p>
-            <div style={{marginTop:'15px'}}> {CodeHighlight(`\n 
+            <div style={{marginTop:'15px'}}> {CodeHighlight(`\n
 export USERDB = postgres
 export PASSWORD = your_password
 export PORT = 5432
@@ -379,7 +382,7 @@ export DBNAME = database-1
             </p>
             <div className="text" style={{backgroundColor:'rgba(192,192,192,0.1)', borderLeft: 'solid #007bff 5px', fontStyle: 'italic', padding:'10px'}}>
             when you call deploy, Zappa will automatically package up your application and local virtual environment into a Lambda-compatible archive,
-            replace any dependencies with versions with wheels compatible with lambda, 
+            replace any dependencies with versions with wheels compatible with lambda,
             set up the function handler and necessary WSGI Middleware, upload the archive to S3,
             create and manage the necessary Amazon IAM policies and roles, register it as a new Lambda function,
             create a new API Gateway resource, create WSGI-compatible routes for it, link it to the new Lambda function,
@@ -389,7 +392,7 @@ export DBNAME = database-1
             To access those newly created items from AWS website :<br/>
             → Look for "S3" services in the searchbar, a new bucket named "bucket-example-deploy-aws" should be displayed<br/>
             → Look for "API Gateway" in the searchbar, a new API named "flask-api-example" should be displayed   <br/>
-            → Look for "Lambda" in the searchbar, a new function named "flask-api-example" should be displayed  
+            → Look for "Lambda" in the searchbar, a new function named "flask-api-example" should be displayed
             </p>
 
             <p className="text" style={{marginTop:'1rem'}}>
@@ -398,7 +401,7 @@ export DBNAME = database-1
             <div style={{marginTop:'15px'}}> {CodeHighlight(`\n$ zappa update dev \n`)} </div>
 
             <p className="text" style={{marginTop:'1rem'}}>
-            And to see the logs :  
+            And to see the logs :
             </p>
             <div style={{marginTop:'15px'}}> {CodeHighlight(`\n$ zappa tail dev \n`)} </div>
 
@@ -406,9 +409,28 @@ export DBNAME = database-1
 
             <h2 className='sub-title' style={{marginTop:'3rem'}}> III. Deploy the front-end </h2>
             <p className="text" style={{marginTop:'2rem'}}>
-            Text descriptin
+            Now that our database and our API are deployed, we can take care of the frontend using AWS Amplify.<br/>
+            First of, open a console in the "react-client" folder and build by typing the following command :
             </p>
-
+            <div style={{marginTop:'15px'}}> {CodeHighlight(`\n$ npm run build \n`)} </div>
+            <p className="text" style={{marginTop:'1rem'}}>
+            Which will build the app for production within a "build" folder <br/><br/>
+            Then the deployment is pretty much straightforward : <br/>
+            → Go to "AWS Amplify" platform  <br/>
+            → Click on "Connect app" <br/>
+            you will be proposed different options to import your code.
+            For simplicity, we are going to deploy the front-end without a git provider <br/>
+            → Click on "Deploy without Git provider" <br/>
+            → Choose a name for the app and for the environment <br/>
+            → Drag and drop your "build folder" : <br/>
+            </p>
+            <img src={deploy_build_31} style={{border:'solid silver 0.5px'}} class="card-img img-article h-100" alt="image-article"></img>
+            <br/>
+            <p className="text" style={{marginTop:'1rem'}}>
+            Finally, click on "Save and deploy".<br/><br/>
+            Once the deployment is completly done, you should be able to access the frontend by clicking on the domain provided by AWS :<br/>
+            </p>
+            <img src={deploy_domain_32} style={{border:'solid silver 0.5px'}} class="card-img img-article h-100" alt="image-article"></img>
 
 
         </div>
