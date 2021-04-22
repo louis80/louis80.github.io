@@ -361,7 +361,7 @@ export DBNAME = database-1
             "USER":"USERNAME",
             "PASSWORD":"YOUR_PASSWORD",
         },
-        "exclude": [".env", "env_name"]
+        "exclude": [".env", "dev.db"]
     }
 } \n`)}
             </div>
