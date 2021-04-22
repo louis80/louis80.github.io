@@ -51,7 +51,7 @@ PORT = '5432'
 HOST = 'database-1.xxxxxxxxxxxx.eu-west-3.rds.amazonaws.com'
 DBNAME = 'database-1'
 
-uri_aws = 'postgresql://'+USER+':'+PASSWORD+'@'+HOST+'/'+USER
+uri_aws = 'postgresql://'+USER+':'+PASSWORD+'@'+HOST+'/postgres'
 
 engine = create_engine(uri_aws)
 print(engine.table_names())
