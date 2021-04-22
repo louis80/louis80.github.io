@@ -393,6 +393,15 @@ export DB_HOST = database-1.xxxxxxxxxxxx.eu-west-3.rds.amazonaws.com
             </p>
 
             <p className="text" style={{marginTop:'1rem'}}>
+            To Retreive your API URL, go to the "API Gateway" console, click on the API you just created then on "Stages".<br/>
+            You will have access to the different stage available. In our case, the "dev" stage should appear, select it. <br/>
+            Now you can see the entire URL very visible inside a blue box on the top with the heading "Invoke URL".
+            </p>
+
+            <p className="text" style={{fontWeight:'bold', marginTop:'2rem'}}>
+            Useful Zappa commands
+            </p>
+            <p className="text" style={{marginTop:'1rem'}}>
             To update our deployment version, you can use :
             </p>
             <div style={{marginTop:'15px'}}> {CodeHighlight(`\n$ zappa update dev \n`)} </div>
@@ -402,8 +411,14 @@ export DB_HOST = database-1.xxxxxxxxxxxx.eu-west-3.rds.amazonaws.com
             </p>
             <div style={{marginTop:'15px'}}> {CodeHighlight(`\n$ zappa tail dev \n`)} </div>
 
-
-
+            <p className="text" style={{marginTop:'1rem'}}>
+            Finally, if you want to remove your deployed application completely, then you can simply use the following command :
+            </p>
+            <div style={{marginTop:'15px'}}> {CodeHighlight(`\n$ zappa undeploy dev \n`)} </div>
+            <p className="text" style={{marginTop:'1rem'}}>
+            This will remove the published AWS Lambda and API Gateway.
+            </p>
+            
             <h2 className='sub-title' style={{marginTop:'3rem'}}> III. Deploy the front-end </h2>
             <p className="text" style={{marginTop:'2rem'}}>
             Now that our database and our API are deployed, we can take care of the frontend using AWS Amplify.<br/>
