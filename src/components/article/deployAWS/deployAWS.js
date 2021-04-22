@@ -235,13 +235,11 @@ class DeployAWS extends React.Component {
             Now that we have checked the connection from a python script, we can test to connect our local API with the deployed database.
             Thereby, for testing purpose, let's create a .env file in the "flask_api" folder with our connection information :
             </p>
-            <div style={{marginTop:'15px'}}> {CodeHighlight(`\n
-export USERDB = postgres
-export PASSWORD = your_password
-export PORT = 5432
-export HOST = database-1.xxxxxxxxxxxx.eu-west-3.rds.amazonaws.com
-export DBNAME = database-1
-\n`)} </div>
+            <div style={{marginTop:'15px'}}> {CodeHighlight(`
+export DB_USER = your_username
+export DB_PASSWORD = your_password
+export DB_HOST = database-1.xxxxxxxxxxxx.eu-west-3.rds.amazonaws.com
+`)} </div>
             <p className="text" style={{marginTop:'1rem'}}>
             The API is setup in a way to detect if this .env file exist and use the credentials provided this way.
             </p>
@@ -356,10 +354,9 @@ export DBNAME = database-1
         ...
         "s3_bucket": "bucket-example-deploy-aws",
         "environment_variables": {
-            "HOST":"ec2-xx-xxx-xxx-xxx.eu-west-1.compute.amazonaws.com",
-            "DATABASE":"DATABASE_NAME",
-            "USER":"USERNAME",
-            "PASSWORD":"YOUR_PASSWORD",
+            "DB_USER":"YOUR_USERNAME",
+            "DB_PASSWORD":"YOUR_PASSWORD",
+            "DB_HOST":"database-1.cowuzsvpx5fl.eu-west-3.rds.amazonaws.com"
         },
         "exclude": [".env", "dev.db"]
     }
