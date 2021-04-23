@@ -356,7 +356,7 @@ export DB_HOST = database-1.xxxxxxxxxxxx.eu-west-3.rds.amazonaws.com
         "environment_variables": {
             "DB_USER":"YOUR_USERNAME",
             "DB_PASSWORD":"YOUR_PASSWORD",
-            "DB_HOST":"database-1.cowuzsvpx5fl.eu-west-3.rds.amazonaws.com"
+            "DB_HOST":"database-1.xxxxxxxxxx.eu-west-3.rds.amazonaws.com"
         },
         "exclude": [".env", "dev.db"]
     }
