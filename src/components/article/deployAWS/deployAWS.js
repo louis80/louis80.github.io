@@ -233,7 +233,10 @@ class DeployAWS extends React.Component {
             </p>
             <p className="text" style={{marginTop:'1rem'}}>
             Now that we have checked the connection from a python script, we can test to connect our local API with the deployed database.
-            Thereby, for testing purpose, let's create a .env file in the "flask_api" folder with our connection information :
+            Thereby, for testing purpose, let's create a
+            <span style={{marginLeft:'4px', marginRight:'4px', padding:'2px 4px',backgroundColor:'silver', borderRadius:'3px'}}>.env</span>
+            file in the "flask_api" folder with our connection information :
+
             </p>
             <div style={{marginTop:'15px'}}> {CodeHighlight(`
 export DB_USER = your_username
@@ -418,15 +421,28 @@ export DB_HOST = database-1.xxxxxxxxxxxx.eu-west-3.rds.amazonaws.com
             <p className="text" style={{marginTop:'1rem'}}>
             This will remove the published AWS Lambda and API Gateway.
             </p>
-            
+
             <h2 className='sub-title' style={{marginTop:'3rem'}}> III. Deploy the front-end </h2>
             <p className="text" style={{marginTop:'2rem'}}>
             Now that our database and our API are deployed, we can take care of the frontend using AWS Amplify.<br/>
-            First of, open a console in the "react-client" folder and build by typing the following command :
+            First of, we must inform the URL of the deployed API. To do so, locate the
+            <span style={{marginLeft:'4px', marginRight:'4px', padding:'2px 4px',backgroundColor:'silver', borderRadius:'3px'}}>.env.production</span>
+            file located in the "react_client" folder in which you can provide it :
+            </p>
+            <div style={{marginTop:'15px'}}>
+              {CodeHighlight(`
+REACT_APP_API_URL = https://xxxxxxxxxx.execute-api.eu-west-3.amazonaws.com/dev
+`)}
+            </div>
+            <p className="text" style={{marginTop:'1rem'}}>
+            Then open a console in the "react-client" folder and build the app for production within a "build" folder by typing the following command :
             </p>
             <div style={{marginTop:'15px'}}> {CodeHighlight(`\n$ npm run build \n`)} </div>
             <p className="text" style={{marginTop:'1rem'}}>
-            Which will build the app for production within a "build" folder <br/><br/>
+            The <span style={{marginLeft:'4px', marginRight:'4px', padding:'2px 4px',backgroundColor:'silver', borderRadius:'3px'}}>.env.development</span>
+            file will be used when developing the app ("npm start") whereas the
+            <span style={{marginLeft:'4px', marginRight:'4px', padding:'2px 4px',backgroundColor:'silver', borderRadius:'3px'}}>.env.production</span>
+            will be used when building it ("npm run build") <br/><br/>
             Then the deployment is pretty much straightforward : <br/>
             → Go to "AWS Amplify" platform  <br/>
             → Click on "Connect app" <br/>
@@ -436,13 +452,18 @@ export DB_HOST = database-1.xxxxxxxxxxxx.eu-west-3.rds.amazonaws.com
             → Choose a name for the app and for the environment <br/>
             → Drag and drop your "build folder" : <br/>
             </p>
-            <img src={deploy_build_31} style={{border:'solid silver 0.5px'}} class="card-img img-article h-100" alt="image-article"></img>
+            <img src={deploy_build_31} class="card-img img-article h-100" alt="image-article"></img>
             <br/>
             <p className="text" style={{marginTop:'1rem'}}>
-            Finally, click on "Save and deploy".<br/><br/>
+            To finish, click on "Save and deploy".<br/><br/>
             Once the deployment is completly done, you should be able to access the frontend by clicking on the domain provided by AWS :<br/>
             </p>
-            <img src={deploy_domain_32} style={{border:'solid silver 0.5px'}} class="card-img img-article h-100" alt="image-article"></img>
+            <img src={deploy_domain_32} class="card-img img-article h-100" alt="image-article"></img>
+            <div class="alert alert-success" role="alert" style={{marginTop:'10px'}}>
+            Finally <strong> your front-end is deployed ! </strong>
+            </div>
+
+            <h2 className='sub-title' style={{marginTop:'3rem'}}> IV. Secure the app </h2>
 
 
         </div>
