@@ -182,12 +182,7 @@ class DeployAWS extends React.Component {
             </p>
 
             <img src={security_group_12} style={{border:'solid silver 0.5px'}} class="card-img img-article h-100" alt="image-article"></img>
-            <br/><br/>
-            <div class="alert alert-warning" role="alert">
-            <strong>Setting up the database access like this is not optimal from a security point of view </strong>
-            but for the simplicity of this example and to get things up and running quickly
-            we will start this way and I will come back to it at the end of this tutorial.
-            </div>
+            <br/>
             <p className="text" style={{marginTop:'1rem'}}>
             Finally click on “Create security group” at the bottom of the page
             </p>
@@ -244,7 +239,9 @@ export DB_PASSWORD = your_password
 export DB_HOST = database-1.xxxxxxxxxxxx.eu-west-3.rds.amazonaws.com
 `)} </div>
             <p className="text" style={{marginTop:'1rem'}}>
-            The API is setup in a way to detect if this .env file exist and use the credentials provided this way.
+            The API is setup in a way to detect if this
+            <span style={{marginLeft:'4px', marginRight:'4px', padding:'2px 4px',backgroundColor:'silver', borderRadius:'3px'}}>.env</span>
+            file exist and use the credentials provided this way.
             </p>
 
             <h2 className='sub-title' style={{marginTop:'3rem'}}> II. Deploy the API </h2>
@@ -290,8 +287,8 @@ export DB_HOST = database-1.xxxxxxxxxxxx.eu-west-3.rds.amazonaws.com
 
             <div class="alert alert-warning" role="alert">
             <strong>Creating a user this way is not optimal from a security point of view </strong>
-            but AWS permissions can get quite complicated, so to get things up and running quickly
-            we will start this way and I will come back to it at the end of this tutorial.
+            but AWS permissions can get quite complicated, so to get things up and running quickly we will do this way.<br/>
+            For more information about user security, you can consult the AWS documentation  <a target="_blank" href='https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html' style={{textDecoration: 'underline'}}>here</a>
             </div>
             <p className="text" style={{marginTop:'1rem'}}>
             To configure the identifiers that will be used by Zappa for the deployment
@@ -462,9 +459,6 @@ REACT_APP_API_URL = https://xxxxxxxxxx.execute-api.eu-west-3.amazonaws.com/dev
             <div class="alert alert-success" role="alert" style={{marginTop:'10px'}}>
             Finally <strong> your front-end is deployed ! </strong>
             </div>
-
-            <h2 className='sub-title' style={{marginTop:'3rem'}}> IV. Secure the app </h2>
-
 
         </div>
     </div>
