@@ -2,6 +2,12 @@
 
 ###### this is the good repo for the website !
  
+ ### Run localy
+```
+npm install
+npm start
+```
+
 ### Deploy the website
 ```
 npm run deploy
