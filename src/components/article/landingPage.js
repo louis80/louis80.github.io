@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import AccessTimeIcon from '@material-ui/icons/AccessTime';
 import TodayIcon from '@material-ui/icons/Today';
 import Chip from '@material-ui/core/Chip';
+// import IntegrationInstructionsIcon from '@mui/icons-material/IntegrationInstructions';
 
 import ImgIndexFund from './img/indexFund/indexFund.jpg';
 import ImgDeployAWS from './img/deployAWS/deployAWS.jpg';
@@ -56,9 +57,7 @@ function getArticle(dic_article, LogoImg, LogoLang) {
             ))} */}
             {dic_article.tag[0] === "Article" ? <Chip color="primary" icon={<TodayIcon fontSize='small' />} className='m-1' label={dic_article.tag[0]} style={{ cursor: 'pointer' }} /> : ""}
             {dic_article.tag[0] === "Jupyter Notebook" ? <Chip color="primary" icon={<AccessTimeIcon fontSize='small' />} className='m-1' label={dic_article.tag[0]} style={{ cursor: 'pointer' }} /> : ""}
-
             <Chip icon={<TodayIcon fontSize='small' />} color="grey" className='m-1' label={dic_article.tag[1]} style={{ cursor: 'pointer' }} />
-            {/* <Chip icon={<AccessTimeIcon fontSize='small' />} color="grey" className='m-1' label={dic_article.tag[2]} style={{ cursor: 'pointer' }} /> */}
           </div>
           <p className="m-0 py-1" style={{ color: 'black' }}> {dic_article.description} </p>
         </div>

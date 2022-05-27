@@ -1,5 +1,6 @@
 import React from 'react';
-import { HashRouter as Router, Route } from 'react-router-dom';
+import { HashRouter as Router, Route, Switch, BrowserRouter } from 'react-router-dom';
+
 // import ReactGA from 'react-ga';
 
 import './App.css';
@@ -52,32 +53,34 @@ class App extends React.Component {
 
     return (
       <div>
-        <Router>
+        <BrowserRouter>
           <LeftBar />
-          <div style={{ height: '100%', paddingLeft: this.state.paddingLeftBar }}>
-            <div className='' style={{ backgroundColor: '#333', height: '51px', width: '100%' }}>  </div>
-            <Route exact path="/" component={LandingPageArticle} />
-            <Route exact path="/article/impact-du-covid-sur-immobilier" component={CovidImmo} />
-            <Route exact path="/article/deploy-webapp-on-aws" component={DeployAWS} />
+          <Switch>
+            <div style={{ height: '100%', paddingLeft: this.state.paddingLeftBar }}>
+              <div className='' style={{ backgroundColor: '#333', height: '51px', width: '100%' }}>  </div>
+              <Route exact path="/" component={LandingPageArticle} />
+              <Route exact path="/article/impact-du-covid-sur-immobilier" component={CovidImmo} />
+              <Route exact path="/article/deploy-webapp-on-aws" component={DeployAWS} />
 
-            <Route exact path="/test" component={ShowDiv} />
+              <Route exact path="/test" component={ShowDiv} />
 
-            <Route exact path="/python/general" component={PythonGeneral} />
-            <Route exact path="/python/dataframe" component={PythonDataframe} />
-            <Route exact path="/python/database" component={PythonDatabase} />
-            <Route exact path="/python/dataviz" component={ShowDiv} />
-            <Route exact path="/python/regex" component={PythonRegex} />
-            <Route exact path="/python/scraping/requests" component={Requests} />
-            <Route exact path="/python/scraping/beautifulsoup" component={BeautifulSoup} />
-            <Route exact path="/python/scraping/selenium" component={Selenium} />
+              <Route exact path="/python/general" component={PythonGeneral} />
+              <Route exact path="/python/dataframe" component={PythonDataframe} />
+              <Route exact path="/python/database" component={PythonDatabase} />
+              <Route exact path="/python/dataviz" component={ShowDiv} />
+              <Route exact path="/python/regex" component={PythonRegex} />
+              <Route exact path="/python/scraping/requests" component={Requests} />
+              <Route exact path="/python/scraping/beautifulsoup" component={BeautifulSoup} />
+              <Route exact path="/python/scraping/selenium" component={Selenium} />
 
-            <Route exact path="/react" component={ShowDiv} />
+              <Route exact path="/react" component={ShowDiv} />
 
-            <Route exact path="/postgresql" component={ShowDiv} />
+              <Route exact path="/postgresql" component={ShowDiv} />
 
-            <Route exact path="/github" component={ShowDiv} />
-          </div>
-        </Router>
+              <Route exact path="/github" component={ShowDiv} />
+            </div>
+          </Switch>
+        </BrowserRouter>
 
       </div>
     );
