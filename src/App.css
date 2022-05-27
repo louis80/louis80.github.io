@@ -1,70 +1,76 @@
-.style-left-bar-not-collapsed{
+.style-left-bar-not-collapsed {
   width: 256px !important;
 }
 
-.style-left-bar-collapsed{
+.style-left-bar-collapsed {
   width: 80px !important;
 }
 
-.prism-code{
-  padding-left:2rem;
-  border-radius:5px;
+.prism-code {
+  padding-left: 2rem;
+  border-radius: 5px;
 }
 
 /* ----------------------------------------------------- */
 /* CODE */
-.title-code-section{
-  font-size:20px;
-  font-weight:600;
+.title-code-section {
+  font-size: 20px;
+  font-weight: 600;
 }
 
 /* ----------------------------------------------------- */
 /* ARTICLE */
 @media (max-width: 700px) {
-    .img-article{
-      width: 100%;
-    }
-}
-@media (max-width: 600px) {
-    .container-img-article{
-        width: 100%;
-        min-height:220px !important;
-    }
-    .container-resume-article{
-        width: 100%;
-        padding:1rem;
-    }
-}
-@media (min-width: 600px) {
-    .container-img-article{
-        width: 100%;
-        min-height:300px !important;
-    }
-    .container-resume-article{
-        width: 100%;
-        padding:1rem;
-    }
-}
-@media (min-width: 870px) {
-    .container-img-article{
-        width: 35%;
-        min-height:290px !important;
-    }
-    .container-resume-article{
-        width: 65%;
-        padding:1.4rem;
-    }
+  .img-article {
+    width: 100%;
+  }
 }
 
-.img-article{
+@media (max-width: 600px) {
+  .container-img-article {
+    width: 100%;
+    min-height: 220px !important;
+  }
+
+  .container-resume-article {
+    width: 100%;
+    padding: 1rem;
+  }
+}
+
+@media (min-width: 600px) {
+  .container-img-article {
+    width: 100%;
+    min-height: 300px !important;
+  }
+
+  .container-resume-article {
+    width: 100%;
+    padding: 1rem;
+  }
+}
+
+@media (min-width: 870px) {
+  .container-img-article {
+    width: 35%;
+    min-height: 260px !important;
+  }
+
+  .container-resume-article {
+    width: 65%;
+    padding: 1.4rem;
+  }
+}
+
+.img-article {
   background-repeat: no-repeat !important;
   background-size: cover !important;
   background-position: center center !important;
 }
 
 
-.container-page{
-  max-width:940px;
+.container-page {
+  max-width: 940px;
   /*display:block;   max-width:1140px;*/
   margin-left: auto;
   margin-right: auto;
@@ -72,45 +78,45 @@
   /* border: solid red 1px;*/
 }
 
-.top-img-article-immo{
-  background-image: url("./components/article/img/RE.jpg");
+.top-img-article-immo {
+  background-image: url("./components/article/img/covidImmo/mainPageCovidImmo.jpg");
 }
 
-.top-img-article-deploy-aws{
-  background-image: url("./components/article/img/deploy-aws/img-deploy-aws.jpg");
+.top-img-article-deploy-aws {
+  background-image: url("./components/article/img/deployAWS/deployAWS.jpg");
 }
 
 
 .header-image {
 
-    background-repeat: no-repeat !important;
-    background-size: cover !important;
-    background-position: center center !important;
-    /* position: absolute;*/
-    top:0;
-    left:0;
-    right: 0;
-    content: "";
-    height: 50vh;
-    filter: brightness(80%) !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+  background-position: center center !important;
+  /* position: absolute;*/
+  top: 0;
+  left: 0;
+  right: 0;
+  content: "";
+  height: 50vh;
+  filter: brightness(80%) !important;
 }
 
-.header-title{
+.header-title {
   height: calc(20vh);
-  color:white;
+  color: white;
   font-weight: 400;
   font-size: 50px;
-  top:20vh;
-  left:20vh;
+  top: 20vh;
+  left: 20vh;
   position: absolute
 }
 
-.card-title-article{
-    font-size: 1.4em;
-    font-weight: 600;
+.card-title-article {
+  font-size: 1.4em;
+  font-weight: 600;
 }
 
-.title{
+.title {
   font-size: 35px;
   line-height: 1;
   color: #1e1e1e;
@@ -121,7 +127,7 @@
 
 }
 
-.sub-title{
+.sub-title {
   font-size: 28px;
   line-height: 1;
   color: #1e1e1e;
@@ -132,17 +138,19 @@
   margin-bottom: 25px;
 }
 
-.introduction, .text{
+.introduction,
+.text {
   color: #1e1e1e;
   font-size: 16px;
   line-height: 30px;
 }
 
-.bold{
+.bold {
   font-weight: bold;
 }
 
-.source{
+.source {
   color: grey;
 }
+
 /* ----------------------------------------------------- */

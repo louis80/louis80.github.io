@@ -5,75 +5,63 @@ import AccessTimeIcon from '@material-ui/icons/AccessTime';
 import TodayIcon from '@material-ui/icons/Today';
 import Chip from '@material-ui/core/Chip';
 
-import ImgImmo from '../article/img/img_immo-min.jpeg';
-import ImgDeployAWS from '../article/img/deploy-aws/img-deploy-aws.jpg';
+import ImgIndexFund from './img/indexFund/indexFund.jpg';
+import ImgDeployAWS from './img/deployAWS/deployAWS.jpg';
+import ImgImmo from './img/covidImmo/resumeCovidImmo.jpeg';
 
 import ImgFrance from '../article/img/france.png';
 import ImgRoyaumeUni from '../article/img/royaume-uni.png';
 
 
-import dic_article from './list_article.js';
+const dic_article = [
+  {
+    id: '0',
+    title: 'Implementation of an index fund portofolio',
+    tag: ['Jupyter Notebook', 'October 2018', '14 minutes'],
+    description: "The main goal of this work is to understand and overcome the different stages of building an index fund. This notebook presents an implementation of a constrained optimization problem whose objectif is to select the right asset mix to build an index fund portofolio",
+  },
+  {
+    id: '1',
+    title: 'The easiest way to deploy a Flask webapp using AWS',
+    tag: ['Article', 'January 2019', '15 minutes'],
+    description: "The main objective of this article is to present a simple way to deploy a webapp using the different Amazon web services. This tutorial is broken down into several parts : after setting up a web application that works locally, we are going to deploy the database using Amazon RDS. Once done, the Flask API will be deployed using Zappa. Finally the front-end will be deployed using AWS Amplify",
+  },
+  {
+    id: '2',
+    title: 'Impacts du Covid-19 sur le marché de l\'immobilier',
+    tag: ['Article', 'December 2020', '12 minutes'],
+    description: "Depuis le début de la crise Covid, les analyses se multiplient dans de nombreux domaines pour anticiper à quoi ressemblera \'le monde d’après\'. Le marché de l’immobilier est lui aussi affecté par la crise, et son futur apparaît aujourd’hui incertain. Sans prétendre prédire l’évolution du cours de ce marché, cet article vise à en expliquer les déterminants essentiels, et les principaux enjeux. ",
+  },
+]
 
-function getArticleOld(dic_article, LogoImg) {
-
-    return (
-      <div class="card mb-3 mx-auto" style={{"max-width": "900px", cursor: 'pointer', 'box-shadow': '0 0 30px 6px rgba(31, 51, 73, 0.10)'}}>
-      <div class="row no-gutters">
-        <div class="col-md-4" style={{backgroundColor:'grey'}}>
-          <img src={LogoImg}  class="card-img img-article h-100" alt="image-article"></img>
-
-        </div>
-        <div class="col-md-8">
-          <div class="card-body">
-            <h4 class="card-title">Impacts du Covid-19 sur le marché de l'immobilier </h4>
-            <Chip className="m-1 mb-2 card-chip" label={'Immobilier'} /><Chip className="m-1 mb-2 card-chip" label={'Covid-19'} />
-            <p class="card-text" style={{color:'grey'}}>
-            Depuis le début de la crise Covid, les analyses se multiplient dans de nombreux domaines pour anticiper à quoi ressemblera “le monde d’après”.
-            Le marché de l’immobilier est lui aussi affecté par la crise, et son futur apparaît aujourd’hui incertain.
-            Sans prétendre prédire l’évolution du cours de ce marché, cet article vise à en expliquer les déterminants essentiels, et les principaux enjeux.
-            </p>
-            <p class="card-text">
-            <small class="text-muted">
-                <TodayIcon className="mb-1" fontSize='small' style={{height:'14px', 'color':'grey'}}/>Décembre 2020
-                <span className='mx-2'>·</span>
-                <AccessTimeIcon className="mb-1" fontSize='small' style={{height:'14px','color':'grey'}}/>10 minutes
-            </small></p>
-          </div>
-        </div>
-      </div>
-      </div>
-    )
-  }
 
 function getArticle(dic_article, LogoImg, LogoLang) {
   return (
-    <div className='my-5' style={{maxWidth: "1130px", cursor: 'pointer', boxShadow: '0 0 30px 6px rgba(31, 51, 73, 0.10)', marginRight:'auto', marginLeft:'auto'}}>
+    <div className='my-5' style={{ maxWidth: "1130px", cursor: 'pointer', boxShadow: '0 0 30px 6px rgba(31, 51, 73, 0.10)', marginRight: 'auto', marginLeft: 'auto' }}>
       <div className="row m-0">
 
-          <div className="container-img-article m-0" style={{backgroundColor:'grey'}}>
-            <img src={LogoImg}  class="card-img img-article h-100" alt="image-article"></img>
-          </div>
+        <div className="container-img-article m-0" style={{ backgroundColor: 'grey' }}>
+          <img src={LogoImg} class="card-img img-article h-100" alt="image-article"></img>
+        </div>
 
-          <div className="container-resume-article m-0">
-              <div className='d-flex'>
-                <h3 className="card-title-article m-0" > {dic_article.title} </h3>
-                <img src={LogoLang}  class='my-auto ml-auto' style={{height:'30px'}} alt="lang-flag"></img>
+        <div className="container-resume-article m-0">
+          <div className='d-flex'>
+            <h3 className="card-title-article m-0" > {dic_article.title} </h3>
+            <img src={LogoLang} class='my-auto ml-auto' style={{ height: '30px' }} alt="lang-flag"></img>
 
-              </div>
-              <div className="mb-1 mt-2">
-              {dic_article.tag.map((tag) => (
-                <Chip className='m-1' label={tag} style={{cursor: 'pointer'}} />
-              ))}
-              </div>
-              <p className="m-0 py-1" style={{color:'black'}}> {dic_article.description} </p>
-              <p className="my-2" style={{color:'grey'}}>
-                <small>
-                    <TodayIcon fontSize='small' style={{height:'14px', color:'grey'}}/>{dic_article.date}
-                    <span className='mx-2'>·</span>
-                    <AccessTimeIcon className="" fontSize='small' style={{height:'14px',color:'grey'}}/>{dic_article.time}
-                </small>
-              </p>
           </div>
+          <div className="mb-1 mt-2">
+            {/* {dic_article.tag.map((tag) => (
+              <Chip className='m-1' label={tag} style={{ cursor: 'pointer' }} />
+            ))} */}
+            {dic_article.tag[0] === "Article" ? <Chip color="primary" icon={<TodayIcon fontSize='small' />} className='m-1' label={dic_article.tag[0]} style={{ cursor: 'pointer' }} /> : ""}
+            {dic_article.tag[0] === "Jupyter Notebook" ? <Chip color="primary" icon={<AccessTimeIcon fontSize='small' />} className='m-1' label={dic_article.tag[0]} style={{ cursor: 'pointer' }} /> : ""}
+
+            <Chip icon={<TodayIcon fontSize='small' />} color="grey" className='m-1' label={dic_article.tag[1]} style={{ cursor: 'pointer' }} />
+            {/* <Chip icon={<AccessTimeIcon fontSize='small' />} color="grey" className='m-1' label={dic_article.tag[2]} style={{ cursor: 'pointer' }} /> */}
+          </div>
+          <p className="m-0 py-1" style={{ color: 'black' }}> {dic_article.description} </p>
+        </div>
 
       </div>
     </div>
@@ -82,18 +70,18 @@ function getArticle(dic_article, LogoImg, LogoLang) {
 
 class LandingPageArticle extends React.Component {
 
-    render() {
+  render() {
 
-        return (
-        <div className='container-page' >
+    return (
+      <div className='container-page' >
 
-            <div>  </div>
-            <div> <Link to="/article/deploy-webapp-on-aws"> { getArticle(dic_article[1], ImgDeployAWS, ImgRoyaumeUni) } </Link> </div>
-            <div> <Link to="/article/impact-du-covid-sur-immobilier"> { getArticle(dic_article[0], ImgImmo, ImgFrance) } </Link> </div>
-
-        </div>
-        );
-    }
+        <div>  </div>
+        <div> <Link to="/article/impact-du-covid-sur-immobilier"> {getArticle(dic_article[2], ImgImmo, ImgFrance)} </Link> </div>
+        <div> <Link to="/article/deploy-webapp-on-aws"> {getArticle(dic_article[1], ImgDeployAWS, ImgRoyaumeUni)} </Link> </div>
+        <div> <Link to="/ConstructionIndexFund.html" target="_blank" rel="noopener noreferrer"> {getArticle(dic_article[0], ImgIndexFund, ImgRoyaumeUni)} </Link> </div>
+      </div>
+    );
+  }
 }
 
 export default LandingPageArticle;
