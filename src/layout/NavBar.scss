@@ -1,0 +1,119 @@
+.menuBar {
+  padding: 0 20px;
+  border-bottom: solid 1px #e8e8e8;
+  overflow: auto !important;
+  box-shadow: 0 0 30px #f3f1f1;
+
+  // border: solid green 3px; 
+  button,
+  span {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .logo {
+    width: 150px;
+    float: left;
+
+    a {
+      display: inline-block;
+      font-size: 20px;
+      padding: 25px 20px;
+      text-transform: capitalize;
+      //color:var(--primary-color) !important;
+    }
+  }
+
+  .menuCon {
+    width: calc(100% - 150px) !important;
+    float: left !important;
+    padding: 15px 10px;
+
+    // border: solid orange 2px; 
+    .ant-menu-horizontal {
+      border-bottom: none;
+    }
+
+    .leftMenu {
+      float: left !important;
+    }
+
+    .rightMenu {
+      float: right !important;
+    }
+
+  }
+
+  // .ant-menu-item-selected a {
+  //   color: var(--primary-color) !important;
+  // }
+  // .ant-menu-item a:hover {
+  //   color:var(--primary-color) !important;
+  // }
+  // .ant-menu-item-selected::before, .ant-menu-item-selected::after{
+  //   border-bottom-color: var(--primary-color) !important;
+  // .icon-navbar{
+  //   color:var(--primary-color) !important;
+  // }
+  // }
+}
+
+/* Drawer */
+.barsMenu {
+  float: right;
+  height: 32px;
+  padding: 6px;
+  margin-top: 8px;
+  display: none !important;
+  background: none;
+  // background-color: var(--primary-color) !important; // #1890ff;
+
+
+  .barsBtn {
+    display: block;
+    width: 20px;
+    height: 2px;
+    position: relative;
+  }
+
+  .barsBtn:after,
+  .barsBtn:before {
+    // content: attr(x);
+    width: 20px;
+    position: absolute;
+    top: -6px;
+    left: 0;
+    height: 2px;
+    // background: var(--primary-color);
+  }
+
+  .barsBtn:after {
+    top: auto;
+    bottom: -6px;
+  }
+}
+
+
+@media (max-width: 767px) {
+  .barsMenu {
+    display: inline-block !important;
+  }
+
+  .leftMenu,
+  .rightMenu {
+    display: none;
+  }
+
+  .logo a {
+    margin-left: -20px;
+  }
+
+  .menuCon .ant-menu-item,
+  .menuCon .ant-menu-submenu-title {
+    padding: 1px 20px;
+  }
+
+  .logo a {
+    padding: 20px 20px;
+  }
+}

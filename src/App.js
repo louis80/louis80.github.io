@@ -7,10 +7,12 @@ import './App.css';
 
 import LeftBar from './components/layout/LeftBar'
 
+import Navbar from './layout/NavBar'
+import Footer from './layout/Footer'
+
 import LandingPageArticle from './components/article/landingPage'
 import CovidImmo from './components/article/covidImmo/covidImmo'
 import DeployAWS from './components/article/deployAWS/deployAWS'
-
 
 import PythonGeneral from './components/python/general'
 import PythonDataframe from './components/python/dataframe'
@@ -54,10 +56,12 @@ class App extends React.Component {
     return (
       <div>
         <BrowserRouter>
-          <LeftBar />
+          {/* <Navbar /> */}
+          {/* <LeftBar /> */}
           <Switch>
-            <div style={{ height: '100%', paddingLeft: this.state.paddingLeftBar }}>
-              <div className='' style={{ backgroundColor: '#333', height: '51px', width: '100%' }}>  </div>
+            <div style={{ height: '100%' /* paddingLeft: this.state.paddingLeftBar*/ }}>
+              <Navbar />
+              {/* <div className='' style={{ backgroundColor: '#333', height: '51px', width: '100%' }}>  </div> */}
               <Route exact path="/" component={LandingPageArticle} />
               <Route exact path="/article/impact-du-covid-sur-immobilier" component={CovidImmo} />
               <Route exact path="/article/deploy-webapp-on-aws" component={DeployAWS} />
@@ -81,8 +85,8 @@ class App extends React.Component {
             </div>
           </Switch>
         </BrowserRouter>
-
-      </div>
+        <Footer />
+      </div >
     );
   }
 }

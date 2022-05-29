@@ -5,6 +5,7 @@
 ### Deploy the website
 ```
 npm run deploy
+settings > Pages > Custom domain 
 ```
 
 ### Commit changes
