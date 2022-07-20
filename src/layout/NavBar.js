@@ -45,7 +45,8 @@ const Navbar = props => {
 					Home
 				</Link>
 			</Menu.Item>
-			<Menu.Item key="cv" disabled={true} icon={<UserOutlined />}>
+			<Menu.Item key="cv" icon={<UserOutlined />}>
+				{/* disabled={true} */}
 				<Link to="/cv">
 					CV
 				</Link>

@@ -14,6 +14,8 @@ import LandingPageArticle from './components/article/landingPage'
 import CovidImmo from './components/article/covidImmo/covidImmo'
 import DeployAWS from './components/article/deployAWS/deployAWS'
 
+import LandingPageCV from './components/cv/landingPage'
+
 import PythonGeneral from './components/python/general'
 import PythonDataframe from './components/python/dataframe'
 import PythonDatabase from './components/python/database'
@@ -65,6 +67,8 @@ class App extends React.Component {
               <Route exact path="/" component={LandingPageArticle} />
               <Route exact path="/article/impact-du-covid-sur-immobilier" component={CovidImmo} />
               <Route exact path="/article/deploy-webapp-on-aws" component={DeployAWS} />
+
+              <Route exact path="/cv" component={LandingPageCV} />
 
               <Route exact path="/test" component={ShowDiv} />
 
