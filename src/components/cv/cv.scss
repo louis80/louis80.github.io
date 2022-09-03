@@ -1,0 +1,152 @@
+/* ----------------------------------------------------- */
+/* Main structure CV */
+.main-container-cv {
+    background-color: #f9f9ff;
+
+    .container-page-cv {
+        max-width: 940px;
+        margin-left: auto;
+        margin-right: auto;
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+        border-radius: 20px !important;
+
+        .container-section-cv {
+            border-radius: 20px 20px 20px 20px;
+            padding: 60px 50px;
+            box-shadow: 0 5px 20px 0 rgb(69 67 96 / 10%);
+        }
+
+        .container-header-cv {
+            background-color: #5e5c7f;
+            color: white !important;
+        }
+
+        .header-cv-title {
+            color: white;
+        }
+
+        .header-cv-subtitle {
+            font-size: 24px;
+            font-weight: 620;
+            color: white;
+        }
+
+        .header-cv-text {
+            font-size: 16px;
+            font-weight: 420;
+            color: white;
+        }
+
+        .header-cv-img-profile {
+            max-width: 100%;
+            height: auto;
+            vertical-align: middle;
+            box-sizing: border-box;
+        }
+
+        .separator {
+            content: "";
+            background: #1890ff;
+            border-radius: 25px;
+            display: block;
+            height: 5px;
+            margin-top: 14px;
+            width: 30px;
+        }
+
+        .spacer {
+            height: 2rem;
+        }
+
+        .sub-spacer {
+            height: 1rem;
+        }
+
+    }
+}
+
+/* ----------------------------------------------------- */
+/* Certification */
+.row-certification {
+    padding-bottom: 12px;
+
+    .container-img-certification {
+        text-align: center;
+        height: 110px;
+        width: 100%;
+        vertical-align: middle;
+        margin: auto;
+
+        .img-certification {
+            max-height: 100%;
+            max-width: 100%;
+            width: auto;
+            height: auto;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+        }
+    }
+
+    .container-txt-certification {
+        text-align: left;
+        margin: auto;
+    }
+
+    .title-certification {
+        font-size: 21px;
+        font-weight: 520;
+    }
+}
+
+/* ----------------------------------------------------- */
+/* Experiences */
+.row-experience {
+    margin-bottom: 12px;
+    padding-bottom: 10px;
+
+    .collapse-experience {
+        width: 100%;
+    }
+
+    .ant-collapse-item {
+        box-shadow: 0 5px 15px 0 rgb(69 67 96 / 5%);
+        margin-bottom: 15px;
+        border-bottom: none !important;
+    }
+
+    .container-img-experience {
+        text-align: center;
+        height: 110px;
+        width: 100%;
+        vertical-align: middle;
+        margin: auto;
+
+        .img-experience {
+            max-height: 100%;
+            max-width: 100%;
+            width: auto;
+            height: auto;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+        }
+    }
+
+    .container-txt-experience {
+        text-align: left;
+        margin: auto;
+    }
+
+    .title-experience {
+        font-size: 21px;
+        font-weight: 520;
+    }
+}
