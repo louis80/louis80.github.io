@@ -110,16 +110,6 @@ class LandingPageCV extends React.Component {
 
           <div className='spacer'> </div>
 
-          <div className='container-section-cv'>
-            <h3 className='section-cv-title'> Skills & certifications </h3>
-            <div className='separator'> </div>
-            <div className='spacer'> </div>
-            {certificationRow(mls, 'AWS Certified Machine Learning – Specialty', 'Amazon Web Services (AWS) - September 2022')}
-            {certificationRow(saa, 'AWS Certified Solutions Architect - Associate (SAA)', 'Amazon Web Services (AWS) - June 2022')}
-            {certificationRow(toeic, 'TOEIC - 955/990', 'Test of English for International Communication (TOEIC)')}
-          </div>
-
-          <div className='spacer'> </div>
 
           <div className='container-section-cv'>
             <h3 className='section-cv-title'> Experiences </h3>
@@ -136,16 +126,34 @@ class LandingPageCV extends React.Component {
               >
                 <Panel header={experienceHeader(sia, 'Sia Partners - Data Scientist / Engineer', 'May 2019 → Today - 3+ years - 10+ missions')} key="1" className="site-collapse-custom-panel">
                   {experienceDetails(
-                    "1. Implementation of an orchestration tool for data pipelines",
+                    "Operational management of an innovative solution for the orientation of high school students",
+                    ["Collection of business needs and prioritization of requests. Definition of the scope and roadmap of the POC and the target solution",
+                      "Development of the general architecture of the solution and data mapping",
+                      "Construction of AI modeling bricks for the solution (optimization engine under constraints)",
+                      "Agile coordination of a team of Data Engineers, Web devs and Ux designer, API with python Flask"
+                    ],
+                    "Public",
+                    ['Agile method', "Kubernetes", "Python", "React"]
+                  )}
+                  {experienceDetails(
+                    "Implementation of an orchestration tool for data pipelines",
                     ["a", "b", "c"],
                     "Energy",
                     ['AWS', "Terraform", "c", "d"]
+                  )}
+                  {experienceDetails(
+                    "Industrialization of a dynamic profile forecasting model",
+                    ["Automation of data scraping and pre-processing",
+                      "Deployment and industrialisation (CI/CD, tests, scheduling ...) of the model on a boilerplate platform",
+                      "Implementing the API to access data (python Flask)"],
+                    "Energy",
+                    ['Forecast', "CI/CD", "Scraping", "Python", "Cron job"]
                   )}
 
 
                 </Panel>
                 <Panel header={experienceHeader(gpa, 'Groupama - Data Scientist', 'September 2019 → May 2019 - 9 months')} key="2" className="site-collapse-custom-panel">
-                  <p>b</p>
+                  <div>b</div>
                 </Panel>
                 <Panel header={experienceHeader(hav, 'Havas DBI - Data Scientist', 'May 2018 → August 2018 - 4 months')} key="3" className="site-collapse-custom-panel">
                   <p>c text</p>
@@ -157,6 +165,17 @@ class LandingPageCV extends React.Component {
             </div>
 
 
+          </div>
+
+          <div className='spacer'> </div>
+
+          <div className='container-section-cv'>
+            <h3 className='section-cv-title'> Skills & certifications </h3>
+            <div className='separator'> </div>
+            <div className='spacer'> </div>
+            {certificationRow(mls, 'AWS Certified Machine Learning – Specialty', 'Amazon Web Services (AWS) - September 2022')}
+            {certificationRow(saa, 'AWS Certified Solutions Architect - Associate (SAA)', 'Amazon Web Services (AWS) - June 2022')}
+            {certificationRow(toeic, 'TOEIC - 955/990', 'Test of English for International Communication (TOEIC)')}
           </div>
 
           <div className='spacer'> </div>
