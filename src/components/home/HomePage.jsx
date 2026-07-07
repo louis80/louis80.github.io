@@ -92,7 +92,7 @@ const experiences = [
     metricLabel: 'underwriting productivity',
     sub: '200k dossiers/year, auditable, compliant, end-to-end.',
     desc: 'Agentic AI pipeline across 11 heterogeneous data sources. PydanticAI agents with human-in-the-loop gates and full audit trails for regulated environments.',
-    tags: ['RAG', 'PydanticAI', 'Airflow', 'FastAPI'],
+    tags: ['RAG', 'PydanticAI', 'FastAPI', 'React'],
   },
   {
     client: 'Kering',
@@ -103,7 +103,7 @@ const experiences = [
     metricLabel: 'infrastructure cost',
     sub: '30 days → 24 hours, same pipeline, rebuilt right.',
     desc: '100M+ customer records unified across 20+ markets. Redesigned the full ingestion and transformation layer on BigQuery + Dataflow + DBT.',
-    tags: ['BigQuery', 'Dataflow', 'DBT', 'Spark'],
+    tags: ['BigQuery', 'Dataflow', 'DBT', 'Airflow'],
   },
   {
     client: 'Indrabot',
@@ -125,7 +125,7 @@ const experiences = [
     metricLabel: 'lead',
     sub: 'Agile team across Data, Web & UX.',
     desc: 'Led the technical architecture of an industrial SaaS data collection platform. Algorithmic pipelines, REST API services, CI/CD, and GCP cloud deployment.',
-    tags: ['GCP', 'FastAPI', 'CI/CD', 'Python'],
+    tags: ['GCP', 'FastAPI', 'CI/CD', 'React'],
   },
   {
     client: 'EDF',
@@ -136,7 +136,7 @@ const experiences = [
     metricLabel: 'models in production',
     sub: 'Forecasting models on microservices architecture.',
     desc: 'Automated data preprocessing and deployed forecasting model endpoints. Industrialized ML models on microservices infrastructure for dynamic prediction at scale.',
-    tags: ['Python', 'FastAPI', 'Docker', 'GCP'],
+    tags: ['Python', 'Flask', 'Docker', 'GCP'],
   },
 ];
 
