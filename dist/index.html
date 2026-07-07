@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
   <head>
     <!-- Hotjar Tracking Code -->
     <script>
@@ -19,11 +19,9 @@
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
       gtag('config', 'G-VYJT4TRYGN');
-      //console.log('----------------------');
-      
-      window.addEventListener("load", function(event) {
+
+      window.addEventListener("load", function() {
           var url = window.location.href;
-          console.log('url load : ', url);
           gtag('config', 'G-VYJT4TRYGN', {
             'page_title' : url,
             'page_path': url.replace('https://ljpr.app/#', '')
@@ -31,43 +29,29 @@
       });
       window.addEventListener('popstate', function(){
           var url = window.location.href;
-          console.log('url popstate : ', url);
           gtag('config', 'G-VYJT4TRYGN', {
             'page_title' : url,
             'page_path': url.replace('https://ljpr.app/#', '')
           });
       });
-      //console.log('----------------------');
     </script>
-    <!-- END Global site tag (gtag.js) - Google Analytics -->
-    <!-- Google Tag Manager -->
-    <!--<script>
-    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-      })(window,document,'script','dataLayer','GTM-N7VWNJL');
-    </script>-->
-      <!-- End Google Tag Manager -->
 
     <meta charset="utf-8" />
-    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
+    <link rel="shortcut icon" href="/assets/favicon-fANlyB8T.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="theme-color" content="#0a0a0a" />
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <link rel="manifest" href="/manifest.json" />
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <title>Louis Jpr — AI & Data Engineer</title>
     <meta name="description" content="Personal website of Louis Jpr — data scientist and engineer based in Paris. Experience, projects, and publications." />
+    <script type="module" crossorigin src="/assets/index-D9Dms6_S.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-e4Cs03WY.css">
   </head>
-  <body style="height: 100%;">
-    <!-- Google Tag Manager (noscript) -->
-  <!--<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N7VWNJL"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>-->
-  <!-- End Google Tag Manager (noscript) -->
+  <body style="background-color: #0a0a0a;">
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root" style="height: 100%;"></div>
+    <div id="root"></div>
   </body>
 </html>
