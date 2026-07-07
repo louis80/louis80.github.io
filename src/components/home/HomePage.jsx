@@ -212,7 +212,7 @@ function ExperienceCard({ client, sector, service, period, metric, metricLabel, 
   return (
     <div style={{ display: 'flex', gap: 0, position: 'relative' }}>
       {/* Timeline spine */}
-      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: 56, flexShrink: 0 }}>
+      <div className="exp-spine" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: 56, flexShrink: 0 }}>
         <div style={{
           width: 10, height: 10, borderRadius: '50%', flexShrink: 0, marginTop: 28,
           background: hovered ? '#64ffda' : '#233554',
@@ -226,7 +226,7 @@ function ExperienceCard({ client, sector, service, period, metric, metricLabel, 
       </div>
 
       {/* Year label */}
-      <div style={{ width: 44, flexShrink: 0, paddingTop: 22, textAlign: 'right', marginRight: 20 }}>
+      <div className="exp-year" style={{ width: 44, flexShrink: 0, paddingTop: 22, textAlign: 'right', marginRight: 20 }}>
         <span style={{ fontFamily: "'Fira Code','SF Mono',monospace", fontSize: 11, fontWeight: 600, color: hovered ? '#64ffda' : '#8892b0', letterSpacing: '.04em', transition: 'color .22s' }}>{period}</span>
       </div>
 
@@ -301,7 +301,7 @@ export default function HomePage() {
     <div style={{ background: '#0a192f', color: '#ccd6f6', fontFamily: "'Calibre','Inter',sans-serif", minHeight: '100vh', WebkitFontSmoothing: 'antialiased' }}>
 
       {/* NAV */}
-      <nav style={{
+      <nav className="nav-wrap" style={{
         position: 'sticky', top: 0, zIndex: 50,
         display: 'flex', alignItems: 'center', justifyContent: 'space-between',
         height: 52, padding: '0 48px',
@@ -318,16 +318,18 @@ export default function HomePage() {
           <span style={{ fontFamily: "'Fira Code','SF Mono',monospace", fontSize: 14, fontWeight: 500, color: '#e6f1ff' }}>louis</span>
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: 26 }}>
-          {[['Services', '#services'], ['Work', '#work'], ['Contact', '#contact']].map(([label, href]) => (
-            <a key={href} href={href} style={{ fontFamily: "'Fira Code','SF Mono',monospace", fontSize: 11.5, letterSpacing: '.04em', color: '#a8b2d1', textDecoration: 'none' }}>{label}</a>
-          ))}
+          <div className="nav-text-links" style={{ display: 'flex', alignItems: 'center', gap: 26 }}>
+            {[['Services', '#services'], ['Work', '#work'], ['Contact', '#contact']].map(([label, href]) => (
+              <a key={href} href={href} style={{ fontFamily: "'Fira Code','SF Mono',monospace", fontSize: 11.5, letterSpacing: '.04em', color: '#a8b2d1', textDecoration: 'none' }}>{label}</a>
+            ))}
+          </div>
           <NavHireButton />
         </div>
       </nav>
 
       {/* HERO */}
-      <section style={{ maxWidth: 800, margin: '0 auto', padding: 'clamp(80px,11vw,128px) 56px clamp(64px,8vw,96px)', animation: 'fadein .8s ease both', position: 'relative' }}>
-        <div style={{ position: 'relative', zIndex: 1, display: 'grid', gridTemplateColumns: '1fr 148px', gap: 48, alignItems: 'start' }}>
+      <section className="hero-section" style={{ maxWidth: 800, margin: '0 auto', padding: 'clamp(80px,11vw,128px) 56px clamp(64px,8vw,96px)', animation: 'fadein .8s ease both', position: 'relative' }}>
+        <div className="hero-grid" style={{ position: 'relative', zIndex: 1, display: 'grid', gridTemplateColumns: '1fr 148px', gap: 48, alignItems: 'start' }}>
 
           {/* LEFT */}
           <div>
@@ -348,13 +350,11 @@ export default function HomePage() {
           </div>
 
           {/* RIGHT meta */}
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: 0, paddingTop: 4 }}>
-            <div style={{ width: 128, height: 128, borderRadius: '50%', border: '2px solid rgba(100,255,218,.4)', marginBottom: 18, flexShrink: 0, boxShadow: '0 0 0 4px rgba(100,255,218,.06)', background: 'rgb(18,19,28)', backgroundImage: `url(${profilePhoto})`, backgroundSize: '80%', backgroundPosition: 'center 8%', backgroundRepeat: 'no-repeat' }} />
+          <div className="hero-right" style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: 0, paddingTop: 4 }}>
+            <div className="hero-right-photo" style={{ width: 128, height: 128, borderRadius: '50%', border: '2px solid rgba(100,255,218,.4)', marginBottom: 18, flexShrink: 0, boxShadow: '0 0 0 4px rgba(100,255,218,.06)', background: 'rgb(18,19,28)', backgroundImage: `url(${profilePhoto})`, backgroundSize: '80%', backgroundPosition: 'center 8%', backgroundRepeat: 'no-repeat' }} />
             <div style={{ display: 'flex', flexDirection: 'column', gap: 10, fontFamily: "'Fira Code','SF Mono',monospace", fontSize: 11 }}>
               {[
                 ['location', 'Paris, FR'],
-                ['focus',    'Data / AI Engineer'],
-                ['mode',     'remote'],
                 ['lang',     'EN / FR'],
               ].map(([k, v]) => (
                 <div key={k} style={{ display: 'grid', gridTemplateColumns: '56px 1fr', gap: 8 }}>
@@ -369,12 +369,12 @@ export default function HomePage() {
 
       {/* PROVEN TRACK RECORD */}
       <section style={{ borderTop: '1px solid #233554', background: '#112240' }}>
-        <div style={{ maxWidth: 800, margin: '0 auto', padding: 'clamp(56px,8vw,84px) 56px' }}>
+        <div className="section-pad" style={{ maxWidth: 800, margin: '0 auto', padding: 'clamp(56px,8vw,84px) 56px' }}>
 
           <SectionLabel>Proven Track Record</SectionLabel>
 
           {/* KPI CARDS */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 10, marginBottom: 28 }}>
+          <div className="kpi-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 10, marginBottom: 28 }}>
             {kpis.map(kpi => <KpiCard key={kpi.label} {...kpi} />)}
           </div>
 
@@ -395,7 +395,7 @@ export default function HomePage() {
           </div>
 
           {/* TESTIMONIAL */}
-          <div style={{ marginTop: 36, padding: '30px 34px', border: '1px solid #233554', borderRadius: 14, background: 'transparent', position: 'relative' }}>
+          <div className="testimonial-wrap" style={{ marginTop: 36, padding: '30px 34px', border: '1px solid #233554', borderRadius: 14, background: 'transparent', position: 'relative' }}>
             <svg width="32" height="24" viewBox="0 0 32 24" fill="none" style={{ position: 'absolute', top: 24, right: 28, opacity: .2 }} xmlns="http://www.w3.org/2000/svg">
               <path d="M0 24V14.4C0 6.4 4.8 1.6 14.4 0l1.6 2.4C10.4 3.6 7.6 6.4 7.2 10.4H12V24H0ZM20 24V14.4C20 6.4 24.8 1.6 34.4 0l1.6 2.4c-5.6 1.2-8.4 4-8.8 8H32V24H20Z" fill="#64ffda"/>
             </svg>
@@ -418,7 +418,7 @@ export default function HomePage() {
 
       {/* MY SERVICES */}
       <section id="services" style={{ borderTop: '1px solid #233554', background: '#0a192f' }}>
-        <div style={{ maxWidth: 800, margin: '0 auto', padding: 'clamp(56px,8vw,84px) 56px 0' }}>
+        <div className="section-pad" style={{ maxWidth: 800, margin: '0 auto', padding: 'clamp(56px,8vw,84px) 56px 0' }}>
 
           <SectionLabel>Services</SectionLabel>
 
@@ -437,7 +437,7 @@ export default function HomePage() {
 
       {/* SELECTED EXPERIENCES */}
       <section id="work" style={{ borderTop: '1px solid #233554', background: '#112240' }}>
-        <div style={{ maxWidth: 800, margin: '0 auto', padding: 'clamp(56px,8vw,84px) 56px' }}>
+        <div className="section-pad" style={{ maxWidth: 800, margin: '0 auto', padding: 'clamp(56px,8vw,84px) 56px' }}>
 
           <SectionLabel>Selected Work</SectionLabel>
 
@@ -454,9 +454,9 @@ export default function HomePage() {
 
       {/* CERTIFICATIONS */}
       <section style={{ borderTop: '1px solid #233554', background: '#112240' }}>
-        <div style={{ maxWidth: 800, margin: '0 auto', padding: 'clamp(48px,6vw,72px) 56px clamp(60px,7vw,84px)' }}>
+        <div className="section-pad" style={{ maxWidth: 800, margin: '0 auto', padding: 'clamp(48px,6vw,72px) 56px clamp(60px,7vw,84px)' }}>
           <SectionLabel>Certifications</SectionLabel>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 12 }}>
+          <div className="certs-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 12 }}>
             {certs.map(c => <CertRow key={c.name} {...c} />)}
           </div>
         </div>
@@ -464,7 +464,7 @@ export default function HomePage() {
 
       {/* CONTACT CTA */}
       <section id="contact" style={{ borderTop: '1px solid #233554', background: '#0a192f' }}>
-        <div style={{ maxWidth: 800, margin: '0 auto', padding: 'clamp(64px,9vw,104px) 56px', textAlign: 'center' }}>
+        <div className="section-pad" style={{ maxWidth: 800, margin: '0 auto', padding: 'clamp(64px,9vw,104px) 56px', textAlign: 'center' }}>
           <h2 style={{ fontFamily: "'Calibre','Inter',sans-serif", fontWeight: 700, fontSize: 'clamp(28px,4.5vw,44px)', letterSpacing: '-0.03em', lineHeight: 1.1, color: '#e6f1ff', margin: '0 0 16px' }}>
             Have a project in mind?
           </h2>
@@ -479,7 +479,7 @@ export default function HomePage() {
 
       {/* FOOTER */}
       <footer style={{ borderTop: '1px solid #233554' }}>
-        <div style={{ maxWidth: 800, margin: '0 auto', padding: '22px 56px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontFamily: "'Fira Code','SF Mono',monospace", fontSize: 11 }}>
+        <div className="footer-inner" style={{ maxWidth: 800, margin: '0 auto', padding: '22px 56px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontFamily: "'Fira Code','SF Mono',monospace", fontSize: 11 }}>
           <span style={{ color: '#8892b0' }}>© 2026 Louis Jpr</span>
           <div style={{ display: 'flex', gap: 20 }}>
             <a href="https://github.com/louis80" style={{ color: '#a8b2d1', textDecoration: 'none' }}>GitHub</a>
